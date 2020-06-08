@@ -1,0 +1,31 @@
+﻿<Window x:Class="CamcoManufacturing.ListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CamcoManufacturing"
+        mc:Ignorable="d"
+        Title="ListView" Height="450" Width="800" WindowState="Maximized" Background="Gray">
+    <Grid>
+        <DataGrid x:Name="dataGridCamcoRecord" HorizontalAlignment="Left" Height="261" Margin="8,115,0,0" VerticalAlignment="Top" Width="774" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Drawing#" Width="20*" Binding="{Binding DrawingNumber}"/>
+                <DataGridTextColumn Header="Operation#" Width="20*" Binding="{Binding OperationNumber}"/>
+                <DataGridTextColumn Header="CNC Program#" Width="20*" Binding="{Binding CNCProgramNumber}"/>
+                <DataGridTextColumn Header="Fixturing" Width="10*" Binding="{Binding Fixturing}"/>
+                <DataGridTextColumn Header="Date" Width="20*" Binding="{Binding CreatedDate}"/>
+                <DataGridTemplateColumn Width="10*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click">Print Report</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Image HorizontalAlignment="Left" Source="Images/CamcoBannerBackround.jpg" Height="534" VerticalAlignment="Top" Width="1418" Margin="0,5,-626,-120"/>
+        <Image HorizontalAlignment="Left" Source="Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="142" VerticalAlignment="Top" Width="224" Margin="0,5,0,0"/>
+        <Label Content="ALL SET-UP SHEETS" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="229,41,0,0"/>
+
+    </Grid>
+</Window>

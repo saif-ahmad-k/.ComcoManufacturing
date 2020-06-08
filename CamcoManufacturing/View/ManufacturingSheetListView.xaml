@@ -1,0 +1,25 @@
+﻿<Window x:Class="CamcoManufacturing.View.ManufacturingSheetListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="ListView" Height="450" Width="800" WindowState="Maximized">
+    <Grid>
+        <DataGrid x:Name="dataGridMCS" HorizontalAlignment="Left" Height="374" Margin="10,36,0,0" VerticalAlignment="Top" Width="774" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Drawing#" Width="20*" Binding="{Binding DrawingNumber}"/>
+                <DataGridTextColumn Header="Operation#" Width="20*" Binding="{Binding OperationNumber}"/>
+                <DataGridTextColumn Header="Date Created" Width="20*" Binding="{Binding DateCreated}"/>
+                <DataGridTemplateColumn Width="10*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click">Print Report</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="CamcoManufacturing.Views.ManufacturingCheckSheet"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CamcoManufacturing.Views"
+        mc:Ignorable="d"
+        Title="ManufacturingCheckSheet" Height="450" Width="800" WindowState="Maximized">
+    <Grid>
+        <Label Content="Customer:" HorizontalAlignment="Left" Margin="31,49,0,0" VerticalAlignment="Top" Width="126"/>
+        <ComboBox x:Name="CustomerComboBox"  DisplayMemberPath="CustomerName" SelectedValuePath="CustomerId" HorizontalAlignment="Left" Margin="162,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Created By:" HorizontalAlignment="Left" Margin="31,76,0,0" VerticalAlignment="Top" Width="126"/>
+        <ComboBox x:Name="CreatedByComboBox" DisplayMemberPath="EmployeeName" SelectedValuePath="EmployeeId" HorizontalAlignment="Left" Margin="162,80,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Part Number:" HorizontalAlignment="Left" Margin="31,103,0,0" VerticalAlignment="Top" Width="126"/>
+        <ComboBox x:Name="PartNumberComboBox" DisplayMemberPath="Part" SelectedValuePath="PartId" HorizontalAlignment="Left" Margin="162,107,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Operation Number:" HorizontalAlignment="Left" Margin="31,137,0,0" VerticalAlignment="Top" Width="126"/>
+        <TextBox x:Name="OperationNumberTxt"  HorizontalAlignment="Left" Height="23" Margin="162,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="buttonSave" Content="Save" HorizontalAlignment="Left" Margin="324,59,0,0" VerticalAlignment="Top" Width="101" Height="25" Click="ButtonSave_Click"/>
+        <Button x:Name="buttonList" Content="All Reports" HorizontalAlignment="Left" Margin="434,59,0,0" VerticalAlignment="Top" Width="101" Height="25" Click="ButtonList_Click"/>
+
+    </Grid>
+</Window>

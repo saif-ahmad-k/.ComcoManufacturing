@@ -1,0 +1,118 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CamcoManufacturing.View"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="CamcoManufacturing.View.SetUpSheet"
+        mc:Ignorable="d"
+        Title="SetUpSheet" Name="CreateSetUpSheet" Height="682.3" Width="1295" WindowState="Maximized" Background="Gray">
+    <Grid>
+        <Image Source="C:\Users\Hp\Downloads\CamcoManufacturing\CamcoManufacturing\CamcoManufacturing\Images\CamcoBannerBackround.jpg" Height="101" VerticalAlignment="Top" Margin="0,5,0,0"/>
+
+        <Label x:Name="label1" Content="Part Number" HorizontalAlignment="Left" Margin="24,114,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="132" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbPart" Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="Part" SelectedValuePath="PartId" HorizontalAlignment="Left" Margin="209,117,0,0" VerticalAlignment="Top" Width="236" KeyDown="CmbPart_SelectionChanged" SelectionChanged="CmbPart_SelectionChanged"/>
+        <Label x:Name="label_Copy1" Content="Opertation#" HorizontalAlignment="Left" Margin="605,280,0,0" VerticalAlignment="Top" Width="115" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label1_Copy1" Content="Customer" HorizontalAlignment="Left" Margin="605,248,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="115" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbCustomer"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="CustomerName" SelectedValuePath="CustomerID" Margin="739,248,0,0" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label1_Copy2" Content="Created By :" HorizontalAlignment="Left" Margin="607,117,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="132" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbEmployee" Style="{StaticResource mandatoryComboBox}" SelectedValuePath="EmployeeId" DisplayMemberPath="EmployeeName" HorizontalAlignment="Left" Margin="738,114,0,0" VerticalAlignment="Top" Width="260" Height="33"/>
+        <TextBox x:Name="textBoxChuckPressure" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="738,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <Label x:Name="label_Copy2" Content="Chuck Pressure" HorizontalAlignment="Left" Margin="605,184,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+
+        <TextBox Visibility="Hidden" Text="{Binding MaxTime, StringFormat={}{0:hh':'mm}}"    HorizontalAlignment="Left" Height="42" Margin="562,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
+        <Label x:Name="label_Copy3" Content="Cycletime(Min) :" HorizontalAlignment="Left" Margin="605,150,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="buttonSave" Style="{StaticResource saveButton}" Content="Save and Print" HorizontalAlignment="Left" Margin="951,10,0,0" VerticalAlignment="Top" Width="156" Click="buttonSave_Click" Height="51"/>
+        <Button x:Name="buttonList" Style="{StaticResource returnButton}" Content="Reports List" HorizontalAlignment="Left" Margin="1046,577,0,0" VerticalAlignment="Top" Width="122" Click="buttonList_Click" Height="51"/>
+        <Label x:Name="label1_Copy3" Content="Material :" HorizontalAlignment="Left" Margin="607,214,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="132" FontWeight="Bold"/>
+        <Button x:Name="buttonEditEmployee" Style="{StaticResource editButtonStyle}" Content="EDIT" HorizontalAlignment="Left" Margin="931,116,0,0" VerticalAlignment="Top" Width="45" Height="30"/>
+
+        <Grid Height="174" Margin="1046,111,18,0" VerticalAlignment="Top" Background="WhiteSmoke" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+
+
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+
+
+                <RowDefinition Height="*" />
+
+
+            </Grid.RowDefinitions>
+            <Image x:Name="imgPhoto" Stretch="Fill" OpacityMask="Black" Grid.Row="0" Grid.Column="0" Margin="10,0,10,20">
+
+            </Image>
+        </Grid>
+        <Button x:Name="Browse_Button" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="1046,251,18,0" VerticalAlignment="Top" Height="34" Click="button_Browse_Click" Grid.Row="0"/>
+
+        <Button x:Name="buttonAddTurretTool" Style="{StaticResource blackButtonStyle}" Content="ADD TURRET TOOL" HorizontalAlignment="Left" Margin="1046,485,0,0" VerticalAlignment="Top" Width="198" Height="75" Click="ButtonAddTurretTool_Click"/>
+        <Button x:Name="buttonReturn" Style="{StaticResource redButtonStyle}" Content="RETURN" HorizontalAlignment="Left" Margin="1112,10,0,0" VerticalAlignment="Top" Width="164" Height="51" Click="ButtonReturn_Click"/>
+        <Label Content="TOOL #" Background="White"  HorizontalAlignment="Left" Margin="100,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="83" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
+        <Label Content="OFFSET #" Background="White"  HorizontalAlignment="Left" Margin="183,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="108" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
+        <Label Content="TOOL DESCRIPTION" Background="White"  HorizontalAlignment="Left" Margin="291,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="340" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
+        <Label Content="SFM/RPM" Background="White"  HorizontalAlignment="Left" Margin="631,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="106" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
+        <Label Content="FEED(IN/REV)" Background="White"  HorizontalAlignment="Left" Margin="737,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="139" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
+        <Label Content="PROJECTION (in)" Background="White"  HorizontalAlignment="Left" Margin="876,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="152" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
+        <Label Content="LINE #" Background="White" HorizontalAlignment="Left" Margin="22,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="78" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
+
+        <TextBox x:Name="MaterialTxt"  IsEnabled="False"  Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="738,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
+        <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="142" VerticalAlignment="Top" Width="224" Margin="0,5,0,0"/>
+        <Label Content="CREATE SET-UP SHEET" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="229,41,0,0"/>
+        <xctk:TimeSpanUpDown x:Name="txtCycletime"  HorizontalAlignment="Left" Margin="738,149,0,0" VerticalAlignment="Top" Height="31" Width="260"/>
+        <TextBox Name="textBoxLineNumber" HorizontalAlignment="Left" Height="128" Margin="22,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="79" Background="#FFFFF6C0"/>
+        <TextBox Name="textBoxToolNumber" HorizontalAlignment="Left" Height="30" Margin="100,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="84" Background="#FFFFF6C0"/>
+        <TextBox Name="textBoxOffSetNumber" HorizontalAlignment="Left" Height="30" Margin="184,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" Background="#FFFFF6C0"/>
+        <TextBox Name="textBoxToolDescription" HorizontalAlignment="Left" Height="30" Margin="292,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="335" RenderTransformOrigin="1.981,0.517" Background="#FFFFF6C0"/>
+        <TextBox Name="textBoxSFMRPM" HorizontalAlignment="Left" Height="30" Margin="627,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="108" Background="#FFFFF6C0"/>
+        <TextBox Name="textBoxFeed" HorizontalAlignment="Left" Height="30" Margin="735,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="145" Background="#FFFFF6C0"/>
+        <TextBox Name="textBoxProjection" HorizontalAlignment="Left" Height="30" Margin="876,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="153" Background="#FFFFF6C0"/>
+        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,390,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="64" Width="83" FontSize="13.5" Background="#FFF9F4F4" FontWeight="Bold" Text="Insert Drill  Tap" />
+        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="101,454,0,0" TextAlignment="Right"  RenderTransformOrigin="-0.158,3.962" Height="34" Width="83" FontSize="13.5" Background="#FFF9F4F4" FontWeight="Bold" Text="QRN" />
+        <TextBox Name="textBoxDrillTap" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="184,420,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="34" Width="246" FontSize="13.5" Background="#FFCFE3EE" FontWeight="Bold" Text="" />
+        <TextBox Name="textBoxQRN1" HorizontalAlignment="Left" Height="34" Margin="184,454,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="122" RenderTransformOrigin="1.905,4.1" Background="#FFCFE3EE"/>
+        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,390,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="64" Width="83" FontSize="13.5" Background="#FFF9F4F4" FontWeight="Bold" Text="Stick Holder Bore" />
+        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="430,454,0,0" TextAlignment="Right"  RenderTransformOrigin="-0.158,3.962" Height="34" Width="83" FontSize="13.5" Background="#FFF9F4F4" FontWeight="Bold" Text="QRN" />
+        <TextBox Name="textBoxStickBore" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="513,420,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="34" Width="225" FontSize="13.5" Background="#FFCFE3EE" FontWeight="Bold" Text="" />
+        <TextBox Name="textBoxQRN2" HorizontalAlignment="Left" Height="34" Margin="513,454,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="101" RenderTransformOrigin="1.905,4.1" Background="#FFCFE3EE"/>
+        <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="738,390,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="64" Width="83" FontSize="13.5" Background="#FFF9F4F4" FontWeight="Bold" Text="Holder on Turret" />
+        <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="738,454,0,0" TextAlignment="Right"  RenderTransformOrigin="-0.158,3.962" Height="34" Width="83" FontSize="13.5" Background="#FFF9F4F4" FontWeight="Bold" Text="QRN" />
+        <TextBox Name="textBoxTurrentHolder" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="821,420,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="34" Width="208" FontSize="13.5" Background="#FFCFE3EE" FontWeight="Bold" Text="" />
+        <TextBox Name="textBoxQRN3" HorizontalAlignment="Left" Height="34" Margin="821,454,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="84" RenderTransformOrigin="1.905,4.1" Background="#FFCFE3EE"/>
+        <Button x:Name="buttonAddDetailsRow" Style="{StaticResource menuButton}" Content="Add" HorizontalAlignment="Left" Margin="1034,363,0,0" VerticalAlignment="Top" Width="80" Height="57" RenderTransformOrigin="2.159,-1.452" Click="ButtonAddDetailsRow_Click"/>
+        <DataGrid x:Name="dataGridCamcoRecordDetails" HorizontalAlignment="Left" Height="130" Margin="23,493,0,0" VerticalAlignment="Top" Width="1006" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Line#" Width="7.5*" Binding="{Binding lineNumber}"/>
+                <DataGridTextColumn Header="Tool#" Width="7.5*" Binding="{Binding toolNumber}"/>
+                <DataGridTextColumn Header="OffSet#" Width="7.5*" Binding="{Binding OffSetNumber}"/>
+                <DataGridTextColumn Header="Tool Description" Width="10*" Binding="{Binding ToolDescription}"/>
+                <DataGridTextColumn Header="SFM/RPM" Width="7.5*" Binding="{Binding SFM_RPM}"/>
+                <DataGridTextColumn Header="Feed(In/Rev)" Width="7.5*" Binding="{Binding FEEDiN_REV}"/>
+                <DataGridTextColumn Header="Projection(in)" Width="7.5*" Binding="{Binding Projection}"/>
+                <DataGridTextColumn Header="Drill Tap" Width="7.5*" Binding="{Binding InsertDrillTap}"/>
+                <DataGridTextColumn Header="Drill QRN" Width="7.5*" Binding="{Binding QRN1}"/>
+                <DataGridTextColumn Header="Stick Bore" Width="7.5*" Binding="{Binding StickHolderBore}"/>
+                <DataGridTextColumn Header="Bore QRN" Width="7.5*" Binding="{Binding QRN2}"/>
+                <DataGridTextColumn Header="Turrent Header" Width="7.5*" Binding="{Binding HolderOnTurret}"/>
+                <DataGridTextColumn Header="Turrent QRN" Width="7.5*" Binding="{Binding QRN1}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="txtCNCProgram" Style="{StaticResource mandatoryTextBox}"  HorizontalAlignment="Left" Height="30" Margin="209,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
+        <Label x:Name="label_Copy" Content="Program#" HorizontalAlignment="Left" Margin="23,146,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label1_Copy4" Content="Chuck or Collet Assy" HorizontalAlignment="Left" Margin="24,184,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="161" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbChuckCollet"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="Id" Margin="209,184,0,0" VerticalAlignment="Top" Width="236"/>
+        <TextBox x:Name="textBoxColletJawsQRN" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="209,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>
+        <Label x:Name="label_Copy4" Content="Collet/Jaws QRN" HorizontalAlignment="Left" Margin="24,214,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label1_Copy5" Content="Turret Type" HorizontalAlignment="Left" Margin="23,280,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="134" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbTurretType" SelectedValue="TurrentType_Id"  Style="{StaticResource normalComboBox}" DisplayMemberPath="TurrentTypeName" HorizontalAlignment="Left" Margin="211,280,0,0" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label1_Copy6" Content="Machine" HorizontalAlignment="Left" Margin="23,248,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="133" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbMachine"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="MachineName" SelectedValuePath="Machine_Id" Margin="211,248,0,0" VerticalAlignment="Top" Width="235" KeyDown="CmbMachine_KeyDown"  SelectionChanged="CmbMachine_SelectionChanged"/>
+        <ComboBox x:Name="cmbOperation"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="OperationName" SelectedValuePath="Operation_Id" Margin="739,280,0,0" VerticalAlignment="Top" Width="259"/>
+        <ComboBox x:Name="cmbCategory1"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="Category_ID" Margin="184,390,0,0" VerticalAlignment="Top" Width="246" KeyDown="CmbCategory1_KeyDown" SelectionChanged="CmbCategory1_SelectionChanged"/>
+        <ComboBox x:Name="cmbCategory2"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="Category_ID" Margin="513,390,0,0" VerticalAlignment="Top" Width="226" KeyDown="CmbCategory2_KeyDown" SelectionChanged="CmbCategory2_SelectionChanged"/>
+        <ComboBox x:Name="cmbCategory3"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="Name" SelectedValuePath="Category_ID" Margin="821,390,0,0" VerticalAlignment="Top" Width="208" KeyDown="CmbCategory3_KeyDown" SelectionChanged="CmbCategory3_SelectionChanged"/>
+
+    </Grid>
+</Window>

@@ -1,0 +1,401 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CamcoManufacturing">
+
+    <SolidColorBrush x:Key="mandatoryColor" Color="#FFE763" />
+    <SolidColorBrush x:Key="backgroundColor" Color="#ffd085" />
+    <SolidColorBrush x:Key="formContainerColor" Color="#EFF1F3" />
+    <SolidColorBrush x:Key="formElementColor" Color="#FEFEFF" />
+    <SolidColorBrush x:Key="dropDownColor" Color="#FEFEFF" />
+    <SolidColorBrush x:Key="headingColors" Color="#FEFEFF" />
+    <SolidColorBrush x:Key="buttonFontColor" Color="#FEFEFF" />
+    <SolidColorBrush x:Key="formFontColor" Color="Black" />
+    <SolidColorBrush x:Key="addHolderColor" Color="#8EA5D6" />
+
+    <LinearGradientBrush x:Key="normalbuttonBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#46BFFC" Offset="0" />
+        <GradientStop Color="#43B6EF" Offset=".1" />
+        <GradientStop Color="#3BA0D3" Offset=".15" />
+        <GradientStop Color="#348FBC" Offset=".85" />
+        <GradientStop Color="#2E7DA5" Offset=".9" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="saveButtonBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#D7F2BA" Offset="0" />
+        <GradientStop Color="#A8D884" Offset=".1" />
+        <GradientStop Color="#95BF74" Offset=".15" />
+        <GradientStop Color="#95BF74" Offset=".85" />
+        <GradientStop Color="#6D9F71" Offset=".925" />
+        <GradientStop Color="#0B6E4F" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="clearButtonBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#F15156" Offset="0" />
+        <GradientStop Color="#F15121" Offset=".1" />
+        <GradientStop Color="#AD2323" Offset=".15" />
+        <GradientStop Color="#AD2323" Offset=".85" />
+        <GradientStop Color="#7D1128" Offset=".925" />
+        <GradientStop Color="#410B13" Offset="1" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="editButtonBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="Black" Offset="0" />
+        <GradientStop Color="Black" Offset=".1" />
+        <GradientStop Color="Black" Offset=".15" />
+        <GradientStop Color="Black" Offset=".85" />
+        <GradientStop Color="Black" Offset=".925" />
+        <GradientStop Color="Black" Offset="1" />
+    </LinearGradientBrush>
+    <ScaleTransform x:Key="hoverScale" ScaleX="1.1" ScaleY="1.1" />
+    <ScaleTransform x:Key="pressScale" ScaleX=".9" ScaleY=".9" />
+
+    <FontFamily x:Key="headingFont">Segoe UI</FontFamily>
+    <FontFamily x:Key="normalFont">Microsoft JhengHei</FontFamily>
+
+    <ControlTemplate x:Key="normalButtonTemplate"  TargetType="Button">
+        <Grid Margin="4" Background="{StaticResource normalbuttonBackground}">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="4,4,4,4" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform" Value="{StaticResource hoverScale}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform" Value="{StaticResource pressScale}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="saveButtonTemplate" TargetType="Button">
+        <Grid Margin="4" Background="{StaticResource saveButtonBackground}">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="4,5,4,4" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="clearButtonTemplate" TargetType="Button">
+        <Grid Margin="4" Background="{StaticResource clearButtonBackground}">
+            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="4,5,4,4" />
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="editButtonTemplate" TargetType="Button">
+        <Grid >
+            <Border CornerRadius="7,7,7,7" Background="Black" BorderThickness="1" Padding="2">
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5" />
+                <Setter Property="RenderTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <Style x:Key="normalLabel" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="FontFamily" Value="{StaticResource normalFont}" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="{StaticResource formFontColor}" />
+    </Style>
+
+    <Style x:Key="headingLabel" BasedOn="{StaticResource normalLabel}" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontFamily" Value="{StaticResource headingFont}" />
+        <Setter Property="Foreground" Value="{StaticResource headingColors}" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style x:Key="labelNavText" BasedOn="{StaticResource headingLabel}" TargetType="Label">
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Margin" Value="0,96,0,0" />
+        <Setter Property="Height" Value="40" />
+    </Style>
+
+    <Style x:Key="labelContainerHeading" BasedOn="{StaticResource headingLabel}" TargetType="Label">
+    </Style>
+
+    <Style x:Key="labelContainerForm" BasedOn="{StaticResource normalLabel}" TargetType="Label">
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <Style x:Key="labelPageHeading" BasedOn="{StaticResource headingLabel}" TargetType="Label">
+        <Setter Property="Margin" Value="599,38,0,0" />
+        <Setter Property="FontSize" Value="36" />
+    </Style>
+
+    <Style x:Key="labelPageDate" BasedOn="{StaticResource headingLabel}" TargetType="Label">
+        <Setter Property="Margin" Value="1026,51,0,0" />
+        <Setter Property="FontSize" Value="24" />
+    </Style>
+
+    <Style  x:Key="normalButton" TargetType="Button">
+        <Setter Property="Height" Value="80" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="TextBlock.Foreground" Value="{StaticResource buttonFontColor}" />
+        <Setter Property="TextBlock.FontFamily" Value="{StaticResource normalFont}" />
+        <Setter Property="TextBlock.FontSize" Value="16" />
+        <Setter Property="TextBlock.TextWrapping" Value="Wrap" />
+        <Setter Property="TextBlock.TextAlignment" Value="Center" />
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="4" BlurRadius="5" Opacity=".5"></DropShadowEffect>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template" Value="{StaticResource normalButtonTemplate}" />
+    </Style>
+
+    <Style  x:Key="saveButton" BasedOn="{StaticResource normalButton}" TargetType="Button">
+        <Setter Property="Template" Value="{StaticResource saveButtonTemplate}" />
+    </Style>
+
+    <Style  x:Key="returnButton" BasedOn="{StaticResource normalButton}" TargetType="Button">
+        <Setter Property="Margin" Value="1280,16,0,0" />
+        <Setter Property="Template" Value="{StaticResource clearButtonTemplate}" />
+    </Style>
+
+    <Style  x:Key="menuButton" BasedOn="{StaticResource normalButton}" TargetType="Button">
+        <Setter Property="Height" Value="50" />
+        <Setter Property="Width" Value="110" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template" Value="{StaticResource normalButtonTemplate}" />
+    </Style>
+
+    <Style  x:Key="filterButton" BasedOn="{StaticResource menuButton}" TargetType="Button">
+        <Setter Property="Template" Value="{StaticResource saveButtonTemplate }" />
+    </Style>
+
+    <Style  x:Key="clearButton" BasedOn="{StaticResource menuButton}" TargetType="Button">
+        <Setter Property="Template" Value="{StaticResource clearButtonTemplate}" />
+    </Style>
+    <Style  x:Key="editButton" BasedOn="{StaticResource menuButton}" TargetType="Button">
+        
+        <Setter Property="Template" Value="{StaticResource editButtonTemplate}" >
+            
+        </Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="addHolderButtonStyle">        <Setter Property="FontFamily" Value="Arial"/>        <Setter Property="FontSize" Value="9px"/>        <Setter Property="Padding" Value="11px 28px"/>        <Setter Property="Background" Value="#4c8540"/>        <Setter Property="BorderBrush" Value="#4c8540"/>        <Setter Property="Foreground" Value="White" />        <Setter Property="Template">            <Setter.Value>                <ControlTemplate TargetType="{x:Type Button}">                    <Border x:Name="MyButton" Background="{TemplateBinding Background}"          BorderThickness="4px" CornerRadius="5"  BorderBrush="#4c8540" >                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />                    </Border>                    <ControlTemplate.Triggers>                        <Trigger Property="IsMouseOver" Value="True">                            <Setter TargetName="MyButton" Property="BorderBrush" Value="#33bdfd" />                            <Setter Property="Foreground" Value="#33bdfd" />                            <Setter Property="Background" Value="White"/>                            <Setter Property="BorderThickness" Value="15,15,15,15" />                        </Trigger>                    </ControlTemplate.Triggers>                </ControlTemplate>            </Setter.Value>        </Setter>    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="editButtonStyle">        <Setter Property="FontFamily" Value="Arial"/>        <Setter Property="FontSize" Value="9px"/>        <Setter Property="Padding" Value="11px 28px"/>        <Setter Property="Background" Value="Black"/>        <Setter Property="BorderBrush" Value="#96dbfb"/>        <Setter Property="Foreground" Value="White" />        <Setter Property="Template">            <Setter.Value>                <ControlTemplate TargetType="{x:Type Button}">                    <Border x:Name="MyButton" Background="{TemplateBinding Background}"          BorderThickness="4px" CornerRadius="7 7 7 7"  BorderBrush="Black" >                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />                    </Border>                    <ControlTemplate.Triggers>                        <Trigger Property="IsMouseOver" Value="True">                            <Setter TargetName="MyButton" Property="BorderBrush" Value="#33bdfd" />                            <Setter Property="Foreground" Value="#33bdfd" />                            <Setter Property="Background" Value="White"/>                            <Setter Property="BorderThickness" Value="15,15,15,15" />                        </Trigger>                    </ControlTemplate.Triggers>                </ControlTemplate>            </Setter.Value>        </Setter>    </Style>
+
+
+    <Style TargetType="{x:Type Button}" x:Key="editButtonStyle2">        <Setter Property="FontFamily" Value="Arial"/>        <Setter Property="FontSize" Value="6px"/>        <Setter Property="Padding" Value="11px 28px"/>        <Setter Property="Background" Value="Black"/>        <Setter Property="BorderBrush" Value="#96dbfb"/>        <Setter Property="Foreground" Value="White" />        <Setter Property="Template">            <Setter.Value>                <ControlTemplate TargetType="{x:Type Button}">                    <Border x:Name="MyButton" Background="{TemplateBinding Background}"          BorderThickness="4px" CornerRadius="7 7 7 7"  BorderBrush="Black" >                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />                    </Border>                    <ControlTemplate.Triggers>                        <Trigger Property="IsMouseOver" Value="True">                            <Setter TargetName="MyButton" Property="BorderBrush" Value="#33bdfd" />                            <Setter Property="Foreground" Value="#33bdfd" />                            <Setter Property="Background" Value="White"/>                            <Setter Property="BorderThickness" Value="15,15,15,15" />                        </Trigger>                    </ControlTemplate.Triggers>                </ControlTemplate>            </Setter.Value>        </Setter>    </Style>
+    
+    <Style TargetType="{x:Type Button}" x:Key="blackButtonStyle">        <Setter Property="FontFamily" Value="Arial"/>        <Setter Property="FontSize" Value="16px"/>        <Setter Property="Padding" Value="11px 28px"/>        <Setter Property="Background" Value="Black"/>        <Setter Property="BorderBrush" Value="#96dbfb"/>        <Setter Property="Foreground" Value="White" />        <Setter Property="Template">            <Setter.Value>                <ControlTemplate TargetType="{x:Type Button}">                    <Border x:Name="MyButton" Background="{TemplateBinding Background}"          BorderThickness="4px" CornerRadius="7 7 7 7"  BorderBrush="Black" >                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />                    </Border>                    <ControlTemplate.Triggers>                        <Trigger Property="IsMouseOver" Value="True">                            <Setter TargetName="MyButton" Property="BorderBrush" Value="#33bdfd" />                            <Setter Property="Foreground" Value="#33bdfd" />                            <Setter Property="Background" Value="White"/>                            <Setter Property="BorderThickness" Value="15,15,15,15" />                        </Trigger>                    </ControlTemplate.Triggers>                </ControlTemplate>            </Setter.Value>        </Setter>    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="redButtonStyle">        <Setter Property="FontFamily" Value="Arial"/>        <Setter Property="FontSize" Value="16px"/>        <Setter Property="Padding" Value="11px 28px"/>        <Setter Property="Background" Value="#AD2323"/>        <Setter Property="BorderBrush" Value="#96dbfb"/>        <Setter Property="Foreground" Value="White" />        <Setter Property="Template">            <Setter.Value>                <ControlTemplate TargetType="{x:Type Button}">                    <Border x:Name="MyButton" Background="{TemplateBinding Background}"          BorderThickness="4px" CornerRadius="7 7 7 7"  BorderBrush="Black" >                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />                    </Border>                    <ControlTemplate.Triggers>                        <Trigger Property="IsMouseOver" Value="True">                            <Setter TargetName="MyButton" Property="BorderBrush" Value="#33bdfd" />                            <Setter Property="Foreground" Value="#33bdfd" />                            <Setter Property="Background" Value="White"/>                            <Setter Property="BorderThickness" Value="15,15,15,15" />                        </Trigger>                    </ControlTemplate.Triggers>                </ControlTemplate>            </Setter.Value>        </Setter>    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="smallTurretButtonStyle">        <Setter Property="FontFamily" Value="Arial"/>        <Setter Property="FontSize" Value="9px"/>        <Setter Property="Padding" Value="11px 28px"/>        <Setter Property="Background" Value="#1f497d"/>        <Setter Property="BorderBrush" Value="#1f497d"/>        <Setter Property="Foreground" Value="White" />        <Setter Property="Template">            <Setter.Value>                <ControlTemplate TargetType="{x:Type Button}">                    <Border x:Name="MyButton" Background="{TemplateBinding Background}"          BorderThickness="4px" CornerRadius="7 7 7 7"  BorderBrush="#1f497d" >                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />                    </Border>                    <ControlTemplate.Triggers>                        <Trigger Property="IsMouseOver" Value="True">                            <Setter TargetName="MyButton" Property="BorderBrush" Value="#33bdfd" />                            <Setter Property="Foreground" Value="#33bdfd" />                            <Setter Property="Background" Value="White"/>                            <Setter Property="BorderThickness" Value="15,15,15,15" />                        </Trigger>                    </ControlTemplate.Triggers>                </ControlTemplate>            </Setter.Value>        </Setter>    </Style>
+    <Style x:Key="richTextBoxContentContainer" TargetType="RichTextBox">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Padding" Value="0,0,2,0" />
+        <Setter Property="Height" Value="150" />
+        <Setter Property="Width" Value="300" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Disabled" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Top" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1,1,1,1" />
+        <Setter Property="IsReadOnly" Value="True" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="AllowDrop" Value="False" />
+        <Setter Property="IsHitTestVisible" Value="False" />
+        <Setter Property="SpellCheck.IsEnabled" Value="True" />
+    </Style>
+
+    <Style x:Key="richTextBoxImageContainer" BasedOn="{StaticResource richTextBoxContentContainer}" TargetType="RichTextBox">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="TextBlock.Text" Value="Insert an image here..." />
+    </Style>
+
+    <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Height" Value="200" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="grid" TargetType="Grid">
+        <Setter Property="Background" Value="{StaticResource backgroundColor}" />
+    </Style>
+
+    <Style x:Key="rectContainer" TargetType="Rectangle">
+        <Setter Property="Fill" Value="{StaticResource formContainerColor}" />
+        <Setter Property="Stroke" Value="Black" />
+        <Setter Property="StrokeThickness" Value="4" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+
+    <Style x:Key="normalComboBox"  TargetType="ComboBox">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Background" Value="{StaticResource formElementColor}" />
+        <Setter Property="Foreground" Value="{StaticResource formFontColor}" />
+        <Setter Property="Text" Value="" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1,1,1,1" />
+        <Setter Property="IsEditable" Value="True" />
+        <Setter Property="ToolTip" Value="Remember to set a Tooltip! If you're seeing this on Live, complain to IT." />
+        <Setter Property="Padding" Value="4,6,2,6" />
+        <Setter Property="IsTabStop" Value="True" />
+    </Style>
+
+    <Style x:Key="mandatoryComboBox" BasedOn="{StaticResource normalComboBox}" TargetType="ComboBox">
+        <Setter Property="Background" Value="{StaticResource mandatoryColor}" />
+    </Style>
+
+    
+    <Style x:Key="normalTextBox" TargetType="TextBox">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="130" />
+        <Setter Property="Width" Value="370" />
+        <Setter Property="Background" Value="{StaticResource formElementColor}" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="1,1,1,1" />
+        <Setter Property="Padding" Value="0,0,2,0" />
+        <Setter Property="SpellCheck.IsEnabled" Value="True" />
+    </Style>
+    <Style x:Key="holderTextBox" TargetType="TextBox">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="130" />
+        <Setter Property="Width" Value="370" />
+        <Setter Property="Background" Value="{StaticResource formElementColor}" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="0,0,0,2" />
+        <Setter Property="Padding" Value="0,0,2,0" />
+        <Setter Property="SpellCheck.IsEnabled" Value="True" />
+    </Style>
+    <Style x:Key="filterTextBox" TargetType="TextBox" BasedOn="{StaticResource normalTextBox}">
+        <Setter Property="Width" Value="300" />
+        <Setter Property="Height" Value="60" />
+    </Style>
+
+    <Style x:Key="mandatoryTextBox" BasedOn="{StaticResource normalTextBox}" TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource mandatoryColor}" />
+    </Style>
+  
+    <Style x:Key="addHolderTextBox" BasedOn="{StaticResource holderTextBox}" TargetType="TextBox">
+        <Setter Property="Background" Value="{StaticResource addHolderColor}" />
+    </Style>
+    <Style x:Key="listBox" TargetType="ListBox">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Height" Value="750" />
+        <Setter Property="Width" Value="450" />
+        <Setter Property="Background" Value="{StaticResource formContainerColor}" />
+        <Setter Property="BorderThickness" Value="4" />
+        <Setter Property="BorderBrush" Value="Black" />
+    </Style>
+
+    <Style x:Key="datePicker" BasedOn="{StaticResource MaterialDesignDatePicker}" TargetType="DatePicker">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="110" />
+        <Setter Property="IsTabStop" Value="True" />
+        <Setter Property="Padding" Value="0,2,2,2" />
+        <Setter Property="Background" Value="{StaticResource formElementColor}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="Text" Value="" />
+    </Style>
+
+    <Style x:Key="backgroundImage" TargetType="Image">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Height" Value="128" />
+        <Setter Property="Width" Value="1920" />
+        <Setter Property="Source" Value="/Images/CamcoBannerBackround.jpg" />
+        <Setter Property="Grid.ColumnSpan" Value="2" />
+    </Style>
+
+    <Style x:Key="logoImage" TargetType="Image">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Margin" Value="0,2,0,0" />
+        <Setter Property="Height" Value="94" />
+        <Setter Property="Width" Value="275" />
+        <Setter Property="Source" Value="/Images/Camco Manufacturing (Unofficial Logo) Large.png" />
+    </Style>
+
+    <Style x:Key="imageDisplayer" TargetType="Image">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="Height" Value="220" />
+        <Setter Property="Width" Value="300" />
+    </Style>
+
+    <Style x:Key="MyBorderStyle" TargetType="Border">
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="2" />
+        
+    </Style>
+    
+</ResourceDictionary>
