@@ -397,5 +397,9 @@
         <Setter Property="BorderThickness" Value="2" />
         
     </Style>
-    <!--Test Region-->
+    <Style x:Key="MyBorderStyleTest" TargetType="Border">
+        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderThickness" Value="2" />
+
+    </Style>
 </ResourceDictionary>
