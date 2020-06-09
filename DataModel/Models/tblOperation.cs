@@ -14,7 +14,30 @@ namespace DataModel.Models
         [Key]
         public int Operation_Id { get; set; }
         //[Required(ErrorMessage = "Please enter name.")]
-        public string OperationName { get; set; }
+        public string RM_DESC { get; set; }
         public int PartId { get; set; }
+        public string RM_WKCTR { get; set; }
+        public Boolean? RM_SWITCH { get; set; }
+        public Boolean? VERIFIED_CYCLETIME { get; set; }
+        public string RM_CT { get; set; }
+        public string CT_MINUTES { get; set; }
+        public string RM_OP { get; set; }
+        [NotMapped]
+        [Display(Name = "Part #")]
+        public string Part
+        {
+            get
+            {
+                string Qnum = "";
+                using (BaseDataContext db = new BaseDataContext())
+                {
+                    if (PartId != null)
+                    {
+                        Qnum = db.tParts.Find(PartId).Part;
+                    }
+                }
+                return Qnum;
+            }
+        }
     }
 }

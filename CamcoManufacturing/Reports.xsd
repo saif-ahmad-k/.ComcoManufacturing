@@ -54,7 +54,7 @@ WHERE        (tblManufacturingCheckSheet.MCS_id = @MCS_id)</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CamcoSetUpSheetTableTableAdapter" GeneratorDataComponentClassName="CamcoSetUpSheetTableTableAdapter" Name="CamcoSetUpSheetTable" UserDataComponentName="CamcoSetUpSheetTableTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="mesam.CamcoManufacuring.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="mesam.CamcoManufacuring.dbo" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT        tblCamcoRecord.Id, tblCamcoRecord.CustomerId, tblCamcoRecord.EmployeeId, tblCamcoRecord.LatheId, tblCamcoRecord.PartId, tblCamcoRecord.DrawingNumber, tblCamcoRecord.OperationNumber, 
@@ -65,7 +65,7 @@ WHERE        (tblManufacturingCheckSheet.MCS_id = @MCS_id)</CommandText>
                          ComcoRecordDetail.Id AS Expr2, ComcoRecordDetail.CamcoRecordId, tblCustomer.CustomerID AS Expr3, tblCustomer.CustomerName, tblCustomer.CustomerAbbreviation, tblEmployees.EmployeeId AS Expr4, 
                          tblEmployees.EmployeeName, tblLathe.LatheId AS Expr5, tblLathe.LatheName, tblParts.PartId AS Expr6, tblParts.Part, tblParts.Material, tblParts.CustomerId AS Expr7, tblMachineType.Machine_Id, 
                          tblMachineType.MachineName, tblTurrentType.TurrentType_Id, tblTurrentType.TurrentTypeName, tblTurrentType.MachineTypeId, tblChuckCollet.Id AS Expr8, tblChuckCollet.Name, tblOperation.Operation_Id, 
-                         tblOperation.OperationName, tblOperation.PartId AS Expr9
+                         tblOperation.RM_DESC, tblOperation.PartId AS Expr9, tblOperation.RM_WKCTR, tblOperation.RM_SWITCH, tblOperation.VERIFIED_CYCLETIME, tblOperation.RM_CT, tblOperation.CT_MINUTES, tblOperation.RM_OP
 FROM            tblCamcoRecord INNER JOIN
                          ComcoRecordDetail ON tblCamcoRecord.Id = ComcoRecordDetail.CamcoRecordId LEFT OUTER JOIN
                          tblCustomer ON tblCamcoRecord.CustomerId = tblCustomer.CustomerID LEFT OUTER JOIN
@@ -139,8 +139,14 @@ WHERE        (tblCamcoRecord.Id = @CamcoId)</CommandText>
               <Mapping SourceColumn="Expr8" DataSetColumn="Expr8" />
               <Mapping SourceColumn="Name" DataSetColumn="Name" />
               <Mapping SourceColumn="Operation_Id" DataSetColumn="Operation_Id" />
-              <Mapping SourceColumn="OperationName" DataSetColumn="OperationName" />
               <Mapping SourceColumn="Expr9" DataSetColumn="Expr9" />
+              <Mapping SourceColumn="RM_DESC" DataSetColumn="RM_DESC" />
+              <Mapping SourceColumn="RM_WKCTR" DataSetColumn="RM_WKCTR" />
+              <Mapping SourceColumn="RM_SWITCH" DataSetColumn="RM_SWITCH" />
+              <Mapping SourceColumn="VERIFIED_CYCLETIME" DataSetColumn="VERIFIED_CYCLETIME" />
+              <Mapping SourceColumn="RM_CT" DataSetColumn="RM_CT" />
+              <Mapping SourceColumn="CT_MINUTES" DataSetColumn="CT_MINUTES" />
+              <Mapping SourceColumn="RM_OP" DataSetColumn="RM_OP" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -152,7 +158,7 @@ WHERE        (tblCamcoRecord.Id = @CamcoId)</CommandText>
   <xs:element name="Reports" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Reports" msprop:Generator_UserDSName="Reports">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ManufacturingCheckSheetTableAdapter" msprop:Generator_TableClassName="ManufacturingCheckSheetTableAdapterDataTable" msprop:Generator_TableVarName="tableManufacturingCheckSheetTableAdapter" msprop:Generator_TablePropName="ManufacturingCheckSheetTableAdapter" msprop:Generator_RowDeletingName="ManufacturingCheckSheetTableAdapterRowDeleting" msprop:Generator_RowChangingName="ManufacturingCheckSheetTableAdapterRowChanging" msprop:Generator_RowEvHandlerName="ManufacturingCheckSheetTableAdapterRowChangeEventHandler" msprop:Generator_RowDeletedName="ManufacturingCheckSheetTableAdapterRowDeleted" msprop:Generator_UserTableName="ManufacturingCheckSheetTableAdapter" msprop:Generator_RowChangedName="ManufacturingCheckSheetTableAdapterRowChanged" msprop:Generator_RowEvArgName="ManufacturingCheckSheetTableAdapterRowChangeEvent" msprop:Generator_RowClassName="ManufacturingCheckSheetTableAdapterRow">
+        <xs:element name="ManufacturingCheckSheetTableAdapter" msprop:Generator_TableClassName="ManufacturingCheckSheetTableAdapterDataTable" msprop:Generator_TableVarName="tableManufacturingCheckSheetTableAdapter" msprop:Generator_RowChangedName="ManufacturingCheckSheetTableAdapterRowChanged" msprop:Generator_TablePropName="ManufacturingCheckSheetTableAdapter" msprop:Generator_RowDeletingName="ManufacturingCheckSheetTableAdapterRowDeleting" msprop:Generator_RowChangingName="ManufacturingCheckSheetTableAdapterRowChanging" msprop:Generator_RowEvHandlerName="ManufacturingCheckSheetTableAdapterRowChangeEventHandler" msprop:Generator_RowDeletedName="ManufacturingCheckSheetTableAdapterRowDeleted" msprop:Generator_RowClassName="ManufacturingCheckSheetTableAdapterRow" msprop:Generator_UserTableName="ManufacturingCheckSheetTableAdapter" msprop:Generator_RowEvArgName="ManufacturingCheckSheetTableAdapterRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MCS_id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMCS_id" msprop:Generator_ColumnPropNameInRow="MCS_id" msprop:Generator_ColumnPropNameInTable="MCS_idColumn" msprop:Generator_UserColumnName="MCS_id" type="xs:int" />
@@ -262,7 +268,7 @@ WHERE        (tblCamcoRecord.Id = @CamcoId)</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CamcoSetUpSheetTable" msprop:Generator_TableClassName="CamcoSetUpSheetTableDataTable" msprop:Generator_TableVarName="tableCamcoSetUpSheetTable" msprop:Generator_TablePropName="CamcoSetUpSheetTable" msprop:Generator_RowDeletingName="CamcoSetUpSheetTableRowDeleting" msprop:Generator_RowChangingName="CamcoSetUpSheetTableRowChanging" msprop:Generator_RowEvHandlerName="CamcoSetUpSheetTableRowChangeEventHandler" msprop:Generator_RowDeletedName="CamcoSetUpSheetTableRowDeleted" msprop:Generator_UserTableName="CamcoSetUpSheetTable" msprop:Generator_RowChangedName="CamcoSetUpSheetTableRowChanged" msprop:Generator_RowEvArgName="CamcoSetUpSheetTableRowChangeEvent" msprop:Generator_RowClassName="CamcoSetUpSheetTableRow">
+        <xs:element name="CamcoSetUpSheetTable" msprop:Generator_TableClassName="CamcoSetUpSheetTableDataTable" msprop:Generator_TableVarName="tableCamcoSetUpSheetTable" msprop:Generator_RowChangedName="CamcoSetUpSheetTableRowChanged" msprop:Generator_TablePropName="CamcoSetUpSheetTable" msprop:Generator_RowDeletingName="CamcoSetUpSheetTableRowDeleting" msprop:Generator_RowChangingName="CamcoSetUpSheetTableRowChanging" msprop:Generator_RowEvHandlerName="CamcoSetUpSheetTableRowChangeEventHandler" msprop:Generator_RowDeletedName="CamcoSetUpSheetTableRowDeleted" msprop:Generator_RowClassName="CamcoSetUpSheetTableRow" msprop:Generator_UserTableName="CamcoSetUpSheetTable" msprop:Generator_RowEvArgName="CamcoSetUpSheetTableRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -499,14 +505,44 @@ WHERE        (tblCamcoRecord.Id = @CamcoId)</CommandText>
                 </xs:simpleType>
               </xs:element>
               <xs:element name="Operation_Id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnOperation_Id" msprop:Generator_ColumnPropNameInRow="Operation_Id" msprop:Generator_ColumnPropNameInTable="Operation_IdColumn" msprop:Generator_UserColumnName="Operation_Id" type="xs:int" minOccurs="0" />
-              <xs:element name="OperationName" msprop:Generator_ColumnVarNameInTable="columnOperationName" msprop:Generator_ColumnPropNameInRow="OperationName" msprop:Generator_ColumnPropNameInTable="OperationNameColumn" msprop:Generator_UserColumnName="OperationName" minOccurs="0">
+              <xs:element name="Expr9" msprop:Generator_ColumnVarNameInTable="columnExpr9" msprop:Generator_ColumnPropNameInRow="Expr9" msprop:Generator_ColumnPropNameInTable="Expr9Column" msprop:Generator_UserColumnName="Expr9" type="xs:int" minOccurs="0" />
+              <xs:element name="RM_DESC" msprop:Generator_ColumnVarNameInTable="columnRM_DESC" msprop:Generator_ColumnPropNameInRow="RM_DESC" msprop:Generator_ColumnPropNameInTable="RM_DESCColumn" msprop:Generator_UserColumnName="RM_DESC" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="350" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Expr9" msprop:Generator_ColumnVarNameInTable="columnExpr9" msprop:Generator_ColumnPropNameInRow="Expr9" msprop:Generator_ColumnPropNameInTable="Expr9Column" msprop:Generator_UserColumnName="Expr9" type="xs:int" minOccurs="0" />
+              <xs:element name="RM_WKCTR" msprop:Generator_ColumnVarNameInTable="columnRM_WKCTR" msprop:Generator_ColumnPropNameInRow="RM_WKCTR" msprop:Generator_ColumnPropNameInTable="RM_WKCTRColumn" msprop:Generator_UserColumnName="RM_WKCTR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RM_SWITCH" msprop:Generator_ColumnVarNameInTable="columnRM_SWITCH" msprop:Generator_ColumnPropNameInRow="RM_SWITCH" msprop:Generator_ColumnPropNameInTable="RM_SWITCHColumn" msprop:Generator_UserColumnName="RM_SWITCH" type="xs:boolean" minOccurs="0" />
+              <xs:element name="VERIFIED_CYCLETIME" msprop:Generator_ColumnVarNameInTable="columnVERIFIED_CYCLETIME" msprop:Generator_ColumnPropNameInRow="VERIFIED_CYCLETIME" msprop:Generator_ColumnPropNameInTable="VERIFIED_CYCLETIMEColumn" msprop:Generator_UserColumnName="VERIFIED_CYCLETIME" type="xs:boolean" minOccurs="0" />
+              <xs:element name="RM_CT" msprop:Generator_ColumnVarNameInTable="columnRM_CT" msprop:Generator_ColumnPropNameInRow="RM_CT" msprop:Generator_ColumnPropNameInTable="RM_CTColumn" msprop:Generator_UserColumnName="RM_CT" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CT_MINUTES" msprop:Generator_ColumnVarNameInTable="columnCT_MINUTES" msprop:Generator_ColumnPropNameInRow="CT_MINUTES" msprop:Generator_ColumnPropNameInTable="CT_MINUTESColumn" msprop:Generator_UserColumnName="CT_MINUTES" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RM_OP" msprop:Generator_ColumnVarNameInTable="columnRM_OP" msprop:Generator_ColumnPropNameInRow="RM_OP" msprop:Generator_ColumnPropNameInTable="RM_OPColumn" msprop:Generator_UserColumnName="RM_OP" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>

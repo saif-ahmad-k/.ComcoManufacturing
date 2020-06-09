@@ -1,0 +1,34 @@
+﻿<Window x:Class="CamcoManufacturing.View.CreateNew_Operation"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CamcoManufacturing.View"
+        mc:Ignorable="d"
+        Title="CreateNew_Operation" Height="450" Width="800" Background="Gray">
+    <Grid>
+        <GroupBox Header="Operation Details" HorizontalAlignment="Left" Height="216" Margin="516,63,-195,0" VerticalAlignment="Top" Width="471" FontSize="16" FontWeight="SemiBold" Foreground="#FFFDFDFD"/>
+        <TextBox x:Name="textBoxRM_DESC" Style="{StaticResource mandatoryTextBox}" HorizontalAlignment="Left" Height="27" Margin="241,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy3" Content="RM-DESC" HorizontalAlignment="Left" Margin="45,144,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="buttonSave" Style="{StaticResource saveButton}" Content="Save" HorizontalAlignment="Left" Margin="321,358,0,0" VerticalAlignment="Top" Width="155" Height="51" Click="ButtonSave_Click"/>
+        <Label x:Name="label1_Copy" Content="Select Part" HorizontalAlignment="Left" Margin="45,114,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="165" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbPart" SelectedValue="PartId"  Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="Part" HorizontalAlignment="Left" Margin="241,114,0,0" VerticalAlignment="Top" Width="235"/>
+        <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="53" VerticalAlignment="Top" Margin="0,5,0,0"/>
+        <Label Content="CREATE Operation" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="170,10,0,0"/>
+        <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Width="170" Margin="0,5,0,0"/>
+        <TextBox x:Name="textBoxRM_WKCTR" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="241,177,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy" Content="RM-WKCTR" HorizontalAlignment="Left" Margin="45,174,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxRM_CT" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="241,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy1" Content="RM-CT" HorizontalAlignment="Left" Margin="45,204,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxCT_MINUTES" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="241,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy2" Content="CT-MINUTES" HorizontalAlignment="Left" Margin="45,234,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxRM_OP" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="241,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy4" Content="RM-OP" HorizontalAlignment="Left" Margin="45,264,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label_Copy5" Content="RM-SWITCH" HorizontalAlignment="Left" Margin="45,294,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label_Copy6" Content="VERIFIED-CYCLETIME" HorizontalAlignment="Left" Margin="45,324,0,0" VerticalAlignment="Top" Width="148" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <CheckBox Name="checkBoxRM_SWITCH" Content="RM_SWITCH" HorizontalAlignment="Left" Margin="241,309,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="checkBoxVERIFIED_CYCLETIME" Content="VERIFIED-CYCLETIME" HorizontalAlignment="Left" Margin="241,332,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonList" Click="ButtonList_Click" Style="{StaticResource redButtonStyle}" Content="View List" HorizontalAlignment="Left" Margin="137,358,0,0" VerticalAlignment="Top" Width="164" Height="51"/>
+
+    </Grid>
+</Window>

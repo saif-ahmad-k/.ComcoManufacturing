@@ -63,7 +63,7 @@ namespace CamcoManufacturing.View
                     camcorecord.Chuck_Collet_Id = selectedChuckCollet.Id;
                     camcorecord.MachineId = selectedMachine.Machine_Id;
                     camcorecord.TurrentTypeId = selectedTurret.TurrentType_Id;
-                    camcorecord.OperationNumber = selectedOperation.OperationName;
+                    camcorecord.OperationNumber = selectedOperation.RM_DESC;
                     camcorecord.OperationId = selectedOperation.Operation_Id;
                     camcorecord.ChuckPresure = textBoxChuckPressure.Text;
                     camcorecord.ColletQRN = textBoxColletJawsQRN.Text;
@@ -262,6 +262,9 @@ namespace CamcoManufacturing.View
             textBoxQRN1.Text = "";
             textBoxQRN2.Text = "";
             textBoxQRN3.Text = "";
+            cmbCategory1.SelectedValue = 0;
+            cmbCategory2.SelectedValue = 0;
+            cmbCategory3.SelectedValue = 0;
         }
 
         private void CmbMachine_KeyDown(object sender, KeyEventArgs e)

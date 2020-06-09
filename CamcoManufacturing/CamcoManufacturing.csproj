@@ -130,7 +130,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reports.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="View\CreateNew_BumpToolHeader.xaml.cs">
       <DependentUpon>CreateNew_BumpToolHeader.xaml</DependentUpon>
     </Compile>
@@ -142,6 +141,9 @@
     </Compile>
     <Compile Include="View\CreateNew_ODSDrawing.xaml.cs">
       <DependentUpon>CreateNew_ODSDrawing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CreateNew_Operation.xaml.cs">
+      <DependentUpon>CreateNew_Operation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\CreateNew_SetupSheet.xaml.cs">
       <DependentUpon>CreateNew_SetupSheet.xaml</DependentUpon>
@@ -187,6 +189,9 @@
     </Compile>
     <Compile Include="View\View_ODSDrawing.xaml.cs">
       <DependentUpon>View_ODSDrawing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_Operation.xaml.cs">
+      <DependentUpon>View_Operation.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\View_Product.xaml.cs">
       <DependentUpon>View_Product.xaml</DependentUpon>
@@ -237,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CreateNew_ODSDrawing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateNew_Operation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -297,6 +306,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\View_ODSDrawing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_Operation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -361,19 +374,6 @@
     <Resource Include="Images\thumbnail_image002.jpg" />
     <Resource Include="Images\Camco_Manufacturing_Unofficial_Logo_Large.png" />
     <Resource Include="Images\CamcoBannerBackround.jpg" />
-    <Content Include="SqlServerTypes\readme.htm" />
-    <Content Include="SqlServerTypes\x64\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\msvcr120.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

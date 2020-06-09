@@ -75,5 +75,18 @@ namespace CamcoManufacturing.View
                 activateWindow(typeof(View.View_Product));
             }
         }
+
+        private void ButtonOperations_Click(object sender, RoutedEventArgs e)
+        {
+            if (!IsWindowOpen(typeof(View.View_Operation)))
+            {
+                View.View_Operation obj = new View.View_Operation();
+                obj.ShowDialog();
+            }
+            else
+            {
+                activateWindow(typeof(View.View_Operation));
+            }
+        }
     }
 }

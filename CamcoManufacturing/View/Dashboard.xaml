@@ -12,6 +12,7 @@
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="52" VerticalAlignment="Top" Width="224" Margin="0,5,0,0"/>
         <Button Click="Button_Click_1"  Content="Add/View Product" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="33,131,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
         <Button Click="Button_Click" Content="Sheets/Reports" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="207,131,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="ButtonOperations_Click" Name="buttonOperations"  Content="Manage Operations" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="381,131,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
 
     </Grid>
 </Window>

@@ -993,9 +993,21 @@ namespace CamcoManufacturing {
             
             private global::System.Data.DataColumn columnOperation_Id;
             
-            private global::System.Data.DataColumn columnOperationName;
-            
             private global::System.Data.DataColumn columnExpr9;
+            
+            private global::System.Data.DataColumn columnRM_DESC;
+            
+            private global::System.Data.DataColumn columnRM_WKCTR;
+            
+            private global::System.Data.DataColumn columnRM_SWITCH;
+            
+            private global::System.Data.DataColumn columnVERIFIED_CYCLETIME;
+            
+            private global::System.Data.DataColumn columnRM_CT;
+            
+            private global::System.Data.DataColumn columnCT_MINUTES;
+            
+            private global::System.Data.DataColumn columnRM_OP;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -1464,17 +1476,65 @@ namespace CamcoManufacturing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn OperationNameColumn {
+            public global::System.Data.DataColumn Expr9Column {
                 get {
-                    return this.columnOperationName;
+                    return this.columnExpr9;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Expr9Column {
+            public global::System.Data.DataColumn RM_DESCColumn {
                 get {
-                    return this.columnExpr9;
+                    return this.columnRM_DESC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RM_WKCTRColumn {
+                get {
+                    return this.columnRM_WKCTR;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RM_SWITCHColumn {
+                get {
+                    return this.columnRM_SWITCH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn VERIFIED_CYCLETIMEColumn {
+                get {
+                    return this.columnVERIFIED_CYCLETIME;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RM_CTColumn {
+                get {
+                    return this.columnRM_CT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CT_MINUTESColumn {
+                get {
+                    return this.columnCT_MINUTES;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RM_OPColumn {
+                get {
+                    return this.columnRM_OP;
                 }
             }
             
@@ -1561,8 +1621,14 @@ namespace CamcoManufacturing {
                         string TurrentTypeName, 
                         int MachineTypeId, 
                         string Name, 
-                        string OperationName, 
-                        int Expr9) {
+                        int Expr9, 
+                        string RM_DESC, 
+                        string RM_WKCTR, 
+                        bool RM_SWITCH, 
+                        bool VERIFIED_CYCLETIME, 
+                        string RM_CT, 
+                        string CT_MINUTES, 
+                        string RM_OP) {
                 CamcoSetUpSheetTableRow rowCamcoSetUpSheetTableRow = ((CamcoSetUpSheetTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1619,8 +1685,14 @@ namespace CamcoManufacturing {
                         null,
                         Name,
                         null,
-                        OperationName,
-                        Expr9};
+                        Expr9,
+                        RM_DESC,
+                        RM_WKCTR,
+                        RM_SWITCH,
+                        VERIFIED_CYCLETIME,
+                        RM_CT,
+                        CT_MINUTES,
+                        RM_OP};
                 rowCamcoSetUpSheetTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCamcoSetUpSheetTableRow);
                 return rowCamcoSetUpSheetTableRow;
@@ -1697,8 +1769,14 @@ namespace CamcoManufacturing {
                 this.columnExpr8 = base.Columns["Expr8"];
                 this.columnName = base.Columns["Name"];
                 this.columnOperation_Id = base.Columns["Operation_Id"];
-                this.columnOperationName = base.Columns["OperationName"];
                 this.columnExpr9 = base.Columns["Expr9"];
+                this.columnRM_DESC = base.Columns["RM_DESC"];
+                this.columnRM_WKCTR = base.Columns["RM_WKCTR"];
+                this.columnRM_SWITCH = base.Columns["RM_SWITCH"];
+                this.columnVERIFIED_CYCLETIME = base.Columns["VERIFIED_CYCLETIME"];
+                this.columnRM_CT = base.Columns["RM_CT"];
+                this.columnCT_MINUTES = base.Columns["CT_MINUTES"];
+                this.columnRM_OP = base.Columns["RM_OP"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1812,10 +1890,22 @@ namespace CamcoManufacturing {
                 base.Columns.Add(this.columnName);
                 this.columnOperation_Id = new global::System.Data.DataColumn("Operation_Id", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOperation_Id);
-                this.columnOperationName = new global::System.Data.DataColumn("OperationName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOperationName);
                 this.columnExpr9 = new global::System.Data.DataColumn("Expr9", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnExpr9);
+                this.columnRM_DESC = new global::System.Data.DataColumn("RM_DESC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRM_DESC);
+                this.columnRM_WKCTR = new global::System.Data.DataColumn("RM_WKCTR", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRM_WKCTR);
+                this.columnRM_SWITCH = new global::System.Data.DataColumn("RM_SWITCH", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRM_SWITCH);
+                this.columnVERIFIED_CYCLETIME = new global::System.Data.DataColumn("VERIFIED_CYCLETIME", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVERIFIED_CYCLETIME);
+                this.columnRM_CT = new global::System.Data.DataColumn("RM_CT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRM_CT);
+                this.columnCT_MINUTES = new global::System.Data.DataColumn("CT_MINUTES", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCT_MINUTES);
+                this.columnRM_OP = new global::System.Data.DataColumn("RM_OP", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRM_OP);
                 this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = -1;
                 this.columnId.AutoIncrementStep = -1;
@@ -1885,7 +1975,11 @@ namespace CamcoManufacturing {
                 this.columnOperation_Id.AutoIncrementSeed = -1;
                 this.columnOperation_Id.AutoIncrementStep = -1;
                 this.columnOperation_Id.ReadOnly = true;
-                this.columnOperationName.MaxLength = 350;
+                this.columnRM_DESC.MaxLength = 350;
+                this.columnRM_WKCTR.MaxLength = 150;
+                this.columnRM_CT.MaxLength = 50;
+                this.columnCT_MINUTES.MaxLength = 50;
+                this.columnRM_OP.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3210,22 +3304,6 @@ namespace CamcoManufacturing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string OperationName {
-                get {
-                    try {
-                        return ((string)(this[this.tableCamcoSetUpSheetTable.OperationNameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OperationName\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableCamcoSetUpSheetTable.OperationNameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Expr9 {
                 get {
                     try {
@@ -3237,6 +3315,119 @@ namespace CamcoManufacturing {
                 }
                 set {
                     this[this.tableCamcoSetUpSheetTable.Expr9Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RM_DESC {
+                get {
+                    try {
+                        return ((string)(this[this.tableCamcoSetUpSheetTable.RM_DESCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RM_DESC\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.RM_DESCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RM_WKCTR {
+                get {
+                    try {
+                        return ((string)(this[this.tableCamcoSetUpSheetTable.RM_WKCTRColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RM_WKCTR\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.RM_WKCTRColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool RM_SWITCH {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCamcoSetUpSheetTable.RM_SWITCHColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RM_SWITCH\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.RM_SWITCHColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool VERIFIED_CYCLETIME {
+                get {
+                    try {
+                        return ((bool)(this[this.tableCamcoSetUpSheetTable.VERIFIED_CYCLETIMEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VERIFIED_CYCLETIME\' in table \'CamcoSetUpSheetTable\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.VERIFIED_CYCLETIMEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RM_CT {
+                get {
+                    try {
+                        return ((string)(this[this.tableCamcoSetUpSheetTable.RM_CTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RM_CT\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.RM_CTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string CT_MINUTES {
+                get {
+                    try {
+                        return ((string)(this[this.tableCamcoSetUpSheetTable.CT_MINUTESColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CT_MINUTES\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.CT_MINUTESColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RM_OP {
+                get {
+                    try {
+                        return ((string)(this[this.tableCamcoSetUpSheetTable.RM_OPColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RM_OP\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.RM_OPColumn] = value;
                 }
             }
             
@@ -3854,18 +4045,6 @@ namespace CamcoManufacturing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsOperationNameNull() {
-                return this.IsNull(this.tableCamcoSetUpSheetTable.OperationNameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetOperationNameNull() {
-                this[this.tableCamcoSetUpSheetTable.OperationNameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsExpr9Null() {
                 return this.IsNull(this.tableCamcoSetUpSheetTable.Expr9Column);
             }
@@ -3874,6 +4053,90 @@ namespace CamcoManufacturing {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetExpr9Null() {
                 this[this.tableCamcoSetUpSheetTable.Expr9Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRM_DESCNull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.RM_DESCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRM_DESCNull() {
+                this[this.tableCamcoSetUpSheetTable.RM_DESCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRM_WKCTRNull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.RM_WKCTRColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRM_WKCTRNull() {
+                this[this.tableCamcoSetUpSheetTable.RM_WKCTRColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRM_SWITCHNull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.RM_SWITCHColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRM_SWITCHNull() {
+                this[this.tableCamcoSetUpSheetTable.RM_SWITCHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsVERIFIED_CYCLETIMENull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.VERIFIED_CYCLETIMEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetVERIFIED_CYCLETIMENull() {
+                this[this.tableCamcoSetUpSheetTable.VERIFIED_CYCLETIMEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRM_CTNull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.RM_CTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRM_CTNull() {
+                this[this.tableCamcoSetUpSheetTable.RM_CTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsCT_MINUTESNull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.CT_MINUTESColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetCT_MINUTESNull() {
+                this[this.tableCamcoSetUpSheetTable.CT_MINUTESColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRM_OPNull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.RM_OPColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRM_OPNull() {
+                this[this.tableCamcoSetUpSheetTable.RM_OPColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -4322,8 +4585,14 @@ WHERE        (tblManufacturingCheckSheet.MCS_id = @MCS_id)";
             tableMapping.ColumnMappings.Add("Expr8", "Expr8");
             tableMapping.ColumnMappings.Add("Name", "Name");
             tableMapping.ColumnMappings.Add("Operation_Id", "Operation_Id");
-            tableMapping.ColumnMappings.Add("OperationName", "OperationName");
             tableMapping.ColumnMappings.Add("Expr9", "Expr9");
+            tableMapping.ColumnMappings.Add("RM_DESC", "RM_DESC");
+            tableMapping.ColumnMappings.Add("RM_WKCTR", "RM_WKCTR");
+            tableMapping.ColumnMappings.Add("RM_SWITCH", "RM_SWITCH");
+            tableMapping.ColumnMappings.Add("VERIFIED_CYCLETIME", "VERIFIED_CYCLETIME");
+            tableMapping.ColumnMappings.Add("RM_CT", "RM_CT");
+            tableMapping.ColumnMappings.Add("CT_MINUTES", "CT_MINUTES");
+            tableMapping.ColumnMappings.Add("RM_OP", "RM_OP");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4363,20 +4632,22 @@ WHERE        (tblManufacturingCheckSheet.MCS_id = @MCS_id)";
                 "                       tblMachineType.MachineName, tblTurrentType.TurrentType_Id" +
                 ", tblTurrentType.TurrentTypeName, tblTurrentType.MachineTypeId, tblChuckCollet.I" +
                 "d AS Expr8, tblChuckCollet.Name, tblOperation.Operation_Id, \r\n                  " +
-                "       tblOperation.OperationName, tblOperation.PartId AS Expr9\r\nFROM           " +
-                " tblCamcoRecord INNER JOIN\r\n                         ComcoRecordDetail ON tblCam" +
-                "coRecord.Id = ComcoRecordDetail.CamcoRecordId LEFT OUTER JOIN\r\n                 " +
-                "        tblCustomer ON tblCamcoRecord.CustomerId = tblCustomer.CustomerID LEFT O" +
-                "UTER JOIN\r\n                         tblEmployees ON tblCamcoRecord.EmployeeId = " +
-                "tblEmployees.EmployeeId LEFT OUTER JOIN\r\n                         tblLathe ON tb" +
-                "lCamcoRecord.LatheId = tblLathe.LatheId LEFT OUTER JOIN\r\n                       " +
-                "  tblParts ON tblCamcoRecord.PartId = tblParts.PartId LEFT OUTER JOIN\r\n         " +
-                "                tblMachineType ON tblCamcoRecord.MachineId = tblMachineType.Mach" +
-                "ine_Id LEFT OUTER JOIN\r\n                         tblTurrentType ON tblCamcoRecor" +
-                "d.TurrentTypeId = tblTurrentType.TurrentType_Id LEFT OUTER JOIN\r\n               " +
-                "          tblChuckCollet ON tblCamcoRecord.Chuck_Collet_Id = tblChuckCollet.Id L" +
-                "EFT OUTER JOIN\r\n                         tblOperation ON tblCamcoRecord.Operatio" +
-                "nId = tblOperation.Operation_Id\r\nWHERE        (tblCamcoRecord.Id = @CamcoId)";
+                "       tblOperation.RM_DESC, tblOperation.PartId AS Expr9, tblOperation.RM_WKCTR" +
+                ", tblOperation.RM_SWITCH, tblOperation.VERIFIED_CYCLETIME, tblOperation.RM_CT, t" +
+                "blOperation.CT_MINUTES, tblOperation.RM_OP\r\nFROM            tblCamcoRecord INNER" +
+                " JOIN\r\n                         ComcoRecordDetail ON tblCamcoRecord.Id = ComcoRe" +
+                "cordDetail.CamcoRecordId LEFT OUTER JOIN\r\n                         tblCustomer O" +
+                "N tblCamcoRecord.CustomerId = tblCustomer.CustomerID LEFT OUTER JOIN\r\n          " +
+                "               tblEmployees ON tblCamcoRecord.EmployeeId = tblEmployees.Employee" +
+                "Id LEFT OUTER JOIN\r\n                         tblLathe ON tblCamcoRecord.LatheId " +
+                "= tblLathe.LatheId LEFT OUTER JOIN\r\n                         tblParts ON tblCamc" +
+                "oRecord.PartId = tblParts.PartId LEFT OUTER JOIN\r\n                         tblMa" +
+                "chineType ON tblCamcoRecord.MachineId = tblMachineType.Machine_Id LEFT OUTER JOI" +
+                "N\r\n                         tblTurrentType ON tblCamcoRecord.TurrentTypeId = tbl" +
+                "TurrentType.TurrentType_Id LEFT OUTER JOIN\r\n                         tblChuckCol" +
+                "let ON tblCamcoRecord.Chuck_Collet_Id = tblChuckCollet.Id LEFT OUTER JOIN\r\n     " +
+                "                    tblOperation ON tblCamcoRecord.OperationId = tblOperation.Op" +
+                "eration_Id\r\nWHERE        (tblCamcoRecord.Id = @CamcoId)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CamcoId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
