@@ -28,7 +28,7 @@
         <Button x:Name="buttonSaveCategory" Style="{StaticResource saveButton}" Content="Save" HorizontalAlignment="Left" Margin="986,292,0,0" VerticalAlignment="Top" Width="155" Height="51" Click="ButtonSaveCategory_Click"/>
         <Label x:Name="label1_Copy" Content="Select Machine Type" HorizontalAlignment="Left" Margin="710,182,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="165" FontWeight="Bold"/>
         <ComboBox x:Name="cmbCategoryMachineType" SelectedValue="Machine_Id"  Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="MachineName" HorizontalAlignment="Left" Margin="906,182,0,0" VerticalAlignment="Top" Width="235"/>
-        <Grid Height="174" Margin="534,162,530,0" VerticalAlignment="Top" Background="WhiteSmoke" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
+        <Grid Height="174" Margin="534,162,0,0" VerticalAlignment="Top" Background="WhiteSmoke" Grid.Row="0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="138">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
 
@@ -47,6 +47,6 @@
 
             </Image>
         </Grid>
-        <Button x:Name="Browse_Button" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="534,302,530,0" VerticalAlignment="Top" Height="34" Click="button_Browse_Click" Grid.Row="0"/>
+        <Button x:Name="Browse_Button" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="534,302,0,0" VerticalAlignment="Top" Height="34" Click="button_Browse_Click" Grid.Row="0" HorizontalAlignment="Left" Width="138"/>
     </Grid>
 </Window>
