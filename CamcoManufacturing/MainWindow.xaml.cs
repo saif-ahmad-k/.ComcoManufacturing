@@ -55,19 +55,19 @@ namespace CamcoManufacturing
         private void GotoMCSPage(object sender, RoutedEventArgs e)
         {
             Views.ManufacturingCheckSheet view = new Views.ManufacturingCheckSheet();
-            view.ShowDialog();
+            view.Show();
         }
 
         private void Sheet_Click(object sender, RoutedEventArgs e)
         {
             SetUpSheet obj = new SetUpSheet();
-            obj.ShowDialog();
+            obj.Show();
         }
 
         private void MCS_Click(object sender, RoutedEventArgs e)
         {
             Views.ManufacturingCheckSheet view = new Views.ManufacturingCheckSheet();
-            view.ShowDialog();
+            view.Show();
         }
 
         private void ViewODSDrawing(object sender, RoutedEventArgs e)
@@ -75,7 +75,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(View_ODSDrawing)))
             {
                 View_ODSDrawing obj = new View_ODSDrawing();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -90,7 +90,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(Edit_ODSDrawing)))
             {
                 Edit_ODSDrawing obj = new Edit_ODSDrawing();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -105,7 +105,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(CreateNew_ODSDrawing)))
             {
                 CreateNew_ODSDrawing obj = new CreateNew_ODSDrawing();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -120,7 +120,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(ListView)))
             {
                 ListView obj = new ListView();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -133,7 +133,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(Edit_SetupSheet)))
             {
                 Edit_SetupSheet obj = new Edit_SetupSheet();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -148,7 +148,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(SetUpSheet)))
             {
                 SetUpSheet obj = new SetUpSheet();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -161,7 +161,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(View_CheckSheet)))
             {
                 View_CheckSheet obj = new View_CheckSheet();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -176,7 +176,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(Edit_CheckSheet)))
             {
                 Edit_CheckSheet obj = new Edit_CheckSheet();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -191,7 +191,7 @@ namespace CamcoManufacturing
             if (!IsWindowOpen(typeof(CreateNew_CheckSheet)))
             {
                 CreateNew_CheckSheet obj = new CreateNew_CheckSheet();
-                obj.ShowDialog();
+                obj.Show();
             }
             else
             {
@@ -201,6 +201,17 @@ namespace CamcoManufacturing
             }
         }
 
-        
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (!IsWindowOpen(typeof(View.View_SubCategory)))
+            {
+                View.View_SubCategory obj = new View.View_SubCategory(0);
+                obj.Show();
+            }
+            else
+            {
+                activateWindow(typeof(View.View_SubCategory));
+            }
+        }
     }
 }

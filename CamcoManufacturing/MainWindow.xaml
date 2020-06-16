@@ -5,28 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing"
         mc:Ignorable="d"
-        Title="MainWindow" Background="Gray" Height="500" MinHeight="500"  Width="920" MinWidth="920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Background="Gray" Height="492" MinHeight="500"  Width="984" MinWidth="920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Image HorizontalAlignment="Left" Source="Images/CamcoBannerBackround.jpg" Height="534" VerticalAlignment="Top" Width="1418" Margin="0,5,-504,-68"/>
+        <Image HorizontalAlignment="Left" Source="Images/CamcoBannerBackround.jpg" Height="104" VerticalAlignment="Top" Width="1418" Margin="0,5,-504,0"/>
 
         <!--<Menu Height="31" Margin="10,0" VerticalAlignment="Top">
             <MenuItem Header="Camco Sheet" Name="sheet" Click="Sheet_Click"/>
             <MenuItem Header="MCS" Name="MCS" Click="MCS_Click"/>
         </Menu>-->
-        <Button Click="ViewODSDrawing" Content="View" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="134,204,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="EditODSDrawing" Content="Edit" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="134,253,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="CreateODSDrawing" Content="Create" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="134,302,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="ViewSetupSheet" Content="View" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="371,204,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="EditSetupSheet" Content="Edit" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="371,253,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="CreateSetupSheet" Content="Create" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="371,302,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="ViewCheckSheet" Content="View" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="611,204,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="EditCheckSheet" Content="Edit" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="611,253,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Button Click="CreateCheckSheet" Content="Create" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="611,302,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
-        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="46" Margin="134,114,0,0" Stroke="Black" VerticalAlignment="Top" Width="646" OpacityMask="Black"/>
-        <Label Content="ODS DRAWING" Style="{StaticResource labelNavText}" HorizontalAlignment="Left" Margin="134,114,0,0" VerticalAlignment="Top" Height="46" Width="169"/>
-        <Label Content="SETUP SHEET"  Style="{StaticResource labelNavText}" HorizontalAlignment="Left" Margin="371,114,0,0" VerticalAlignment="Top" Height="46" Width="169"/>
-        <Label Content="CHECK SHEET"  Style="{StaticResource labelNavText}" HorizontalAlignment="Left" Margin="611,114,0,0" VerticalAlignment="Top" Height="46" Width="169"/>
+        <Button Click="ViewODSDrawing" Content="View" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="38,224,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="EditODSDrawing" Content="Edit" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="38,273,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="CreateODSDrawing" Content="Create" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="38,322,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="ViewSetupSheet" Content="View" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="275,224,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="EditSetupSheet" Content="Edit" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="275,273,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="CreateSetupSheet" Content="Create" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="275,322,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="ViewCheckSheet" Content="View" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="515,224,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="EditCheckSheet" Content="Edit" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="515,273,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Button Click="CreateCheckSheet" Content="Create" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="515,322,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
+        <Rectangle Fill="Black" HorizontalAlignment="Left" Height="46" Margin="38,134,0,0" Stroke="Black" VerticalAlignment="Top" Width="896" OpacityMask="Black"/>
+        <Label Content="ODS DRAWING" Style="{StaticResource labelNavText}" HorizontalAlignment="Left" Margin="38,134,0,0" VerticalAlignment="Top" Height="46" Width="169"/>
+        <Label Content="SETUP SHEET"  Style="{StaticResource labelNavText}" HorizontalAlignment="Left" Margin="275,134,0,0" VerticalAlignment="Top" Height="46" Width="169"/>
+        <Label Content="CHECK SHEET"  Style="{StaticResource labelNavText}" HorizontalAlignment="Left" Margin="515,134,0,0" VerticalAlignment="Top" Height="46" Width="169"/>
         <Image HorizontalAlignment="Left" Source="Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="142" VerticalAlignment="Top" Width="224" Margin="0,5,0,0"/>
+        <Label Content="PROCESSING"  Style="{StaticResource labelNavText}" HorizontalAlignment="Left" Margin="765,134,0,0" VerticalAlignment="Top" Height="46" Width="169"/>
+        <Button Click="Button_Click_1" Content="ADD/EDIT TOOLS" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="765,224,0,0" VerticalAlignment="Top" Width="169" Height="44"/>
 
     </Grid>
 

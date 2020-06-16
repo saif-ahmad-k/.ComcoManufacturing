@@ -24,23 +24,14 @@ namespace CamcoManufacturing.View
     {
         BaseDataContext db = new BaseDataContext();
         int CategoryId = 0;
-        bool fromSetupSheet = false;
-        int SeqaunceNumber = 0;
         public View_Product()
         {
             InitializeComponent();
-            cmbParentProductCategory.ItemsSource = null;
-            cmbParentProductCategory.ItemsSource = db.tCategories.ToList();
         }
-        public View_Product(int CatId, bool isFromCreateSetupSheet, int Sequance)
+        public View_Product(int CatId)
         {
             InitializeComponent();
             CategoryId = CatId;
-            SeqaunceNumber = Sequance;
-            fromSetupSheet = isFromCreateSetupSheet;
-            cmbParentProductCategory.ItemsSource = null;
-            cmbParentProductCategory.ItemsSource = db.tCategories.ToList();
-            cmbParentProductCategory.SelectedValue = CategoryId;
             FillWrapPanelProductParentCategories(CategoryId);
 
         }
@@ -73,12 +64,27 @@ namespace CamcoManufacturing.View
                     brush.ImageSource = bi;
                     button.Background = brush;
                 }
-                
                 button.Click += new RoutedEventHandler(buttonParentCategory_Click);
                 WrapPanelProductParentsCategories.Children.Add(button);
             }
+            AddNewButton();
         }
-
+        void AddNewButton()
+        {
+            Button button1 = new Button();
+            button1.Width = 50;
+            button1.Height = 44;
+            ImageBrush brush1;
+            BitmapImage bi1 = new BitmapImage();
+            bi1.BeginInit();
+            bi1.UriSource = new Uri(@"Images\AddNewIcon.png", UriKind.Relative);
+            bi1.EndInit();
+            brush1 = new ImageBrush();
+            brush1.ImageSource = bi1;
+            button1.Background = brush1;
+            button1.Click += new RoutedEventHandler(AddNewProduct_Click);
+            WrapPanelProductParentsCategories.Children.Add(button1);
+        }
         private void ButtonAddNewProduct_Click(object sender, RoutedEventArgs e)
         {
             if (!HelperClass.IsWindowOpen(typeof(View.MainProduct)))
@@ -93,61 +99,66 @@ namespace CamcoManufacturing.View
         }
         void buttonParentCategory_Click(object sender, RoutedEventArgs e)
         {
-            if (fromSetupSheet)
+            //if (fromSetupSheet)
+            //{
+            //    Button btn = (Button)sender;
+            //    string abc = btn.Content.ToString();
+            //    string[] multiArray = abc.Split(new Char[] { '\r', '\n' });
+            //    string Name = multiArray[0].ToString();
+            //    var product = db.tProducts.Where(p => p.ProductName == Name).FirstOrDefault();
+            //    if (product != null)
+            //    {
+            //        foreach (Window item in Application.Current.Windows)
+            //        {
+            //            if (item.Name == "CreateSetUpSheet")
+            //            {
+            //                if (SeqaunceNumber == 1)
+            //                {
+            //                    ((SetUpSheet)item).textBoxDrillTap.Text = product.ProductName;
+            //                    ((SetUpSheet)item).textBoxQRN1.Text = product.QRN;
+            //                }
+            //                else if (SeqaunceNumber == 2)
+            //                {
+            //                    ((SetUpSheet)item).textBoxStickBore.Text = product.ProductName;
+            //                    ((SetUpSheet)item).textBoxQRN2.Text = product.QRN;
+            //                }
+            //                else if (SeqaunceNumber == 3)
+            //                {
+            //                    ((SetUpSheet)item).textBoxTurrentHolder.Text = product.ProductName;
+            //                    ((SetUpSheet)item).textBoxQRN3.Text = product.QRN;
+            //                }
+            //            }
+            //        }
+            //        if (!HelperClass.IsWindowOpen(typeof(SetUpSheet)))
+            //        {
+            //            this.Close();
+            //            SetUpSheet obj = new SetUpSheet();
+            //            obj.ShowDialog();
+            //        }
+            //        else
+            //        {
+            //            this.Close();
+            //            HelperClass.activateWindow(typeof(SetUpSheet));
+            //        }
+            //    }
+            //}
+        }
+        void AddNewProduct_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
             {
-                Button btn = (Button)sender;
-                string abc = btn.Content.ToString();
-                string[] multiArray = abc.Split(new Char[] { '\r', '\n' });
-                string Name = multiArray[0].ToString();
-                var product = db.tProducts.Where(p => p.ProductName == Name).FirstOrDefault();
-                if (product != null)
-                {
-                    foreach (Window item in Application.Current.Windows)
-                    {
-                        if (item.Name == "CreateSetUpSheet")
-                        {
-                            if (SeqaunceNumber == 1)
-                            {
-                                ((SetUpSheet)item).textBoxDrillTap.Text = product.ProductName;
-                                ((SetUpSheet)item).textBoxQRN1.Text = product.QRN;
-                            }
-                            else if (SeqaunceNumber == 2)
-                            {
-                                ((SetUpSheet)item).textBoxStickBore.Text = product.ProductName;
-                                ((SetUpSheet)item).textBoxQRN2.Text = product.QRN;
-                            }
-                            else if (SeqaunceNumber == 3)
-                            {
-                                ((SetUpSheet)item).textBoxTurrentHolder.Text = product.ProductName;
-                                ((SetUpSheet)item).textBoxQRN3.Text = product.QRN;
-                            }
-                        }
-                    }
-                    if (!HelperClass.IsWindowOpen(typeof(SetUpSheet)))
-                    {
-                        this.Close();
-                        SetUpSheet obj = new SetUpSheet();
-                        obj.ShowDialog();
-                    }
-                    else
-                    {
-                        this.Close();
-                        HelperClass.activateWindow(typeof(SetUpSheet));
-                    }
-                }
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId);
+                obj.ShowDialog();
+            }
+            else
+            {
+                Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
+                win.Close();
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId);
+                obj.ShowDialog();
             }
         }
 
-        private void CmbParentProductCategory_KeyDown(object sender, KeyEventArgs e)
-        {
-            tblCategory selectedCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
-            FillWrapPanelProductParentCategories(selectedCategory.Category_ID);
-        }
-
-        private void CmbParentProductCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            tblCategory selectedCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
-            FillWrapPanelProductParentCategories(selectedCategory.Category_ID);
-        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using DataModel.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,36 +31,95 @@ namespace CamcoManufacturing.View
             FillWrapPanelProductCategories();
         }
 
-        private void ButtonAddNewProduct_Click(object sender, RoutedEventArgs e)
+        
+        private void FillWrapPanelProductCategories()
         {
-            if (!HelperClass.IsWindowOpen(typeof(View.MainProduct)))
+            if (ParentCatId > 0)
             {
-                View.MainProduct obj = new View.MainProduct();
-                obj.ShowDialog();
+                var ParentCategories = db.tCategories.Where(p => p.ParentId == ParentCatId).ToList();
+                foreach (var item in ParentCategories)
+                {
+                    Button button = new Button();
+                    button.Content = item.Name;
+                    button.Width = 140;
+                    button.Height = 80;
+                    if (item.CategoryImage != null)
+                    {
+                        ImageBrush brush;
+                        BitmapImage bi;
+                        using (var ms = new MemoryStream(item.CategoryImage))
+                        {
+                            brush = new ImageBrush();
+
+                            bi = new BitmapImage();
+                            bi.BeginInit();
+                            bi.CreateOptions = BitmapCreateOptions.None;
+                            bi.CacheOption = BitmapCacheOption.OnLoad;
+                            bi.StreamSource = ms;
+                            bi.EndInit();
+                        }
+
+                        brush.ImageSource = bi;
+                        button.Background = brush;
+                    }
+                    button.Click += new RoutedEventHandler(buttonCategory_Click);
+                    WrapPanelProductCategories.Children.Add(button);
+                }
             }
             else
             {
-                HelperClass.activateWindow(typeof(View.MainProduct));
+                var ParentCategories = db.tCategories.Where(p => p.ParentId == null).ToList();
+                foreach (var item in ParentCategories)
+                {
+                    Button button = new Button();
+                    button.Content = item.Name;
+                    button.Width = 140;
+                    button.Height = 80;
+                    if (item.CategoryImage != null)
+                    {
+                        ImageBrush brush;
+                        BitmapImage bi;
+                        using (var ms = new MemoryStream(item.CategoryImage))
+                        {
+                            brush = new ImageBrush();
+
+                            bi = new BitmapImage();
+                            bi.BeginInit();
+                            bi.CreateOptions = BitmapCreateOptions.None;
+                            bi.CacheOption = BitmapCacheOption.OnLoad;
+                            bi.StreamSource = ms;
+                            bi.EndInit();
+                        }
+
+                        brush.ImageSource = bi;
+                        button.Background = brush;
+                    }
+                    button.Click += new RoutedEventHandler(buttonCategory_Click);
+                    WrapPanelProductCategories.Children.Add(button);
+                }
             }
+            AddNewButton();
         }
-        private void FillWrapPanelProductCategories()
+        void AddNewButton()
         {
-            var ParentCategories = db.tCategories.Where(p => p.ParentId == ParentCatId).ToList();
-            foreach (var item in ParentCategories)
-            {
-                Button button = new Button();
-                button.Content = item.Name;
-                button.Width = 140;
-                button.Height = 44;
-                CategoryId = item.Category_ID;
-                button.Click += new RoutedEventHandler(buttonCategory_Click);
-                WrapPanelProductCategories.Children.Add(button);
-            }
+            Button button1 = new Button();
+            button1.Width = 50;
+            button1.Height = 44;
+            ImageBrush brush1;
+            BitmapImage bi1 = new BitmapImage();
+            bi1.BeginInit();
+            bi1.UriSource = new Uri(@"Images\AddNewIcon.png", UriKind.Relative);
+            bi1.EndInit();
+            brush1 = new ImageBrush();
+            brush1.ImageSource = bi1;
+            button1.Background = brush1;
+            button1.Click += new RoutedEventHandler(AddNewCategory_Click);
+            WrapPanelProductCategories.Children.Add(button1);
         }
-        
         void buttonCategory_Click(object sender, RoutedEventArgs e)
         {
             Button btn = (Button)sender;
+
             var category = db.tCategories.Where(p => p.Name == btn.Content.ToString()).FirstOrDefault();
             if (category != null)
             {
@@ -71,9 +131,25 @@ namespace CamcoManufacturing.View
                 }
                 else
                 {
-                    View.View_MainProduct obj = new View.View_MainProduct(category.Category_ID, false);
+                    View.View_Product obj = new View.View_Product(category.Category_ID);
                     obj.ShowDialog();
                 }
+            }
+        }
+        void AddNewCategory_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Category)))
+            {
+                View.CreateNew_Category obj = new View.CreateNew_Category(ParentCatId);
+                obj.ShowDialog();
+            }
+            else
+            {
+                Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewCategory");
+                win.Close();
+                View.CreateNew_Category obj = new View.CreateNew_Category(ParentCatId);
+                obj.ShowDialog();
             }
         }
     }

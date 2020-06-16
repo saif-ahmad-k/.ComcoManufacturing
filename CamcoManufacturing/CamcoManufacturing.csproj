@@ -145,6 +145,9 @@
     <Compile Include="View\CreateNew_Operation.xaml.cs">
       <DependentUpon>CreateNew_Operation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\CreateNew_Product.xaml.cs">
+      <DependentUpon>CreateNew_Product.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\CreateNew_SetupSheet.xaml.cs">
       <DependentUpon>CreateNew_SetupSheet.xaml</DependentUpon>
     </Compile>
@@ -184,6 +187,9 @@
     <Compile Include="View\View_CheckSheet.xaml.cs">
       <DependentUpon>View_CheckSheet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\View_Inserts.xaml.cs">
+      <DependentUpon>View_Inserts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\View_MainProduct.xaml.cs">
       <DependentUpon>View_MainProduct.xaml</DependentUpon>
     </Compile>
@@ -199,8 +205,14 @@
     <Compile Include="View\View_SetupSheet.xaml.cs">
       <DependentUpon>View_SetupSheet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\View_StickHolders.xaml.cs">
+      <DependentUpon>View_StickHolders.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\View_SubCategory.xaml.cs">
       <DependentUpon>View_SubCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_TurretHolders.xaml.cs">
+      <DependentUpon>View_TurretHolders.xaml</DependentUpon>
     </Compile>
     <Page Include="CamcoRecordReportView.xaml">
       <SubType>Designer</SubType>
@@ -246,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\CreateNew_Operation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CreateNew_Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -301,6 +317,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\View_Inserts.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\View_MainProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -321,7 +341,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\View_StickHolders.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\View_SubCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_TurretHolders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -383,6 +411,9 @@
       <Project>{73B87931-EA5F-45B3-BAD9-481B5B67E4BA}</Project>
       <Name>DataModel</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AddNewIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

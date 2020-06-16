@@ -18,5 +18,6 @@ namespace DataModel.Models
         public string Name { get; set; }
         public bool? IsParent { get; set; }
         public Nullable<int> MachineId { get; set; }
+        public byte[] CategoryImage { get; set; }
     }
 }

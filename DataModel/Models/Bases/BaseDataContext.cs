@@ -27,5 +27,8 @@ namespace DataModel.Models
         public virtual DbSet<tblTurrentType> tTurrentTypes { get; set; }
         public virtual DbSet<tblMachineType> tMachineTypes { get; set; }
         public virtual DbSet<tblOperation> tOperations { get; set; }
+        public virtual DbSet<tTurretHolder> tTurretHolders { get; set; }
+        public virtual DbSet<tStickHolder> tStickHolders { get; set; }
+        public virtual DbSet<tTurretInsert> tTurretInserts { get; set; }
     }
 }

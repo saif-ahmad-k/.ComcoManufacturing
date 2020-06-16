@@ -68,6 +68,9 @@
     <Compile Include="Models\tblParts.cs" />
     <Compile Include="Models\tblProduct.cs" />
     <Compile Include="Models\tblTurrentType.cs" />
+    <Compile Include="Models\tStickHolder.cs" />
+    <Compile Include="Models\tTurretHolder.cs" />
+    <Compile Include="Models\tTurretInsert.cs" />
     <Compile Include="Models\ViewModels\SetUpPrductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

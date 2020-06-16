@@ -65,14 +65,14 @@ namespace CamcoManufacturing.View
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (!IsWindowOpen(typeof(View.View_Product)))
+            if (!IsWindowOpen(typeof(View.View_SubCategory)))
             {
-                View.View_Product obj = new View.View_Product();
+                View.View_SubCategory obj = new View.View_SubCategory(0);
                 obj.ShowDialog();
             }
             else
             {
-                activateWindow(typeof(View.View_Product));
+                activateWindow(typeof(View.View_SubCategory));
             }
         }
 

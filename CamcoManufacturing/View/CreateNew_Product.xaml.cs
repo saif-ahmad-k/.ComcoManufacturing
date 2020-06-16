@@ -18,31 +18,23 @@ using System.Windows.Shapes;
 namespace CamcoManufacturing.View
 {
     /// <summary>
-    /// Interaction logic for MainProduct.xaml
+    /// Interaction logic for CreateNew_Product.xaml
     /// </summary>
-    public partial class MainProduct : Window
+    public partial class CreateNew_Product : Window
     {
         BaseDataContext db = new BaseDataContext();
-        bool isCategoryValid = true;
         bool isProductValid = true;
         private byte[] _imageBytes = null;
         string imagePath;
-        private byte[] _CategoryImageBytes = null;
-        string CategoryImagePath;
-        public MainProduct()
+        int ParentCategoryId = 0;
+        public CreateNew_Product(int CategoryId)
         {
             InitializeComponent();
-            FillControls();
-            textBoxProductCost.Text = "0";
-        }
-
-
-        private void FillControls()
-        {
-            cmbParentProductCategory.ItemsSource = null;
-            cmbParentProductCategory.ItemsSource = db.tCategories.Where(p => p.IsParent == false || p.IsParent == null).ToList();
-            cmbParentCategory.ItemsSource = null;
-            cmbParentCategory.ItemsSource = db.tCategories.ToList();
+            if (CategoryId > 0)
+            {
+                ParentCategoryId = CategoryId;
+            }
+            FillControls(ParentCategoryId);
         }
 
         private void ButtonSaveProduct_Click(object sender, RoutedEventArgs e)
@@ -70,7 +62,7 @@ namespace CamcoManufacturing.View
                     textBoxProductCost.Text = "0";
                     textBoxProductQRN.Text = "";
                 }
-                FillControls();
+                //FillControls();
             }
             catch (Exception ex)
             {
@@ -93,58 +85,30 @@ namespace CamcoManufacturing.View
             {
                 isProductValid = false;
                 MessageBox.Show("Cost is mandatory!");
-            }else if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text).FirstOrDefault() != null)
+            }
+            else if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text).FirstOrDefault() != null)
             {
                 isProductValid = false;
                 MessageBox.Show("Name already exist!");
             }
         }
-        private void ChecCategoryValidations()
+        private void FillControls(int catId)
         {
-            if (String.IsNullOrEmpty(textBoxCategoryName.Text))
+            cmbParentProductCategory.ItemsSource = null;
+            cmbParentProductCategory.ItemsSource = db.tCategories.ToList();
+            if (catId > 0)
             {
-                isCategoryValid = false;
-                MessageBox.Show("Category Name is mandatory!");
-            }
-        }
-        private void ButtonSaveCategory_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                ChecCategoryValidations();
-                if (isCategoryValid)
+                var cat = db.tCategories.Find(ParentCategoryId);
+                int index = -1;
+                foreach (tblCategory cmbItem in cmbParentProductCategory.Items)
                 {
-                    tblCategory category = new tblCategory();
-                    category.Name = textBoxCategoryName.Text;
-                    //tblMachineType selectedMachine = (tblMachineType)cmbCategoryMachineType.SelectedItem;
-                    //if (selectedMachine != null)
-                    //{
-                    //    category.MachineId = selectedMachine.Machine_Id;
-                    //}
-                    tblCategory selectedCategory = (tblCategory)cmbParentCategory.SelectedItem;
-                    if (selectedCategory != null)
-                    {
-                        category.ParentId = selectedCategory.Category_ID;
-                        selectedCategory.IsParent = true;
-                        db.SaveChanges();
-                    }
-                    else
-                    {
-                        category.IsParent = true;
-                    }
-                    category.CategoryImage = _CategoryImageBytes;
-                    db.tCategories.Add(category);
-                    db.SaveChanges();
-                    MessageBox.Show("Added SuccessFully!");
-                    textBoxCategoryName.Text = "";
+                    index++; if (cmbItem.Category_ID == cat.Category_ID)
+                    { break; }
                 }
-                FillControls();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                cmbParentProductCategory.SelectedIndex = index;
             }
         }
+
         private void button_Browse_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog op = new OpenFileDialog();
@@ -160,25 +124,6 @@ namespace CamcoManufacturing.View
                 {
                     _imageBytes = new byte[fs.Length];
                     fs.Read(_imageBytes, 0, System.Convert.ToInt32(fs.Length));
-                }
-            }
-        }
-
-        private void ButtonCategoryBrowse_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog op = new OpenFileDialog();
-            op.Title = "Select a picture";
-            op.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
-              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
-              "Portable Network Graphic (*.png)|*.png";
-            if (op.ShowDialog() == true)
-            {
-                imgCategoryPhoto.Source = new BitmapImage(new Uri(op.FileName));
-                CategoryImagePath = op.FileName;
-                using (var fs = new FileStream(CategoryImagePath, FileMode.Open, FileAccess.Read))
-                {
-                    _CategoryImageBytes = new byte[fs.Length];
-                    fs.Read(_CategoryImageBytes, 0, System.Convert.ToInt32(fs.Length));
                 }
             }
         }

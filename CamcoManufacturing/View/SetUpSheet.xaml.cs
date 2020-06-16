@@ -262,9 +262,9 @@ namespace CamcoManufacturing.View
             textBoxQRN1.Text = "";
             textBoxQRN2.Text = "";
             textBoxQRN3.Text = "";
-            cmbCategory1.SelectedValue = 0;
-            cmbCategory2.SelectedValue = 0;
-            cmbCategory3.SelectedValue = 0;
+            //cmbCategory1.SelectedValue = 0;
+            //cmbCategory2.SelectedValue = 0;
+            //cmbCategory3.SelectedValue = 0;
         }
 
         private void CmbMachine_KeyDown(object sender, KeyEventArgs e)
@@ -285,8 +285,8 @@ namespace CamcoManufacturing.View
         }
         private void fillCategoriesComboBoxes(int MachineId)
         {
-            cmbCategory3.ItemsSource = null;
-            cmbCategory3.ItemsSource = db.tCategories.Where(p => p.MachineId == MachineId && p.ParentId == null).ToList();
+            //cmbCategory3.ItemsSource = null;
+            //cmbCategory3.ItemsSource = db.tCategories.Where(p => p.MachineId == MachineId && p.ParentId == null).ToList();
             //var result = db.tCategories.Where(p => p.MachineId == MachineId).ToList();
             //if (result.Count > 1)
             //{
@@ -307,73 +307,73 @@ namespace CamcoManufacturing.View
 
         private void CmbCategory1_KeyDown(object sender, KeyEventArgs e)
         {
-            tblCategory selectedCategory = (tblCategory)cmbCategory1.SelectedItem;
-            if (selectedCategory != null)
-            {
-                View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 1);
-                obj.ShowDialog();
-            }
+            //tblCategory selectedCategory = (tblCategory)cmbCategory1.SelectedItem;
+            //if (selectedCategory != null)
+            //{
+            //    View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 1);
+            //    obj.ShowDialog();
+            //}
         }
 
         private void CmbCategory1_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tblCategory selectedCategory = (tblCategory)cmbCategory1.SelectedItem;
-            if (selectedCategory != null)
-            {
-                View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 1);
-                obj.ShowDialog();
-            }
+            //tblCategory selectedCategory = (tblCategory)cmbCategory1.SelectedItem;
+            //if (selectedCategory != null)
+            //{
+            //    View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 1);
+            //    obj.ShowDialog();
+            //}
                 
         }
 
         private void CmbCategory2_KeyDown(object sender, KeyEventArgs e)
         {
-            tblCategory selectedCategory = (tblCategory)cmbCategory2.SelectedItem;
-            if (selectedCategory != null)
-            {
-                cmbCategory1.ItemsSource = null;
-                cmbCategory1.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
-                View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 2);
-                obj.ShowDialog();
-            }
+            //tblCategory selectedCategory = (tblCategory)cmbCategory2.SelectedItem;
+            //if (selectedCategory != null)
+            //{
+            //    cmbCategory1.ItemsSource = null;
+            //    cmbCategory1.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
+            //    View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 2);
+            //    obj.ShowDialog();
+            //}
         }
 
         private void CmbCategory2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tblCategory selectedCategory = (tblCategory)cmbCategory2.SelectedItem;
-            if (selectedCategory != null)
-            {
-                cmbCategory1.ItemsSource = null;
-                cmbCategory1.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
-                View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 2);
-                obj.ShowDialog();
-            }
+            //tblCategory selectedCategory = (tblCategory)cmbCategory2.SelectedItem;
+            //if (selectedCategory != null)
+            //{
+            //    cmbCategory1.ItemsSource = null;
+            //    cmbCategory1.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
+            //    View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 2);
+            //    obj.ShowDialog();
+            //}
                 
         }
 
         private void CmbCategory3_KeyDown(object sender, KeyEventArgs e)
         {
-            tblCategory selectedCategory = (tblCategory)cmbCategory3.SelectedItem;
-            if (selectedCategory != null)
-            {
-                cmbCategory2.ItemsSource = null;
-                cmbCategory2.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
-                View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 3);
-                obj.ShowDialog();
-            }
+            //tblCategory selectedCategory = (tblCategory)cmbCategory3.SelectedItem;
+            //if (selectedCategory != null)
+            //{
+            //    cmbCategory2.ItemsSource = null;
+            //    cmbCategory2.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
+            //    View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 3);
+            //    obj.ShowDialog();
+            //}
                 
         }
 
         private void CmbCategory3_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            tblCategory selectedCategory = (tblCategory)cmbCategory3.SelectedItem;
-            if (selectedCategory != null)
-            {
-                cmbCategory2.ItemsSource = null;
-                cmbCategory2.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
-                View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 3);
-                obj.ShowDialog();
-            }
+            //tblCategory selectedCategory = (tblCategory)cmbCategory3.SelectedItem;
+            //if (selectedCategory != null)
+            //{
+            //    cmbCategory2.ItemsSource = null;
+            //    cmbCategory2.ItemsSource = db.tCategories.Where(p => p.ParentId == selectedCategory.Category_ID).ToList();
+            //    View.View_Product obj = new View.View_Product(selectedCategory.Category_ID, true, 3);
+            //    obj.ShowDialog();
+            //}
         }
         private void button_Browse_Click(object sender, RoutedEventArgs e)
         {
@@ -390,6 +390,55 @@ namespace CamcoManufacturing.View
                 {
                     _imageBytes = new byte[fs.Length];
                     fs.Read(_imageBytes, 0, System.Convert.ToInt32(fs.Length));
+                }
+            }
+        }
+
+        private void ButtonAddExistingTurretHolder_Click(object sender, RoutedEventArgs e)
+        {
+            tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
+            if (selectedTurret != null)
+            {
+                View.View_TurretHolders obj = new View.View_TurretHolders(selectedTurret.TurrentType_Id, 3);
+                obj.ShowDialog();
+            }
+            
+        }
+
+        private void ButtonAddExistingStickHolder_Click(object sender, RoutedEventArgs e)
+        {
+            tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
+            if (selectedTurret != null)
+            {
+                var tHolder = db.tTurretHolders.Where(p => p.TurretHolderName == textBoxTurrentHolder.Name).FirstOrDefault();
+                if (tHolder != null)
+                {
+                    View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, tHolder.TurretHolder_Id, 2);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, 0, 2);
+                    obj.ShowDialog();
+                }
+            }
+        }
+
+        private void ButtonAddExistingInsert_Click(object sender, RoutedEventArgs e)
+        {
+            tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
+            if (selectedTurret != null)
+            {
+                var tHolder = db.tStickHolders.Where(p => p.StickHolderName == textBoxStickBore.Name).FirstOrDefault();
+                if (tHolder != null)
+                {
+                    View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, tHolder.StickHolder_Id, 1);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, 0, 1);
+                    obj.ShowDialog();
                 }
             }
         }
