@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="View_Product" Height="450" Width="742" Background="Gray" WindowStartupLocation="CenterScreen" Name="ViewProduct">
+        Title="View_Product" Height="450" Width="742" Background="Gray" WindowStartupLocation="CenterScreen" Name="ViewProduct" ResizeMode="NoResize">
     <Grid>
         <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="71" VerticalAlignment="Top" Margin="0,5,2,0"/>
         <Label Content="View PRODUCT / CATEGORY" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="308" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="132,10,0,0"/>
         <Image Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Margin="0,5,602,0"/>
         <WrapPanel Name="WrapPanelProductParentsCategories" Orientation="Horizontal" Height="279" Margin="10,0,22,21" VerticalAlignment="Bottom"/>
-        <Button Name="ButtonAddNewProduct" Click="ButtonAddNewProduct_Click"  Content="Add New" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="613,14,0,0" VerticalAlignment="Top" Width="111" Height="44"/>
+        <Button Name="ButtonAddNewProduct" Click="ButtonAddNewProduct_Click"  Content="Create Product" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="573,5,0,0" VerticalAlignment="Top" Width="151" Height="44"/>
+        <Button x:Name="ButtonAddNewCategory" Click="ButtonAddNewCategory_Click"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="422,5,0,0" VerticalAlignment="Top" Width="151" Height="44"/>
 
     </Grid>
 </Window>

@@ -11,6 +11,7 @@ namespace DataModel.Models
     [Table("tblCategory")]
     public class tblCategory
     {
+        BaseDataContext db = new BaseDataContext();
         [Key]
         public int Category_ID { get; set; }
         //[Required(ErrorMessage = "Please enter name.")]
@@ -19,5 +20,34 @@ namespace DataModel.Models
         public bool? IsParent { get; set; }
         public Nullable<int> MachineId { get; set; }
         public byte[] CategoryImage { get; set; }
+        private string pName;
+        [NotMapped]
+        public string Parent
+        {
+            get
+            {
+                if (ParentId != null)
+                {
+                    return db.tCategories.Find(ParentId).Name;
+                }
+                else
+                {
+                    return "";
+                }
+                
+            }
+            set
+            {
+                if (ParentId != null)
+                {
+                    if (value == db.tCategories.Find(ParentId).Name)
+                        pName = value;
+                }
+                else
+                {
+                    pName = "";
+                }
+            }
+        }
     }
 }

@@ -98,7 +98,6 @@ namespace CamcoManufacturing.View
                     WrapPanelProductCategories.Children.Add(button);
                 }
             }
-            AddNewButton();
         }
         void AddNewButton()
         {
@@ -149,6 +148,40 @@ namespace CamcoManufacturing.View
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewCategory");
                 win.Close();
                 View.CreateNew_Category obj = new View.CreateNew_Category(ParentCatId);
+                obj.ShowDialog();
+            }
+        }
+
+        private void ButtonAddNewCategory_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+            if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Category)))
+            {
+                View.CreateNew_Category obj = new View.CreateNew_Category(ParentCatId);
+                obj.ShowDialog();
+            }
+            else
+            {
+                Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewCategory");
+                win.Close();
+                View.CreateNew_Category obj = new View.CreateNew_Category(ParentCatId);
+                obj.ShowDialog();
+            }
+        }
+
+        private void ButtonEditCategory_Click(object sender, RoutedEventArgs e)
+        {
+            //this.Close();
+            if (!HelperClass.IsWindowOpen(typeof(View.View_AllCategories)))
+            {
+                View.View_AllCategories obj = new View.View_AllCategories();
+                obj.ShowDialog();
+            }
+            else
+            {
+                Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "AllCategories");
+                win.Close();
+                View.View_AllCategories obj = new View.View_AllCategories();
                 obj.ShowDialog();
             }
         }

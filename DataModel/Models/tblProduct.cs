@@ -11,6 +11,7 @@ namespace DataModel.Models
     [Table("tblProduct")]
     public class tblProduct
     {
+        BaseDataContext db = new BaseDataContext();
         [Key]
         public int Product_ID { get; set; }
         //[Required(ErrorMessage = "Please enter name.")]
@@ -19,5 +20,34 @@ namespace DataModel.Models
         public Decimal? Cost { get; set; }
         public string QRN { get; set; }
         public byte[] ProductImage { get; set; }
+        private string pName;
+        [NotMapped]
+        public string Parent
+        {
+            get
+            {
+                if (CategoryId != null)
+                {
+                    return db.tCategories.Find(CategoryId).Name;
+                }
+                else
+                {
+                    return "";
+                }
+
+            }
+            set
+            {
+                if (CategoryId != null)
+                {
+                    if (value == db.tCategories.Find(CategoryId).Name)
+                        pName = value;
+                }
+                else
+                {
+                    pName = "";
+                }
+            }
+        }
     }
 }

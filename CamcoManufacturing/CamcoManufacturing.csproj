@@ -157,11 +157,17 @@
     <Compile Include="View\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Edit_Category.xaml.cs">
+      <DependentUpon>Edit_Category.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Edit_CheckSheet.xaml.cs">
       <DependentUpon>Edit_CheckSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Edit_ODSDrawing.xaml.cs">
       <DependentUpon>Edit_ODSDrawing.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Edit_Product.xaml.cs">
+      <DependentUpon>Edit_Product.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Edit_SetupSheet.xaml.cs">
       <DependentUpon>Edit_SetupSheet.xaml</DependentUpon>
@@ -183,6 +189,12 @@
     </Compile>
     <Compile Include="View\SetUpSheet.xaml.cs">
       <DependentUpon>SetUpSheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_AllCategories.xaml.cs">
+      <DependentUpon>View_AllCategories.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\View_AllProducts.xaml.cs">
+      <DependentUpon>View_AllProducts.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\View_CheckSheet.xaml.cs">
       <DependentUpon>View_CheckSheet.xaml</DependentUpon>
@@ -277,11 +289,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Edit_Category.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Edit_CheckSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Edit_ODSDrawing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Edit_Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -310,6 +330,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SetUpSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_AllCategories.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\View_AllProducts.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

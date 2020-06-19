@@ -44,7 +44,7 @@ namespace CamcoManufacturing.View
                     tblCustomer selectedCustomer = (tblCustomer)cmbCustomer.SelectedItem;
                     tblChuckCollet selectedChuckCollet = (tblChuckCollet)cmbChuckCollet.SelectedItem;
                     tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
-                    tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
+                    tblCategory selectedTurret = (tblCategory)cmbProductCategory.SelectedItem;
                     tblOperation selectedOperation = (tblOperation)cmbOperation.SelectedItem;
                     //tblLathe selectedLathe = (tblLathe)cmbLathe.SelectedItem;
                     tblEmployee selectedEmployee = (tblEmployee)cmbEmployee.SelectedItem;
@@ -62,7 +62,7 @@ namespace CamcoManufacturing.View
                     camcorecord.PartId = selectedPart.PartId;
                     camcorecord.Chuck_Collet_Id = selectedChuckCollet.Id;
                     camcorecord.MachineId = selectedMachine.Machine_Id;
-                    camcorecord.TurrentTypeId = selectedTurret.TurrentType_Id;
+                    camcorecord.TurrentTypeId = selectedTurret.Category_ID;
                     camcorecord.OperationNumber = selectedOperation.RM_DESC;
                     camcorecord.OperationId = selectedOperation.Operation_Id;
                     camcorecord.ChuckPresure = textBoxChuckPressure.Text;
@@ -129,8 +129,8 @@ namespace CamcoManufacturing.View
             cmbChuckCollet.ItemsSource = db.tChuckCollets.ToList();
             cmbMachine.ItemsSource = null;
             cmbMachine.ItemsSource = db.tMachineTypes.ToList();
-            cmbTurretType.ItemsSource = null;
-            cmbTurretType.ItemsSource = db.tTurrentTypes.ToList();
+            cmbProductCategory.ItemsSource = null;
+            cmbProductCategory.ItemsSource = db.tTurrentTypes.ToList();
             cmbCustomer.ItemsSource = null;
             cmbCustomer.ItemsSource = db.tCustomers.ToList();
             cmbOperation.ItemsSource = null;
@@ -270,16 +270,16 @@ namespace CamcoManufacturing.View
         private void CmbMachine_KeyDown(object sender, KeyEventArgs e)
         {
             tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
-            cmbTurretType.ItemsSource = null;
-            cmbTurretType.ItemsSource = db.tTurrentTypes.Where(p => p.MachineTypeId == selectedMachine.Machine_Id).ToList();
+            cmbProductCategory.ItemsSource = null;
+            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null).ToList();
             fillCategoriesComboBoxes(selectedMachine.Machine_Id);
         }
 
         private void CmbMachine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
-            cmbTurretType.ItemsSource = null;
-            cmbTurretType.ItemsSource = db.tTurrentTypes.Where(p => p.MachineTypeId == selectedMachine.Machine_Id).ToList();
+            cmbProductCategory.ItemsSource = null;
+            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null).ToList();
             fillCategoriesComboBoxes(selectedMachine.Machine_Id);
 
         }
@@ -396,51 +396,50 @@ namespace CamcoManufacturing.View
 
         private void ButtonAddExistingTurretHolder_Click(object sender, RoutedEventArgs e)
         {
-            tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
+            tblCategory selectedTurret = (tblCategory)cmbProductCategory.SelectedItem;
             if (selectedTurret != null)
             {
-                View.View_TurretHolders obj = new View.View_TurretHolders(selectedTurret.TurrentType_Id, 3);
+                View.View_SubCategory obj = new View.View_SubCategory(selectedTurret.Category_ID);
                 obj.ShowDialog();
             }
-            
         }
 
         private void ButtonAddExistingStickHolder_Click(object sender, RoutedEventArgs e)
         {
-            tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
-            if (selectedTurret != null)
-            {
-                var tHolder = db.tTurretHolders.Where(p => p.TurretHolderName == textBoxTurrentHolder.Name).FirstOrDefault();
-                if (tHolder != null)
-                {
-                    View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, tHolder.TurretHolder_Id, 2);
-                    obj.ShowDialog();
-                }
-                else
-                {
-                    View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, 0, 2);
-                    obj.ShowDialog();
-                }
-            }
+            //tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
+            //if (selectedTurret != null)
+            //{
+            //    var tHolder = db.tTurretHolders.Where(p => p.TurretHolderName == textBoxTurrentHolder.Name).FirstOrDefault();
+            //    if (tHolder != null)
+            //    {
+            //        View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, tHolder.TurretHolder_Id, 2);
+            //        obj.ShowDialog();
+            //    }
+            //    else
+            //    {
+            //        View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, 0, 2);
+            //        obj.ShowDialog();
+            //    }
+            //}
         }
 
         private void ButtonAddExistingInsert_Click(object sender, RoutedEventArgs e)
         {
-            tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
-            if (selectedTurret != null)
-            {
-                var tHolder = db.tStickHolders.Where(p => p.StickHolderName == textBoxStickBore.Name).FirstOrDefault();
-                if (tHolder != null)
-                {
-                    View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, tHolder.StickHolder_Id, 1);
-                    obj.ShowDialog();
-                }
-                else
-                {
-                    View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, 0, 1);
-                    obj.ShowDialog();
-                }
-            }
+            //tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
+            //if (selectedTurret != null)
+            //{
+            //    var tHolder = db.tStickHolders.Where(p => p.StickHolderName == textBoxStickBore.Name).FirstOrDefault();
+            //    if (tHolder != null)
+            //    {
+            //        View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, tHolder.StickHolder_Id, 1);
+            //        obj.ShowDialog();
+            //    }
+            //    else
+            //    {
+            //        View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, 0, 1);
+            //        obj.ShowDialog();
+            //    }
+            //}
         }
     }
 }
