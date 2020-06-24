@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="CreateNew_Product" Height="450" Width="800" Background="Gray">
+        Title="CreateNew_Product" Height="450" Width="800" Background="Gray" Name="CreateProduct">
     <Grid>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="53" VerticalAlignment="Top" Width="792" Margin="0,5,0,0"/>
         <Label Content="CREATE PRODUCT" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="170,10,0,0"/>
@@ -37,6 +37,10 @@
             <Image x:Name="imgPhoto" Stretch="Fill" OpacityMask="Black" Grid.Row="0" Grid.Column="0" Margin="10,0,10,20"/>
         </Grid>
         <Button x:Name="Browse_Button" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="534,302,0,0" VerticalAlignment="Top" Height="34" Click="button_Browse_Click" Grid.Row="0" HorizontalAlignment="Left" Width="138"/>
+        <Label x:Name="label1_Copy" Content="Select Parent Product" HorizontalAlignment="Left" Margin="82,147,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="158" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbParentProduct" SelectedValue="Product_ID"  Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="ProductName" HorizontalAlignment="Left" Margin="278,147,0,0" VerticalAlignment="Top" Width="235" SelectionChanged="CmbParentProduct_SelectionChanged" KeyDown="CmbParentProduct_KeyDown"/>
+        <CheckBox Name="CheckBoxInsert" Content="Insert" Checked="CheckBoxInsert_Checked" Unchecked="CheckBoxInsert_Checked" HorizontalAlignment="Left" Margin="82,324,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="CheckBoxColletBlade" Checked="CheckBoxColletBlade_Checked" Unchecked="CheckBoxColletBlade_Checked" Content="ColletBlade" HorizontalAlignment="Left" Margin="192,324,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

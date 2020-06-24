@@ -48,5 +48,18 @@ namespace CamcoManufacturing.View
                 obj.ShowDialog();
             }
         }
+
+        private void DeleteCategory_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                tblProduct dataRowView = (tblProduct)((Button)e.Source).DataContext;
+                db.tProducts.Remove(dataRowView);
+                db.SaveChanges();
+                MessageBox.Show("Deleted SuccessFully!");
+                FillControls();
+            }
+        }
     }
 }

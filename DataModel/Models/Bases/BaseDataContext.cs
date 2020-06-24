@@ -30,5 +30,6 @@ namespace DataModel.Models
         public virtual DbSet<tTurretHolder> tTurretHolders { get; set; }
         public virtual DbSet<tStickHolder> tStickHolders { get; set; }
         public virtual DbSet<tTurretInsert> tTurretInserts { get; set; }
+        public virtual DbSet<tblHolderType> tblHolderTypes { get; set; }
     }
 }

@@ -27,14 +27,19 @@ namespace CamcoManufacturing.View
         private byte[] _imageBytes = null;
         string imagePath;
         int ParentCategoryId = 0;
-        public CreateNew_Product(int CategoryId)
+        int ParentProductId = 0;
+        public CreateNew_Product(int CategoryId, int ParentProduct)
         {
             InitializeComponent();
             if (CategoryId > 0)
             {
                 ParentCategoryId = CategoryId;
             }
-            FillControls(ParentCategoryId);
+            if (ParentProduct > 0)
+            {
+                ParentProductId = ParentProduct;
+            }
+            FillControls(ParentCategoryId, ParentProductId);
         }
 
         private void ButtonSaveProduct_Click(object sender, RoutedEventArgs e)
@@ -52,7 +57,32 @@ namespace CamcoManufacturing.View
                     if (selectedProductCategory != null)
                     {
                         product.CategoryId = selectedProductCategory.Category_ID;
+                    }
+                    tblProduct selectedProduct = (tblProduct)cmbParentProduct.SelectedItem;
+                    if (selectedProduct != null)
+                    {
+                        product.ParentId = selectedProduct.Product_ID;
+                        selectedProduct.IsParent = true;
+                        if (selectedProduct.ParentId != null)
+                        {
+                            if (selectedProduct.HolderTypeId != null && selectedProduct.HolderTypeId != 2)
+                            {
+                                product.HolderTypeId = selectedProduct.HolderTypeId + 1;
+                            }
+                        }
+                        else
+                        {
+                            product.HolderTypeId = 2;
+                            selectedProduct.HolderTypeId = 1;
+                        }
                         db.SaveChanges();
+                    }
+                    if (CheckBoxInsert.IsChecked == true)
+                    {
+                        product.HolderTypeId = 3;
+                    }else if(CheckBoxColletBlade.IsChecked == true)
+                    {
+                        product.HolderTypeId = 4;
                     }
                     product.ProductImage = _imageBytes;
                     db.tProducts.Add(product);
@@ -92,7 +122,7 @@ namespace CamcoManufacturing.View
                 MessageBox.Show("Name already exist!");
             }
         }
-        private void FillControls(int catId)
+        private void FillControls(int catId, int ParentProduct)
         {
             cmbParentProductCategory.ItemsSource = null;
             cmbParentProductCategory.ItemsSource = db.tCategories.ToList();
@@ -106,6 +136,74 @@ namespace CamcoManufacturing.View
                     { break; }
                 }
                 cmbParentProductCategory.SelectedIndex = index;
+                if (index > -1)
+                {
+                    cmbParentProductCategory.IsHitTestVisible = false;
+                    cmbParentProductCategory.Focusable = false;
+                }
+                cmbParentProduct.ItemsSource = null;
+                cmbParentProduct.ItemsSource = db.tProducts.Where(p => p.CategoryId == catId).ToList();
+                CheckBoxInsert.Visibility = Visibility.Visible;
+                CheckBoxColletBlade.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                cmbParentProduct.ItemsSource = null;
+                cmbParentProduct.ItemsSource = db.tProducts.ToList();
+                CheckBoxInsert.Visibility = Visibility.Visible;
+                CheckBoxColletBlade.Visibility = Visibility.Collapsed;
+            }
+            if (ParentProduct > 0)
+            {
+                var prod = db.tProducts.Find(ParentProduct);
+                var cat = db.tCategories.Find(prod.CategoryId);
+                int index = -1;
+                foreach (tblCategory cmbItem in cmbParentProductCategory.Items)
+                {
+                    index++; if (cmbItem.Category_ID == cat.Category_ID)
+                    { break; }
+                }
+                cmbParentProductCategory.SelectedIndex = index;
+                if (index > -1)
+                {
+                    cmbParentProductCategory.IsHitTestVisible = false;
+                    cmbParentProductCategory.Focusable = false;
+                }
+                cmbParentProduct.ItemsSource = null;
+                cmbParentProduct.ItemsSource = db.tProducts.Where(p => p.CategoryId == catId).ToList();
+                if (!cmbParentProduct.HasItems)
+                {
+                    cmbParentProduct.ItemsSource = null;
+                    cmbParentProduct.ItemsSource = db.tProducts.Where(p => p.IsParent == true || p.IsParent == null).ToList();
+                }
+                int index1 = -1;
+                foreach (tblProduct cmbItem in cmbParentProduct.Items)
+                {
+                    index1++; if (cmbItem.Product_ID == ParentProduct)
+                    { break; }
+                }
+                cmbParentProduct.SelectedIndex = index1;
+                if (index1 > -1)
+                {
+                    cmbParentProduct.IsHitTestVisible = false;
+                    cmbParentProduct.Focusable = false;
+                }
+                if (prod.HolderTypeId == 2)
+                {
+                    CheckBoxInsert.Visibility = Visibility.Visible;
+                    CheckBoxColletBlade.Visibility = Visibility.Visible;
+                    CheckBoxInsert.IsChecked = true;
+                }
+                else
+                {
+                    CheckBoxInsert.Visibility = Visibility.Collapsed;
+                    CheckBoxColletBlade.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                cmbParentProduct.ItemsSource = null;
+                cmbParentProduct.ItemsSource = db.tProducts.ToList();
             }
         }
 
@@ -125,6 +223,62 @@ namespace CamcoManufacturing.View
                     _imageBytes = new byte[fs.Length];
                     fs.Read(_imageBytes, 0, System.Convert.ToInt32(fs.Length));
                 }
+            }
+        }
+
+        private void CmbParentProduct_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            tblProduct selectedProduct = (tblProduct)cmbParentProduct.SelectedItem;
+            if (selectedProduct != null)
+            {
+                var cat = db.tCategories.Find(selectedProduct.CategoryId);
+                int index = -1;
+                foreach (tblCategory cmbItem in cmbParentProductCategory.Items)
+                {
+                    index++; if (cmbItem.Category_ID == cat.Category_ID)
+                    { break; }
+                }
+                cmbParentProductCategory.SelectedIndex = index;
+            }
+        }
+
+        private void CmbParentProduct_KeyDown(object sender, KeyEventArgs e)
+        {
+            tblProduct selectedProduct = (tblProduct)cmbParentProduct.SelectedItem;
+            if (selectedProduct != null)
+            {
+                var cat = db.tCategories.Find(selectedProduct.CategoryId);
+                int index = -1;
+                foreach (tblCategory cmbItem in cmbParentProductCategory.Items)
+                {
+                    index++; if (cmbItem.Category_ID == cat.Category_ID)
+                    { break; }
+                }
+                cmbParentProductCategory.SelectedIndex = index;
+            }
+        }
+
+        private void CheckBoxColletBlade_Checked(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxColletBlade.IsChecked == true)
+            {
+                CheckBoxInsert.IsChecked = false;
+            }
+            else
+            {
+                CheckBoxInsert.IsChecked = true;
+            }
+        }
+
+        private void CheckBoxInsert_Checked(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxInsert.IsChecked == true)
+            {
+                CheckBoxColletBlade.IsChecked = false;
+            }
+            else
+            {
+                CheckBoxColletBlade.IsChecked = true;
             }
         }
     }

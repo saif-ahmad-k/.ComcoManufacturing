@@ -30,6 +30,7 @@ namespace CamcoManufacturing.View
         {
             dataGridCategory.ItemsSource = null;
             dataGridCategory.ItemsSource = db.tCategories.ToList();
+            
         }
         private void EditCategory_Click(object sender, RoutedEventArgs e)
         {
@@ -46,6 +47,19 @@ namespace CamcoManufacturing.View
                 win.Close();
                 View.Edit_Category obj = new View.Edit_Category(dataRowView.Category_ID);
                 obj.ShowDialog();
+            }
+        }
+
+        private void DeleteCategory_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                tblCategory dataRowView = (tblCategory)((Button)e.Source).DataContext;
+                db.tCategories.Remove(dataRowView);
+                db.SaveChanges();
+                MessageBox.Show("Deleted SuccessFully!");
+                FillControls();
             }
         }
     }

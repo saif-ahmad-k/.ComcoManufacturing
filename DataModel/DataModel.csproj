@@ -61,6 +61,7 @@
     <Compile Include="Models\tblChuckCollet.cs" />
     <Compile Include="Models\tblCustomer.cs" />
     <Compile Include="Models\tblEmployee.cs" />
+    <Compile Include="Models\tblHolderType.cs" />
     <Compile Include="Models\tblLathe.cs" />
     <Compile Include="Models\tblMachineType.cs" />
     <Compile Include="Models\tblManufacturingCheckSheet.cs" />

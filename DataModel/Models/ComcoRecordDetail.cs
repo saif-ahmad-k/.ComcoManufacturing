@@ -28,5 +28,7 @@ namespace DataModel.Models
         public string QRN2 { get; set; }
         public string QRN3 { get; set; }
         public int CamcoRecordId { get; set; }
+        public string ColletBlade { get; set; }
+        public string QRN4 { get; set; }
     }
 }

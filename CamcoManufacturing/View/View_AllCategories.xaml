@@ -14,10 +14,17 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="40*" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Parent" Width="40*" Binding="{Binding Parent}"/>
-                <DataGridTemplateColumn Width="20*">
+                <DataGridTemplateColumn Width="10*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="EditCategory" Click="EditCategory_Click" Content="Edit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="10*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DeleteCategory" Click="DeleteCategory_Click"  Content="Delete"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

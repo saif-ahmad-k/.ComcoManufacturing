@@ -240,6 +240,8 @@ namespace CamcoManufacturing.View
                 QRN1 = textBoxQRN1.Text,
                 QRN2 = textBoxQRN2.Text,
                 QRN3 = textBoxQRN3.Text,
+                ColletBlade = textBoxColletBlade.Text,
+                QRN4 = textBoxQRN4.Text,
             });
             if (dataGridCamcoRecordDetails.HasItems)
             {
@@ -399,47 +401,189 @@ namespace CamcoManufacturing.View
             tblCategory selectedTurret = (tblCategory)cmbProductCategory.SelectedItem;
             if (selectedTurret != null)
             {
-                View.View_SubCategory obj = new View.View_SubCategory(selectedTurret.Category_ID);
+                View.View_SubCategory obj = new View.View_SubCategory(selectedTurret.Category_ID, 3);
                 obj.ShowDialog();
             }
         }
 
         private void ButtonAddExistingStickHolder_Click(object sender, RoutedEventArgs e)
         {
-            //tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
-            //if (selectedTurret != null)
-            //{
-            //    var tHolder = db.tTurretHolders.Where(p => p.TurretHolderName == textBoxTurrentHolder.Name).FirstOrDefault();
-            //    if (tHolder != null)
-            //    {
-            //        View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, tHolder.TurretHolder_Id, 2);
-            //        obj.ShowDialog();
-            //    }
-            //    else
-            //    {
-            //        View.View_StickHolders obj = new View.View_StickHolders(selectedTurret.TurrentType_Id, 0, 2);
-            //        obj.ShowDialog();
-            //    }
-            //}
+            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxTurrentHolder.Text).FirstOrDefault();
+            if (resultDetail != null)
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.View_Product)))
+                {
+                    View.View_Product obj = new View.View_Product(0, resultDetail.Product_ID, 2, 2, null);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
+                    win.Close();
+                    View.View_Product obj = new View.View_Product(0, resultDetail.Product_ID, 2, 2, null);
+                    obj.ShowDialog();
+                }
+            }
+            
         }
 
         private void ButtonAddExistingInsert_Click(object sender, RoutedEventArgs e)
         {
-            //tblTurrentType selectedTurret = (tblTurrentType)cmbTurretType.SelectedItem;
-            //if (selectedTurret != null)
-            //{
-            //    var tHolder = db.tStickHolders.Where(p => p.StickHolderName == textBoxStickBore.Name).FirstOrDefault();
-            //    if (tHolder != null)
-            //    {
-            //        View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, tHolder.StickHolder_Id, 1);
-            //        obj.ShowDialog();
-            //    }
-            //    else
-            //    {
-            //        View.View_Inserts obj = new View.View_Inserts(selectedTurret.TurrentType_Id, 0, 1);
-            //        obj.ShowDialog();
-            //    }
-            //}
+            if(textBoxStickBore.Text!=null && textBoxStickBore.Text != "".Trim())
+            {
+                var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+                if (resultDetail != null)
+                {
+                    if (!HelperClass.IsWindowOpen(typeof(View.View_Product)))
+                    {
+                        View.View_Product obj = new View.View_Product(0, resultDetail.Product_ID, 1, 3, null);
+                        obj.ShowDialog();
+                    }
+                    else
+                    {
+                        Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
+                        win.Close();
+                        View.View_Product obj = new View.View_Product(0, resultDetail.Product_ID, 1, 3, null);
+                        obj.ShowDialog();
+                    }
+                }
+            }
+            else
+            {
+                tblCategory selectedTurret = (tblCategory)cmbProductCategory.SelectedItem;
+                if (selectedTurret != null)
+                {
+                    View.View_SubCategory obj = new View.View_SubCategory(selectedTurret.Category_ID, 1);
+                    obj.ShowDialog();
+                }
+            }
+            
+        }
+
+        private void ButtonAddStickHolder_Click(object sender, RoutedEventArgs e)
+        {
+            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxTurrentHolder.Text).FirstOrDefault();
+            if (resultDetail != null)
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+                {
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
+                    win.Close();
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    obj.ShowDialog();
+                }
+            }
+            else
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+                {
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
+                    win.Close();
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    obj.ShowDialog();
+                }
+            }
+            
+        }
+
+        private void ButtonAddNewInsert_Click(object sender, RoutedEventArgs e)
+        {
+            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+            if (resultDetail != null)
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+                {
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
+                    win.Close();
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    obj.ShowDialog();
+                }
+            }
+            else
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+                {
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
+                    win.Close();
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    obj.ShowDialog();
+                }
+            }
+        }
+
+        private void ButtonAddExistingColletBlade_Click(object sender, RoutedEventArgs e)
+        {
+            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+            if (resultDetail != null)
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.View_Product)))
+                {
+                    View.View_Product obj = new View.View_Product(0, resultDetail.Product_ID, 4, 4, null);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
+                    win.Close();
+                    View.View_Product obj = new View.View_Product(0, resultDetail.Product_ID, 4, 4, null);
+                    obj.ShowDialog();
+                }
+            }
+        }
+
+        private void ButtonAddColletBlade_Click(object sender, RoutedEventArgs e)
+        {
+            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+            if (resultDetail != null)
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+                {
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
+                    win.Close();
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    obj.ShowDialog();
+                }
+            }
+            else
+            {
+                if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+                {
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
+                    win.Close();
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    obj.ShowDialog();
+                }
+            }
         }
     }
 }

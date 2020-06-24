@@ -24,10 +24,12 @@ namespace CamcoManufacturing.View
         BaseDataContext db = new BaseDataContext();
         int ParentCatId = 0;
         int CategoryId = 0;
-        public View_SubCategory(int ParentId)
+        int SequanceNumber = 0;
+        public View_SubCategory(int ParentId, int sequance)
         {
             InitializeComponent();
             ParentCatId = ParentId;
+            SequanceNumber = sequance;
             FillWrapPanelProductCategories();
         }
 
@@ -125,12 +127,12 @@ namespace CamcoManufacturing.View
                 var subCats = db.tCategories.Where(p => p.ParentId == category.Category_ID).ToList();
                 if (subCats.Count > 0)
                 {
-                    View.View_SubCategory obj = new View.View_SubCategory(category.Category_ID);
+                    View.View_SubCategory obj = new View.View_SubCategory(category.Category_ID, SequanceNumber);
                     obj.ShowDialog();
                 }
                 else
                 {
-                    View.View_Product obj = new View.View_Product(category.Category_ID);
+                    View.View_Product obj = new View.View_Product(category.Category_ID, 0, SequanceNumber, 0, null);
                     obj.ShowDialog();
                 }
             }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="View_AllProducts" Height="450" Width="800" Background="Gray">
+        Title="View_AllProducts" Height="450" Width="800" Background="Gray" Name="AllProducts">
     <Grid>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="53" VerticalAlignment="Top" Width="792" Margin="0,5,0,0"/>
         <Label Content="ViewList PRODUCTS" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="170,10,0,0"/>
@@ -14,10 +14,17 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Product Name" Width="40*" Binding="{Binding ProductName}"/>
                 <DataGridTextColumn Header="Category" Width="40*" Binding="{Binding Category}"/>
-                <DataGridTemplateColumn Width="20*">
+                <DataGridTemplateColumn Width="10*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="EditCategory" Click="EditCategory_Click" Content="Edit"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="10*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="DeleteCategory" Click="DeleteCategory_Click"  Content="Delete"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

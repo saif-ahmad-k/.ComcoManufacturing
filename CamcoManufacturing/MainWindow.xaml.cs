@@ -205,7 +205,7 @@ namespace CamcoManufacturing
         {
             if (!IsWindowOpen(typeof(View.View_SubCategory)))
             {
-                View.View_SubCategory obj = new View.View_SubCategory(0);
+                View.View_SubCategory obj = new View.View_SubCategory(0, 0);
                 obj.Show();
             }
             else

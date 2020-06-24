@@ -20,6 +20,10 @@ namespace DataModel.Models
         public Decimal? Cost { get; set; }
         public string QRN { get; set; }
         public byte[] ProductImage { get; set; }
+        public int? ParentId { get; set; }
+        public bool? IsParent { get; set; }
+        public int? HolderTypeId { get; set; }
+        public bool? IsParentInsert { get; set; }
         private string pName;
         [NotMapped]
         public string Parent
