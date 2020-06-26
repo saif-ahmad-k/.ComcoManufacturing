@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="Dashboard" Height="450" Width="800" Background="Gray"  WindowState="Maximized">
+        Title="Dashboard" Height="450" Width="800" Background="Gray"  WindowState="Maximized" Name="MainDashboard">
 
     <Grid>
         <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="121" VerticalAlignment="Top" Margin="0,5,-2,0"/>

@@ -24,6 +24,7 @@ namespace CamcoManufacturing.View
         public View_Operation()
         {
             InitializeComponent();
+            HelperClass.ShowWindowPath(PathLabel);
             FillControls();
         }
         private void FillControls()

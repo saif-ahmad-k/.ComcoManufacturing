@@ -28,6 +28,7 @@ namespace CamcoManufacturing.View
             InitializeComponent();
             CategoryId = CatId;
             fromSetupSheet = isFromCreateSetupSheet;
+            HelperClass.ShowWindowPath(PathLabel);
             FillWrapPanelProducts();
         }
 

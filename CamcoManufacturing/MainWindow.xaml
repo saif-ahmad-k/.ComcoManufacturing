@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing"
         mc:Ignorable="d"
-        Title="MainWindow" Background="Gray" Height="492" MinHeight="500"  Width="984" MinWidth="920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Name="Main" Background="Gray" Height="492" MinHeight="500"  Width="984" MinWidth="920"  ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Image HorizontalAlignment="Left" Source="Images/CamcoBannerBackround.jpg" Height="104" VerticalAlignment="Top" Width="1418" Margin="0,5,-504,0"/>
 

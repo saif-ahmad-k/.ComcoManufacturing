@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +32,8 @@ namespace CamcoManufacturing.View
             ParentCatId = ParentId;
             SequanceNumber = sequance;
             FillWrapPanelProductCategories();
+            HelperClass.ShowWindowPath(PathLabel);
+            
         }
 
         
@@ -38,6 +41,13 @@ namespace CamcoManufacturing.View
         {
             if (ParentCatId > 0)
             {
+                var parentCat = db.tCategories.Find(ParentCatId);
+                if (parentCat != null)
+                {
+                    var name= parentCat.Name.Replace(" ", String.Empty);
+                    var test = Regex.Replace(name, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
+                    this.Name= Regex.Replace(test, @"[\d-]", string.Empty);
+                }
                 var ParentCategories = db.tCategories.Where(p => p.ParentId == ParentCatId).ToList();
                 foreach (var item in ParentCategories)
                 {

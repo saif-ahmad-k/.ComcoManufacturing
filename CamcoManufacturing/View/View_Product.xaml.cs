@@ -31,6 +31,7 @@ namespace CamcoManufacturing.View
         public View_Product()
         {
             InitializeComponent();
+            HelperClass.ShowWindowPath(PathLabel);
         }
         public View_Product(int CatId, int parentProduct, int Sequance, int HolderTypeEnum, List<int> holderList)
         {
@@ -43,8 +44,9 @@ namespace CamcoManufacturing.View
             {
                 HoldersList = holderList;
             }
+            
             FillWrapPanelProductParentCategories(CategoryId, ParentProductId);
-
+            HelperClass.ShowWindowPath(PathLabel);
         }
         private void FillWrapPanelProductParentCategories(int CategoryId, int ProductId)
         {
@@ -55,7 +57,7 @@ namespace CamcoManufacturing.View
                 if (ParentCategories.Count > 0)
                 {
                     LabelHolderType.Content = "Turret Holders";
-                    
+                    this.Name = "TurretHolders";
                     foreach (var item in ParentCategories)
                     {
                         Button button = new Button();
@@ -98,6 +100,7 @@ namespace CamcoManufacturing.View
                     if (holder != null)
                     {
                         LabelHolderType.Content = holder.HolderName;
+                        this.Name = LabelHolderType.Content.ToString().Replace(" ", String.Empty);
                     }
                     ParentCategories = ParentCategories.Where(p => p.HolderTypeId == HolderTypeEnumId.ToString().ToInteger()).ToList();
                 }
@@ -146,6 +149,7 @@ namespace CamcoManufacturing.View
                                     if (holder != null)
                                     {
                                         LabelHolderType.Content = holder.HolderName;
+                                        this.Name = holder.HolderName.Replace(" ", String.Empty);
                                     }
                                     WrapPanelProductParentsCategories.Children.Add(button);
                                 }
@@ -154,6 +158,7 @@ namespace CamcoManufacturing.View
                                     if (holder != null)
                                     {
                                         LabelHolderType_Copy.Content = holder.HolderName;
+                                        this.Name = holder.HolderName.Replace(" ", String.Empty);
                                     }
                                     WrapPanelProductParentsCategories_Copy.Children.Add(button);
                                 }

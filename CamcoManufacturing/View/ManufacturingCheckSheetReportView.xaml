@@ -7,7 +7,7 @@
         xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
        xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
         mc:Ignorable="d"
-        Title="ManufacturingCheckSheetReportView" Height="450" Width="800" WindowState="Maximized">
+        Title="ManufacturingCheckSheetReportView" Height="450" Width="800" WindowState="Maximized" Name="ManCheckSheetPrint">
     <Grid>
         <WindowsFormsHost Margin="0,0,2,0" ChildChanged="WindowsFormsHost_ChildChanged" >
             <rv:ReportViewer x:Name="_reportViewer"  RenderingComplete="_reportViewer_RenderingComplete" />

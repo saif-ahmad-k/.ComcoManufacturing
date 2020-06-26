@@ -5,18 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="View_Product" Height="450" Width="1383.166" Background="Gray" WindowStartupLocation="CenterScreen" Name="ViewProduct" ResizeMode="NoResize">
+        Title="View_Product" Height="450" Width="740.789" Background="Gray" WindowStartupLocation="CenterScreen" Name="ViewProduct" ResizeMode="NoResize">
     <Grid>
-        <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="111" VerticalAlignment="Top" Margin="0,5,2,0"/>
-        <Label Content="View PRODUCT / CATEGORY" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="308" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="523,15,0,0"/>
-        <Image Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Margin="0,23,1177,0"/>
-        <WrapPanel Name="WrapPanelProductParentsCategories" Orientation="Horizontal" Height="279" Margin="10,0,0,21" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="563"/>
-        <Button Name="ButtonAddNewProduct" Click="ButtonAddNewProduct_Click"  Content="Create Product" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="1191,15,0,0" VerticalAlignment="Top" Width="151" Height="44"/>
-        <Button x:Name="ButtonAddNewCategory" Click="ButtonAddNewCategory_Click"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="1040,15,0,0" VerticalAlignment="Top" Width="151" Height="44"/>
-        <Label Name="LabelHolderType" Content="" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="308" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="10,76,0,0"/>
-        <WrapPanel x:Name="WrapPanelProductParentsCategories_Copy" HorizontalAlignment="Left" Orientation="Horizontal" Height="279" Margin="651,0,-627,21" VerticalAlignment="Bottom" Width="712"/>
-        <Label x:Name="LabelHolderType_Copy" Content="" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="308" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="651,76,0,0"/>
-        <Button x:Name="ButtonShowAllProducts"  Content="View all Products" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="884,15,0,0" VerticalAlignment="Top" Width="151" Height="44" Click="ButtonShowAllProducts_Click"/>
+        <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="96" VerticalAlignment="Top" Margin="0,5,0,0"/>
+        <Image Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Margin="0,5,559,0"/>
+        <WrapPanel Name="WrapPanelProductParentsCategories" Orientation="Horizontal" Height="279" Margin="10,0,0,21" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="340"/>
+        <Button Name="ButtonAddNewProduct" Click="ButtonAddNewProduct_Click"  Content="Create Product" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="581,20,0,0" VerticalAlignment="Top" Width="151" Height="39"/>
+        <Button x:Name="ButtonAddNewCategory" Click="ButtonAddNewCategory_Click"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="279,20,0,0" VerticalAlignment="Top" Width="151" Height="39"/>
+        <Label Name="LabelHolderType" Content="" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="154" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="10,76,0,0"/>
+        <WrapPanel x:Name="WrapPanelProductParentsCategories_Copy" HorizontalAlignment="Left" Orientation="Horizontal" Height="279" Margin="386,0,0,21" VerticalAlignment="Bottom" Width="339"/>
+        <Label x:Name="LabelHolderType_Copy" Content="" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="174" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="386,76,0,0"/>
+        <Button x:Name="ButtonShowAllProducts"  Content="View all Products" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="430,20,0,0" VerticalAlignment="Top" Width="151" Height="39" Click="ButtonShowAllProducts_Click"/>
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="0,49,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
 
     </Grid>
 </Window>

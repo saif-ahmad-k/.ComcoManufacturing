@@ -32,6 +32,7 @@ namespace CamcoManufacturing.View
         public MainProduct()
         {
             InitializeComponent();
+            HelperClass.ShowWindowPath(PathLabel);
             FillControls();
             textBoxProductCost.Text = "0";
         }

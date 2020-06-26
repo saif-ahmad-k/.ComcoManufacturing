@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing"
         mc:Ignorable="d"
-        Title="ListView" Height="450" Width="800" WindowState="Maximized" Background="Gray">
+        Title="ListView" Height="450" Width="800" WindowState="Maximized" Background="Gray" Name="SetupSheetList">
     <Grid>
         <DataGrid x:Name="dataGridCamcoRecord" HorizontalAlignment="Left" Height="261" Margin="8,115,0,0" VerticalAlignment="Top" Width="774" AutoGenerateColumns="False">
             <DataGrid.Columns>

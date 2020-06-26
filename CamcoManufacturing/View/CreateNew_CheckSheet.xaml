@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="CreateNew_CheckSheet" Height="450" Width="800">
+        Title="CreateNew_CheckSheet" Height="450" Width="800" Name="CreateCheckSheet">
     <Grid>
-        
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="243,10,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
+
     </Grid>
 </Window>

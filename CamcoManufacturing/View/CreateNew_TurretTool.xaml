@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="CreateNew_TurretTool" Height="450" Width="800" WindowState="Maximized" Background="Gray">
+        Title="CreateNew_TurretTool" Height="450" Width="800" WindowState="Maximized" Background="Gray" Name="CreateTurretTool">
     <Grid>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="534" VerticalAlignment="Top" Width="1418" Margin="0,5,-626,-120"/>
 

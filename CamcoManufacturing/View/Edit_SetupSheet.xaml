@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="Edit_SetupSheet" Height="537" Width="1075" WindowState="Maximized" Background="Gray">
+        Title="Edit_SetupSheet" Height="537" Width="1075" WindowState="Maximized" Background="Gray" Name="EditSetupSheet">
     <Grid>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="501" VerticalAlignment="Top" Width="1067" Margin="0,5,0,0"/>
 
@@ -52,7 +52,7 @@
         <Button x:Name="buttonKnurl" Style="{StaticResource editButtonStyle}" Content="KNURL" HorizontalAlignment="Left" Margin="617,470,0,0" VerticalAlignment="Top" Width="132" Height="26"/>
         <Button x:Name="buttonEmpty4" Style="{StaticResource editButtonStyle}" Content="--------" HorizontalAlignment="Left" Margin="754,470,0,0" VerticalAlignment="Top" Width="132" Height="26"/>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="142" VerticalAlignment="Top" Width="224" Margin="0,5,0,0"/>
-        <Label Content="EDIT SET-UP SHEET" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="229,41,0,0"/>
-        
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="518,5,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
+
     </Grid>
 </Window>

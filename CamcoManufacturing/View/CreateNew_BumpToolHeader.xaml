@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="CreateNew_BumpToolHeader" Height="450" Width="994" WindowState="Maximized">
+        Title="CreateNew_BumpToolHeader" Height="450" Width="994" WindowState="Maximized" Name="CreateBumpHeader">
 
     <Grid>
         <Button x:Name="buttonReturnToAddTool" Style="{StaticResource redButtonStyle}" HorizontalAlignment="Left" Margin="641,308,0,0" VerticalAlignment="Top" Width="164" Height="84" Click="ButtonReturnToAddTool_Click">

@@ -5,10 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="View_Operation" Height="450" Width="800" Background="Gray">
+        Title="View_Operation" Height="450" Width="800" Background="Gray" Name="OperationList">
     <Grid>
         <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="53" VerticalAlignment="Top" Margin="0,5,0,0"/>
-        <Label Content="List View Operation" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="170,10,0,0"/>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Width="170" Margin="0,5,0,0"/>
         <DataGrid x:Name="dataGridOperations" Margin="0,95,0,10" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -18,7 +17,8 @@
                 <DataGridTextColumn Header="Part" Width="30*" Binding="{Binding Part}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="buttonCreateNew" Style="{StaticResource saveButton}" Content="Create New" HorizontalAlignment="Left" Margin="627,-1,0,0" VerticalAlignment="Top" Width="155" Height="51" Click="ButtonCreateNew_Click"/>
+        <Button x:Name="buttonCreateNew" Style="{StaticResource saveButton}" Content="Create New" HorizontalAlignment="Left" Margin="637,20,0,0" VerticalAlignment="Top" Width="155" Height="46" Click="ButtonCreateNew_Click"/>
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="243,5,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
 
     </Grid>
 </Window>

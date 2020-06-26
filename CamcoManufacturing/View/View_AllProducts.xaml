@@ -8,7 +8,6 @@
         Title="View_AllProducts" Height="450" Width="800" Background="Gray" Name="AllProducts">
     <Grid>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="53" VerticalAlignment="Top" Width="792" Margin="0,5,0,0"/>
-        <Label Content="ViewList PRODUCTS" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="170,10,0,0"/>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Width="170" Margin="0,5,0,0"/>
         <DataGrid x:Name="dataGridProducts" AutoGenerateColumns="False" Margin="0,86,0,0">
             <DataGrid.Columns>
@@ -30,6 +29,7 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="0,49,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
 
     </Grid>
 </Window>

@@ -30,6 +30,7 @@ namespace CamcoManufacturing.View
         public SetUpSheet()
         {
             InitializeComponent();
+            HelperClass.ShowWindowPath(PathLabel);
             FillControls();
         }
         private void buttonSave_Click(object sender, RoutedEventArgs e)

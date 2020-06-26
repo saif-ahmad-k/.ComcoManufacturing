@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="Edit_CheckSheet" Height="450" Width="800">
+        Title="Edit_CheckSheet" Height="450" Width="800" Name="EditCheckSheet">
     <Grid>
         
     </Grid>

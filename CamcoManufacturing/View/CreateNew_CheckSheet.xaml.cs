@@ -22,6 +22,7 @@ namespace CamcoManufacturing.View
         public CreateNew_CheckSheet()
         {
             InitializeComponent();
+            HelperClass.ShowWindowPath(PathLabel);
         }
     }
 }

@@ -39,6 +39,7 @@ namespace CamcoManufacturing.View
             {
                 ParentProductId = ParentProduct;
             }
+            HelperClass.ShowWindowPath(PathLabel);
             FillControls(ParentCategoryId, ParentProductId);
         }
 

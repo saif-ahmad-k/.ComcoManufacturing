@@ -8,7 +8,6 @@
         Title="Edit_Category" Height="450" Width="800" Background="Gray" Name="EditCategory">
     <Grid>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="53" VerticalAlignment="Top" Width="792" Margin="0,5,0,0"/>
-        <Label Content="CREATE PRODUCT CATEGORY" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="170,10,0,0"/>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Width="170" Margin="0,5,0,0"/>
         <GroupBox Header="Category" HorizontalAlignment="Left" Height="216" Margin="60,118,0,0" VerticalAlignment="Top" Width="547" FontSize="16" FontWeight="SemiBold" Foreground="#FFFDFDFD"/>
         <Label x:Name="label1_Copy2" Content="Select Parent" HorizontalAlignment="Left" Margin="79,196,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="133" FontWeight="Bold"/>
@@ -34,7 +33,8 @@
             <Image x:Name="imgCategoryPhoto" Stretch="Fill" OpacityMask="Black" Grid.Row="0" Grid.Column="0" Margin="10,0,10,20"/>
         </Grid>
         <Button x:Name="buttonCategoryBrowse" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="457,290,0,0" VerticalAlignment="Top" Height="34" Click="ButtonCategoryBrowse_Click"  Grid.Row="0" HorizontalAlignment="Left" Width="138"/>
-        <Button x:Name="ButtonAddNewCategory"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="631,5,0,0" VerticalAlignment="Top" Width="151" Height="44" Click="ButtonAddNewCategory_Click" />
+        <Button x:Name="ButtonAddNewCategory"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="631,21,0,0" VerticalAlignment="Top" Width="151" Height="37" Click="ButtonAddNewCategory_Click" />
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="243,5,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
 
     </Grid>
 </Window>

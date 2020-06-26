@@ -22,6 +22,7 @@ namespace CamcoManufacturing.View
         public Edit_SetupSheet()
         {
             InitializeComponent();
+            HelperClass.ShowWindowPath(PathLabel);
         }
 
 

@@ -36,6 +36,7 @@ namespace CamcoManufacturing.View
                 ProductId = Product;
                 ExistingProduct = db.tProducts.Find(Product);
             }
+            HelperClass.ShowWindowPath(PathLabel);
             FillControls(Product);
         }
         private void CheckProductValidations()

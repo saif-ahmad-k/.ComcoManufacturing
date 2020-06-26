@@ -34,6 +34,7 @@ namespace CamcoManufacturing.View
             {
                 ParentCategoryId = CategoryId;
             }
+            HelperClass.ShowWindowPath(PathLabel);
             FillControls(ParentCategoryId);
         }
 
@@ -89,6 +90,11 @@ namespace CamcoManufacturing.View
                     { break; }
                 }
                 cmbParentCategory.SelectedIndex = index;
+                if (index > -1)
+                {
+                    cmbParentCategory.IsHitTestVisible = false;
+                    cmbParentCategory.Focusable = false;
+                }
             }
         }
         private void ChecCategoryValidations()

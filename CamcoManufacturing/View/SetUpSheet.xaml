@@ -22,7 +22,7 @@
 
         <TextBox Visibility="Hidden" Text="{Binding MaxTime, StringFormat={}{0:hh':'mm}}"    HorizontalAlignment="Left" Height="42" Margin="562,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
         <Label x:Name="label_Copy3" Content="Cycletime(Min) :" HorizontalAlignment="Left" Margin="605,150,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="buttonSave" Style="{StaticResource saveButton}" Content="Save and Print" HorizontalAlignment="Left" Margin="951,10,0,0" VerticalAlignment="Top" Width="156" Click="buttonSave_Click" Height="51"/>
+        <Button x:Name="buttonSave" Style="{StaticResource saveButton}" Content="Save and Print" HorizontalAlignment="Left" Margin="952,32,0,0" VerticalAlignment="Top" Width="156" Click="buttonSave_Click" Height="51"/>
         <Button x:Name="buttonList" Style="{StaticResource returnButton}" Content="SET-UP Sheet List" HorizontalAlignment="Left" Margin="1046,577,0,0" VerticalAlignment="Top" Width="184" Click="buttonList_Click" Height="51"/>
         <Label x:Name="label1_Copy3" Content="Material :" HorizontalAlignment="Left" Margin="607,214,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="132" FontWeight="Bold"/>
         <Button x:Name="buttonEditEmployee" Style="{StaticResource editButtonStyle}" Content="EDIT" HorizontalAlignment="Left" Margin="931,116,0,0" VerticalAlignment="Top" Width="45" Height="30"/>
@@ -49,7 +49,7 @@
         <Button x:Name="Browse_Button" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="1046,251,18,0" VerticalAlignment="Top" Height="34" Click="button_Browse_Click" Grid.Row="0"/>
 
         <Button x:Name="buttonAddTurretTool" Visibility="Hidden" Style="{StaticResource blackButtonStyle}" Content="ADD TURRET TOOL" HorizontalAlignment="Left" Margin="1046,502,0,0" VerticalAlignment="Top" Width="198" Height="75" Click="ButtonAddTurretTool_Click"/>
-        <Button x:Name="buttonReturn" Style="{StaticResource redButtonStyle}" Content="RETURN" HorizontalAlignment="Left" Margin="1112,10,0,0" VerticalAlignment="Top" Width="164" Height="51" Click="ButtonReturn_Click"/>
+        <Button x:Name="buttonReturn" Style="{StaticResource redButtonStyle}" Content="RETURN" HorizontalAlignment="Left" Margin="1113,32,0,0" VerticalAlignment="Top" Width="164" Height="51" Click="ButtonReturn_Click"/>
         <Label Content="TOOL #" Background="White"  HorizontalAlignment="Left" Margin="100,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="83" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
         <Label Content="OFFSET #" Background="White"  HorizontalAlignment="Left" Margin="183,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="108" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
         <Label Content="TOOL DESCRIPTION" Background="White"  HorizontalAlignment="Left" Margin="291,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.316,-0.192" Height="36" Width="491" FontWeight="Bold" FontSize="16" BorderBrush="Black"/>
@@ -60,7 +60,6 @@
 
         <TextBox x:Name="MaterialTxt"  IsEnabled="False"  Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="738,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260"/>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="142" VerticalAlignment="Top" Width="224" Margin="0,5,0,0"/>
-        <Label Content="CREATE SET-UP SHEET" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="399" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="229,41,0,0"/>
         <xctk:TimeSpanUpDown x:Name="txtCycletime"  HorizontalAlignment="Left" Margin="738,149,0,0" VerticalAlignment="Top" Height="31" Width="260"/>
         <TextBox Name="textBoxLineNumber" TextAlignment="Center" Padding="6" HorizontalAlignment="Left" Height="128" Margin="22,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="79" Background="#FFFFF6C0" FontSize="22"/>
         <TextBox Name="textBoxToolNumber" HorizontalAlignment="Left" Height="30" Margin="100,360,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="83" Background="#FFFFF6C0"/>
@@ -124,6 +123,7 @@
         <TextBox x:Name="textBoxQRN4" HorizontalAlignment="Left" Height="34" Margin="456,454,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="188" RenderTransformOrigin="1.905,4.1" Background="#FFCFE3EE"/>
         <Button x:Name="buttonAddExistingColletBlade" Style="{StaticResource blackButtonStyle}" Content="Find Existing" HorizontalAlignment="Left" Margin="568,390,0,0" VerticalAlignment="Top" Width="76" Height="32" FontSize="10" Click="ButtonAddExistingColletBlade_Click"/>
         <Button x:Name="buttonAddColletBlade" Style="{StaticResource blackButtonStyle}" Content="Add New" HorizontalAlignment="Left" Margin="568,427,0,0" VerticalAlignment="Top" Width="76" Height="27" FontSize="10" Click="ButtonAddColletBlade_Click"/>
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="0,70,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
 
     </Grid>
 </Window>

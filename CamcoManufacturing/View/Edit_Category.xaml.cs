@@ -36,6 +36,7 @@ namespace CamcoManufacturing.View
             {
                 SelectedCategoryId = CategoryId;
             }
+            HelperClass.ShowWindowPath(PathLabel);
             FillControls(SelectedCategoryId);
         }
         private void ButtonSaveCategory_Click(object sender, RoutedEventArgs e)
