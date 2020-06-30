@@ -24,6 +24,11 @@ namespace DataModel.Models
         public bool? IsParent { get; set; }
         public int? HolderTypeId { get; set; }
         public bool? IsParentInsert { get; set; }
+        public string PartNumber { get; set; }
+        public string Diameter { get; set; }
+        public string Length { get; set; }
+        public string Code { get; set; }
+
         private string pName;
         [NotMapped]
         public string Parent

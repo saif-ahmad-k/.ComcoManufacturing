@@ -56,6 +56,7 @@ namespace CamcoManufacturing.View
                     db.SaveChanges();
                     MessageBox.Show("Updated SuccessFully!");
                     textBoxCategoryName.Text = "";
+                    this.Close();
                 }
                 //FillControls();
             }
@@ -136,6 +137,11 @@ namespace CamcoManufacturing.View
                 }
                 
             }
+        }
+
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

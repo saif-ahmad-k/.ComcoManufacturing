@@ -63,11 +63,17 @@ namespace CamcoManufacturing.View
                     {
                         category.IsParent = true;
                     }
+                    tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
+                    if (selectedMachine != null)
+                    {
+                        category.MachineId = selectedMachine.Machine_Id;
+                    }
                     category.CategoryImage = _CategoryImageBytes;
                     db.tCategories.Add(category);
                     db.SaveChanges();
                     MessageBox.Show("Added SuccessFully!");
                     textBoxCategoryName.Text = "";
+                    this.Close();
                 }
                 //FillControls();
             }
@@ -78,6 +84,8 @@ namespace CamcoManufacturing.View
         }
         private void FillControls(int catId)
         {
+            cmbMachine.ItemsSource = null;
+            cmbMachine.ItemsSource = db.tMachineTypes.ToList();
             cmbParentCategory.ItemsSource = null;
             cmbParentCategory.ItemsSource = db.tCategories.ToList();
             if (catId > 0)
@@ -122,6 +130,11 @@ namespace CamcoManufacturing.View
                     fs.Read(_CategoryImageBytes, 0, System.Convert.ToInt32(fs.Length));
                 }
             }
+        }
+
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

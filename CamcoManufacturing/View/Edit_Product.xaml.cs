@@ -56,11 +56,6 @@ namespace CamcoManufacturing.View
                 isProductValid = false;
                 MessageBox.Show("Cost is mandatory!");
             }
-            else if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text).FirstOrDefault() != null)
-            {
-                isProductValid = false;
-                MessageBox.Show("Name already exist!");
-            }
         }
         private void FillControls(int ProdId)
         {
@@ -91,6 +86,10 @@ namespace CamcoManufacturing.View
                     ExistingProduct.ProductName = textBoxProductName.Text;
                     ExistingProduct.Cost = textBoxProductCost.Text.ToDecimal();
                     ExistingProduct.QRN = textBoxProductQRN.Text;
+                    ExistingProduct.Code = textBoxProductCode.Text;
+                    ExistingProduct.PartNumber = textBoxProductPartNumber.Text;
+                    ExistingProduct.Length = textBoxProductLength.Text;
+                    ExistingProduct.Diameter = textBoxProductDiameter.Text;
                     tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
                     if (selectedProductCategory != null)
                     {
@@ -103,6 +102,7 @@ namespace CamcoManufacturing.View
                     textBoxProductName.Text = "";
                     textBoxProductCost.Text = "0";
                     textBoxProductQRN.Text = "";
+                    this.Close();
                 }
                 //FillControls();
             }
@@ -128,6 +128,33 @@ namespace CamcoManufacturing.View
                     fs.Read(_imageBytes, 0, System.Convert.ToInt32(fs.Length));
                 }
             }
+        }
+        private void CheckBoxColletBlade_Checked(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxColletBlade.IsChecked == true)
+            {
+                CheckBoxInsert.IsChecked = false;
+            }
+            else
+            {
+                CheckBoxInsert.IsChecked = true;
+            }
+        }
+
+        private void CheckBoxInsert_Checked(object sender, RoutedEventArgs e)
+        {
+            if (CheckBoxInsert.IsChecked == true)
+            {
+                CheckBoxColletBlade.IsChecked = false;
+            }
+            else
+            {
+                CheckBoxColletBlade.IsChecked = true;
+            }
+        }
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

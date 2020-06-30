@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="View_StickHolders" Height="450" Width="800" Background="Gray" WindowStartupLocation="CenterScreen" Name="StickHoldersView">
     <Grid>
-        <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="109" VerticalAlignment="Top" Margin="0,5,2,0"/>
+        <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="109" VerticalAlignment="Top" Margin="0,5,-602,0"/>
         <Label Content="View Stick Holders" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="274" FontSize="24" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="234,10,0,0"/>
-        <Image Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Margin="0,5,588,0"/>
+        <Image Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="73" VerticalAlignment="Top" Margin="0,5,563,0"/>
         <WrapPanel x:Name="WrapPanelStickHolders" Orientation="Horizontal" Height="279" Margin="9,0,73,21" VerticalAlignment="Bottom"/>
 
     </Grid>

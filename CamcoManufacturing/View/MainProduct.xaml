@@ -64,5 +64,6 @@
         </Grid>
         <Button x:Name="buttonCategoryBrowse" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="1088,309,-24,0" VerticalAlignment="Top" Height="34" Click="ButtonCategoryBrowse_Click"  Grid.Row="0" HorizontalAlignment="Left" Width="138"/>
         <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="689,5,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
+        <Button x:Name="buttonReturn" Style="{StaticResource redButtonStyle}" Content="RETURN" HorizontalAlignment="Left" Margin="1052,27,0,0" VerticalAlignment="Top" Width="164" Height="34" Click="ButtonReturn_Click"/>
     </Grid>
 </Window>

@@ -31,11 +31,13 @@ namespace CamcoManufacturing.View
         public View_Product()
         {
             InitializeComponent();
+            hideButtons();
             HelperClass.ShowWindowPath(PathLabel);
         }
         public View_Product(int CatId, int parentProduct, int Sequance, int HolderTypeEnum, List<int> holderList)
         {
             InitializeComponent();
+            hideButtons();
             CategoryId = CatId;
             ParentProductId = parentProduct;
             SequanceNumber = Sequance;
@@ -47,6 +49,12 @@ namespace CamcoManufacturing.View
             
             FillWrapPanelProductParentCategories(CategoryId, ParentProductId);
             HelperClass.ShowWindowPath(PathLabel);
+        }
+        private void hideButtons()
+        {
+            buttonInsert.Visibility = Visibility.Collapsed;
+            buttonColletBlade.Visibility = Visibility.Collapsed;
+            buttonStickHolder.Visibility = Visibility.Collapsed;
         }
         private void FillWrapPanelProductParentCategories(int CategoryId, int ProductId)
         {
@@ -60,31 +68,7 @@ namespace CamcoManufacturing.View
                     this.Name = "TurretHolders";
                     foreach (var item in ParentCategories)
                     {
-                        Button button = new Button();
-                        button.Content = item.ProductName + Environment.NewLine + item.QRN;
-                        button.Width = 150;
-                        button.Height = 60;
-                        if (item.ProductImage != null)
-                        {
-                            ImageBrush brush;
-                            BitmapImage bi;
-                            using (var ms = new MemoryStream(item.ProductImage))
-                            {
-                                brush = new ImageBrush();
-
-                                bi = new BitmapImage();
-                                bi.BeginInit();
-                                bi.CreateOptions = BitmapCreateOptions.None;
-                                bi.CacheOption = BitmapCacheOption.OnLoad;
-                                bi.StreamSource = ms;
-                                bi.EndInit();
-                            }
-
-                            brush.ImageSource = bi;
-                            button.Background = brush;
-                        }
-                        button.Click += new RoutedEventHandler(buttonParentCategory_Click);
-                        WrapPanelProductParentsCategories.Children.Add(button);
+                        AddNeWrapPanel1(item);
                     }
                     ButtonAddNewCategory.Visibility =
         (ButtonAddNewCategory.Visibility == Visibility.Visible) ?
@@ -101,6 +85,16 @@ namespace CamcoManufacturing.View
                     {
                         LabelHolderType.Content = holder.HolderName;
                         this.Name = LabelHolderType.Content.ToString().Replace(" ", String.Empty);
+                        if (HolderTypeEnumId == 3 || HolderTypeEnumId == 4)
+                        {
+                            buttonInsert.Visibility = Visibility.Visible;
+                            buttonColletBlade.Visibility = Visibility.Visible;
+                        }else if (HolderTypeEnumId == 2)
+                        {
+                            buttonStickHolder.Visibility = Visibility.Visible;
+                            buttonInsert.Visibility = Visibility.Visible;
+                            buttonColletBlade.Visibility = Visibility.Visible;
+                        }
                     }
                     ParentCategories = ParentCategories.Where(p => p.HolderTypeId == HolderTypeEnumId.ToString().ToInteger()).ToList();
                 }
@@ -121,29 +115,7 @@ namespace CamcoManufacturing.View
                             
                             foreach (var item in ParentNew)
                             {
-                                Button button = new Button();
-                                button.Content = item.ProductName + Environment.NewLine + item.QRN;
-                                button.Width = 150;
-                                button.Height = 60;
-                                if (item.ProductImage != null)
-                                {
-                                    ImageBrush brush;
-                                    BitmapImage bi;
-                                    using (var ms = new MemoryStream(item.ProductImage))
-                                    {
-                                        brush = new ImageBrush();
-                                        bi = new BitmapImage();
-                                        bi.BeginInit();
-                                        bi.CreateOptions = BitmapCreateOptions.None;
-                                        bi.CacheOption = BitmapCacheOption.OnLoad;
-                                        bi.StreamSource = ms;
-                                        bi.EndInit();
-                                    }
-
-                                    brush.ImageSource = bi;
-                                    button.Background = brush;
-                                }
-                                button.Click += new RoutedEventHandler(buttonParentCategory_Click);
+                                
                                 if (count == 1)
                                 {
                                     if (holder != null)
@@ -151,7 +123,7 @@ namespace CamcoManufacturing.View
                                         LabelHolderType.Content = holder.HolderName;
                                         this.Name = holder.HolderName.Replace(" ", String.Empty);
                                     }
-                                    WrapPanelProductParentsCategories.Children.Add(button);
+                                    AddNeWrapPanel1(item);
                                 }
                                 else
                                 {
@@ -160,9 +132,20 @@ namespace CamcoManufacturing.View
                                         LabelHolderType_Copy.Content = holder.HolderName;
                                         this.Name = holder.HolderName.Replace(" ", String.Empty);
                                     }
-                                    WrapPanelProductParentsCategories_Copy.Children.Add(button);
+                                    AddNeWrapPanel2(item);
                                 }
-                                
+                                if (holder.Holder_Id == 3 || holder.Holder_Id == 4)
+                                {
+                                    buttonInsert.Visibility = Visibility.Visible;
+                                    buttonColletBlade.Visibility = Visibility.Visible;
+                                }
+                                else if (holder.Holder_Id == 2)
+                                {
+                                    buttonStickHolder.Visibility = Visibility.Visible;
+                                    buttonInsert.Visibility = Visibility.Visible;
+                                    buttonColletBlade.Visibility = Visibility.Visible;
+                                }
+
                             }
                             ButtonAddNewCategory.Visibility =
                 (ButtonAddNewCategory.Visibility == Visibility.Visible) ?
@@ -176,36 +159,180 @@ namespace CamcoManufacturing.View
 
                     foreach (var item in ParentCategories)
                     {
-                        Button button = new Button();
-                        button.Content = item.ProductName + Environment.NewLine + item.QRN;
-                        button.Width = 150;
-                        button.Height = 60;
-                        if (item.ProductImage != null)
-                        {
-                            ImageBrush brush;
-                            BitmapImage bi;
-                            using (var ms = new MemoryStream(item.ProductImage))
-                            {
-                                brush = new ImageBrush();
-                                bi = new BitmapImage();
-                                bi.BeginInit();
-                                bi.CreateOptions = BitmapCreateOptions.None;
-                                bi.CacheOption = BitmapCacheOption.OnLoad;
-                                bi.StreamSource = ms;
-                                bi.EndInit();
-                            }
-
-                            brush.ImageSource = bi;
-                            button.Background = brush;
-                        }
-                        button.Click += new RoutedEventHandler(buttonParentCategory_Click);
-                        WrapPanelProductParentsCategories.Children.Add(button);
+                        AddNeWrapPanel1(item);
                     }
                     ButtonAddNewCategory.Visibility =
         (ButtonAddNewCategory.Visibility == Visibility.Visible) ?
            Visibility.Collapsed : Visibility.Visible;
+                }else if (ParentCategories.Count == 0)
+                {
+                    buttonStickHolder.Visibility = Visibility.Visible;
+                    buttonInsert.Visibility = Visibility.Visible;
+                    buttonColletBlade.Visibility = Visibility.Visible;
                 }
             }
+        }
+        private void AddNeWrapPanel1(tblProduct item)
+        {
+            Button button = new Button();
+            //button.Content = item.ProductName + Environment.NewLine + item.QRN;
+            button.Width = 150;
+            button.Height = 80;
+            button.Content = item.ProductName;
+            if (item.ProductImage != null)
+            {
+                ImageBrush brush;
+                BitmapImage bi;
+                using (var ms = new MemoryStream(item.ProductImage))
+                {
+                    brush = new ImageBrush();
+
+                    bi = new BitmapImage();
+                    bi.BeginInit();
+                    bi.CreateOptions = BitmapCreateOptions.None;
+                    bi.CacheOption = BitmapCacheOption.OnLoad;
+                    bi.StreamSource = ms;
+                    bi.EndInit();
+                }
+
+                brush.ImageSource = bi;
+                button.Background = brush;
+            }
+            StackPanel sp = new StackPanel();
+            Border buttonBorder = new Border();
+            buttonBorder.Background = Brushes.SkyBlue;
+            buttonBorder.BorderBrush = Brushes.Black;
+            buttonBorder.BorderThickness = new Thickness(1);
+            buttonBorder.Child = button;
+
+            Label productNameLabel = new Label();
+            productNameLabel.Content = item.ProductName;
+            productNameLabel.FontWeight = FontWeights.Bold;
+            productNameLabel.FontSize = 14;
+            productNameLabel.Height = 50;
+            productNameLabel.Width = 150;
+            productNameLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            productNameLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorder = new Border();
+            labelBorder.Background = Brushes.LightGray;
+            labelBorder.BorderBrush = Brushes.Black;
+            labelBorder.BorderThickness = new Thickness(1);
+            labelBorder.Child = productNameLabel;
+
+            Label QRNLabel = new Label();
+            QRNLabel.Content = "QRN: " + item.QRN;
+            QRNLabel.FontWeight = FontWeights.Bold;
+            QRNLabel.Height = 30;
+            QRNLabel.FontSize = 10;
+            QRNLabel.Width = 150;
+            QRNLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            QRNLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorderQRN = new Border();
+            labelBorderQRN.Background = Brushes.White;
+            labelBorderQRN.BorderBrush = Brushes.Black;
+            labelBorderQRN.BorderThickness = new Thickness(1);
+            labelBorderQRN.Child = QRNLabel;
+
+            Label emptyLabel = new Label();
+            emptyLabel.Content = " ";
+            emptyLabel.FontWeight = FontWeights.Bold;
+            emptyLabel.Height = 30;
+            emptyLabel.FontSize = 10;
+            emptyLabel.Background = Brushes.Gray;
+            emptyLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            emptyLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorderEmpty = new Border();
+            labelBorderEmpty.Background = Brushes.White;
+            labelBorderEmpty.BorderBrush = Brushes.Black;
+            labelBorderEmpty.BorderThickness = new Thickness(0);
+            labelBorderEmpty.Child = emptyLabel;
+
+            sp.Children.Add(labelBorder);
+            sp.Children.Add(labelBorderQRN);
+            sp.Children.Add(buttonBorder);
+            sp.Children.Add(labelBorderEmpty);
+            button.Click += new RoutedEventHandler(buttonParentCategory_Click);
+            WrapPanelProductParentsCategories.Children.Add(sp);
+        }
+        private void AddNeWrapPanel2(tblProduct item)
+        {
+            Button button = new Button();
+            //button.Content = item.ProductName + Environment.NewLine + item.QRN;
+            button.Width = 150;
+            button.Height = 80;
+            button.Content = item.ProductName;
+            if (item.ProductImage != null)
+            {
+                ImageBrush brush;
+                BitmapImage bi;
+                using (var ms = new MemoryStream(item.ProductImage))
+                {
+                    brush = new ImageBrush();
+
+                    bi = new BitmapImage();
+                    bi.BeginInit();
+                    bi.CreateOptions = BitmapCreateOptions.None;
+                    bi.CacheOption = BitmapCacheOption.OnLoad;
+                    bi.StreamSource = ms;
+                    bi.EndInit();
+                }
+
+                brush.ImageSource = bi;
+                button.Background = brush;
+            }
+            StackPanel sp = new StackPanel();
+            Border buttonBorder = new Border();
+            buttonBorder.Background = Brushes.SkyBlue;
+            buttonBorder.BorderBrush = Brushes.Black;
+            buttonBorder.BorderThickness = new Thickness(1);
+            buttonBorder.Child = button;
+
+            Label productNameLabel = new Label();
+            productNameLabel.Content = item.ProductName;
+            productNameLabel.FontWeight = FontWeights.Bold;
+            productNameLabel.FontSize = 14;
+            productNameLabel.Height = 50;
+            productNameLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            productNameLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorder = new Border();
+            labelBorder.Background = Brushes.LightGray;
+            labelBorder.BorderBrush = Brushes.Black;
+            labelBorder.BorderThickness = new Thickness(1);
+            labelBorder.Child = productNameLabel;
+
+            Label QRNLabel = new Label();
+            QRNLabel.Content = "QRN: " + item.QRN;
+            QRNLabel.FontWeight = FontWeights.Bold;
+            QRNLabel.Height = 30;
+            QRNLabel.FontSize = 10;
+            QRNLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            QRNLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorderQRN = new Border();
+            labelBorderQRN.Background = Brushes.White;
+            labelBorderQRN.BorderBrush = Brushes.Black;
+            labelBorderQRN.BorderThickness = new Thickness(1);
+            labelBorderQRN.Child = QRNLabel;
+
+            Label emptyLabel = new Label();
+            emptyLabel.Content = " ";
+            emptyLabel.FontWeight = FontWeights.Bold;
+            emptyLabel.Height = 30;
+            emptyLabel.FontSize = 10;
+            emptyLabel.Background = Brushes.Gray;
+            emptyLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            emptyLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorderEmpty = new Border();
+            labelBorderEmpty.Background = Brushes.White;
+            labelBorderEmpty.BorderBrush = Brushes.Black;
+            labelBorderEmpty.BorderThickness = new Thickness(0);
+            labelBorderEmpty.Child = emptyLabel;
+
+            sp.Children.Add(labelBorder);
+            sp.Children.Add(labelBorderQRN);
+            sp.Children.Add(buttonBorder);
+            sp.Children.Add(labelBorderEmpty);
+            button.Click += new RoutedEventHandler(buttonParentCategory_Click);
+            WrapPanelProductParentsCategories_Copy.Children.Add(sp);
         }
         void AddNewButton()
         {
@@ -243,9 +370,7 @@ namespace CamcoManufacturing.View
         {
             List<int> HolderList = new List<int>();
             Button btn = (Button)sender;
-            string abc = btn.Content.ToString();
-            string[] multiArray = abc.Split(new Char[] { '\r', '\n' });
-            string Name = multiArray[0].ToString();
+            string Name = btn.Content.ToString();
             var resultDetail = db.tProducts.Where(p => p.ProductName == Name).FirstOrDefault();
             if (SequanceNumber > 0)
             {
@@ -281,7 +406,7 @@ namespace CamcoManufacturing.View
                                 ((SetUpSheet)item).textBoxQRN3.Text = resultDetail.QRN;
                             }
                         }
-                        if (item.Name == "ViewCategory")
+                        if (item.Name != "CreateSetUpSheet" && item.Name != "Main" && item.Name != "")
                         {
                             item.Close();
                         }
@@ -387,6 +512,59 @@ namespace CamcoManufacturing.View
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "AllProducts");
                 win.Close();
                 View.View_AllProducts obj = new View.View_AllProducts();
+                obj.ShowDialog();
+            }
+        }
+
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonStickHolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+            {
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                obj.ShowDialog();
+            }
+            else
+            {
+                Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
+                win.Close();
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                obj.ShowDialog();
+            }
+        }
+
+        private void ButtonColletBlade_Click(object sender, RoutedEventArgs e)
+        {
+            if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+            {
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                obj.ShowDialog();
+            }
+            else
+            {
+                Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
+                win.Close();
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                obj.ShowDialog();
+            }
+        }
+
+        private void ButtonInsert_Click(object sender, RoutedEventArgs e)
+        {
+            if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
+            {
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                obj.ShowDialog();
+            }
+            else
+            {
+                Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
+                win.Close();
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
                 obj.ShowDialog();
             }
         }

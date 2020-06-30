@@ -5,14 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="View_SubCategory" Height="450" Width="740.789" Background="Gray" WindowStartupLocation="CenterScreen" Name="ViewCategory" ResizeMode="NoResize">
+        Title="View_SubCategory" Height="600" Width="740.789" Background="Gray" WindowStartupLocation="CenterScreen" Name="ViewCategory" ResizeMode="NoResize">
     <Grid>
-        <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="71" VerticalAlignment="Top" Margin="0,5,0,0"/>
+        <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="71" VerticalAlignment="Top" Margin="0,5,-226,0"/>
         <Image Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Margin="0,5,577,0"/>
-        <WrapPanel x:Name="WrapPanelProductCategories" Orientation="Horizontal" Height="317" Margin="10,81,80,0" VerticalAlignment="Top"/>
-        <Button x:Name="ButtonAddNewCategory"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="574,19,0,0" VerticalAlignment="Top" Width="151" Height="39" Click="ButtonAddNewCategory_Click"/>
-        <Button x:Name="ButtonEditCategory"  Content="View all Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="423,19,0,0" VerticalAlignment="Top" Width="151" Height="39" Click="ButtonEditCategory_Click"/>
-        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="0,54,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Width="640" HorizontalAlignment="Left" Margin="10,119,80,0">
+            <WrapPanel Name="WrapPanelProductCategories" Orientation="Horizontal" Width="610"  />
+        </ScrollViewer>
+        <Button x:Name="ButtonAddNewCategory"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="415,19,0,0" VerticalAlignment="Top" Width="151" Height="39" Click="ButtonAddNewCategory_Click"/>
+        <Button x:Name="ButtonEditCategory"  Content="View all Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="264,19,0,0" VerticalAlignment="Top" Width="151" Height="39" Click="ButtonEditCategory_Click"/>
+        <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
+        <Button x:Name="buttonReturn" Style="{StaticResource redButtonStyle}" Content="RETURN" HorizontalAlignment="Left" Margin="566,22,0,0" VerticalAlignment="Top" Width="159" Height="34" Click="ButtonReturn_Click"/>
 
     </Grid>
 </Window>

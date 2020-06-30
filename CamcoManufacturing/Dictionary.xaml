@@ -144,7 +144,15 @@
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Foreground" Value="{StaticResource formFontColor}" />
     </Style>
-
+    <Style x:Key="headingLabel1" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+        <Setter Property="FontFamily" Value="{StaticResource normalFont}" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#AD2323" />
+    </Style>
     <Style x:Key="headingLabel" BasedOn="{StaticResource normalLabel}" TargetType="Label">
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontFamily" Value="{StaticResource headingFont}" />

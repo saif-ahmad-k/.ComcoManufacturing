@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CamcoManufacturing.View"
         mc:Ignorable="d"
-        Title="Edit_Product" Height="450" Width="800" Background="Gray" Name="EditProduct">
+        Title="Edit_Product" Height="653.008" Width="800" Background="Gray" WindowStartupLocation="CenterScreen" Name="EditProduct">
     <Grid>
-        <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="53" VerticalAlignment="Top" Width="792" Margin="0,5,0,0"/>
+        <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="78" VerticalAlignment="Top" Width="1024" Margin="0,5,-232,0"/>
         <Image HorizontalAlignment="Left" Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Width="170" Margin="0,5,0,0"/>
-        <Label x:Name="label1_Copy1" Content="Select Category" HorizontalAlignment="Left" Margin="82,182,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="133" FontWeight="Bold"/>
-        <ComboBox x:Name="cmbParentProductCategory" SelectedValue="Category_ID"  Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="278,182,0,0" VerticalAlignment="Top" Width="235"/>
-        <TextBox x:Name="textBoxProductName" Style="{StaticResource mandatoryTextBox}" HorizontalAlignment="Left" Height="27" Margin="278,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
-        <Label x:Name="label_Copy" Content="Product Name" HorizontalAlignment="Left" Margin="82,212,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
-        <Button x:Name="buttonSaveProduct" Style="{StaticResource saveButton}" Content="Update" HorizontalAlignment="Left" Margin="358,302,0,0" VerticalAlignment="Top" Width="155" Height="51" Click="ButtonSaveProduct_Click"/>
-        <TextBox x:Name="textBoxProductCost" Style="{StaticResource mandatoryTextBox}" HorizontalAlignment="Left" Height="27" Margin="278,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
-        <Label x:Name="label_Copy1" Content="Product Cost" HorizontalAlignment="Left" Margin="82,242,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="textBoxProductQRN" Style="{StaticResource mandatoryTextBox}" HorizontalAlignment="Left" Height="27" Margin="278,275,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
-        <Label x:Name="label_Copy2" Content="QRN" HorizontalAlignment="Left" Margin="82,272,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Label x:Name="label1_Copy1" Content="Select Category" HorizontalAlignment="Left" Margin="85,162,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="133" FontWeight="Bold"/>
+        <ComboBox x:Name="cmbParentProductCategory" SelectedValue="Category_ID"  Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="Name" HorizontalAlignment="Left" Margin="281,162,0,0" VerticalAlignment="Top" Width="235"/>
+        <TextBox x:Name="textBoxProductName" Style="{StaticResource mandatoryTextBox}" HorizontalAlignment="Left" Height="27" Margin="281,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy" Content="Product Name" HorizontalAlignment="Left" Margin="85,192,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="buttonSaveProduct" Style="{StaticResource saveButton}" Content="Update" HorizontalAlignment="Left" Margin="361,413,0,0" VerticalAlignment="Top" Width="155" Height="51" Click="ButtonSaveProduct_Click"/>
+        <TextBox x:Name="textBoxProductCost" Style="{StaticResource mandatoryTextBox}" HorizontalAlignment="Left" Height="27" Margin="281,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy1" Content="Product Cost" HorizontalAlignment="Left" Margin="85,222,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxProductQRN" Style="{StaticResource mandatoryTextBox}" HorizontalAlignment="Left" Height="27" Margin="281,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy2" Content="QRN" HorizontalAlignment="Left" Margin="85,252,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
         <Grid Height="174" Margin="534,162,0,0" VerticalAlignment="Top" Background="WhiteSmoke" Grid.Row="0" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="138">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -37,6 +37,17 @@
         </Grid>
         <Button x:Name="Browse_Button" Style="{StaticResource blackButtonStyle}" Content="Browse" Margin="534,302,0,0" VerticalAlignment="Top" Height="34" Click="button_Browse_Click" Grid.Row="0" HorizontalAlignment="Left" Width="138"/>
         <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="243,5,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
+        <Button x:Name="buttonReturn" Style="{StaticResource redButtonStyle}" Content="RETURN" HorizontalAlignment="Left" Margin="618,24,0,0" VerticalAlignment="Top" Width="164" Height="34" Click="ButtonReturn_Click"/>
+        <CheckBox x:Name="CheckBoxInsert" Content="Insert" Checked="CheckBoxInsert_Checked" Unchecked="CheckBoxInsert_Checked" HorizontalAlignment="Left" Margin="97,431,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="CheckBoxColletBlade" Checked="CheckBoxColletBlade_Checked" Unchecked="CheckBoxColletBlade_Checked" Content="ColletBlade" HorizontalAlignment="Left" Margin="207,431,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBoxProductCode" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="281,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy3" Content="Code" HorizontalAlignment="Left" Margin="85,284,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxProductPartNumber" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="281,317,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy4" Content="Part #" HorizontalAlignment="Left" Margin="85,314,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxProductLength" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="281,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy5" Content="Length" HorizontalAlignment="Left" Margin="85,344,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="textBoxProductDiameter" Style="{StaticResource normalTextBox}" HorizontalAlignment="Left" Height="27" Margin="281,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label x:Name="label_Copy6" Content="Diameter" HorizontalAlignment="Left" Margin="85,374,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
 
     </Grid>
 </Window>

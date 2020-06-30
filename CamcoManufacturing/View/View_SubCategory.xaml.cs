@@ -36,7 +36,75 @@ namespace CamcoManufacturing.View
             
         }
 
-        
+        private void AddNeWrapPanel1(tblCategory item)
+        {
+            Button button = new Button();
+            //button.Content = item.ProductName + Environment.NewLine + item.QRN;
+            button.Width = 150;
+            button.Height = 80;
+            button.Content = item.Name;
+            if (item.CategoryImage != null)
+            {
+                ImageBrush brush;
+                BitmapImage bi;
+                using (var ms = new MemoryStream(item.CategoryImage))
+                {
+                    brush = new ImageBrush();
+
+                    bi = new BitmapImage();
+                    bi.BeginInit();
+                    bi.CreateOptions = BitmapCreateOptions.None;
+                    bi.CacheOption = BitmapCacheOption.OnLoad;
+                    bi.StreamSource = ms;
+                    bi.EndInit();
+                }
+
+                brush.ImageSource = bi;
+                button.Background = brush;
+            }
+            StackPanel sp = new StackPanel();
+            Border buttonBorder = new Border();
+            buttonBorder.Background = Brushes.SkyBlue;
+            buttonBorder.BorderBrush = Brushes.Black;
+            buttonBorder.BorderThickness = new Thickness(1);
+            buttonBorder.Child = button;
+
+            Label productNameLabel = new Label();
+            productNameLabel.Content = item.Name;
+            productNameLabel.FontWeight = FontWeights.Bold;
+            productNameLabel.FontSize = 14;
+            productNameLabel.Height = 50;
+            productNameLabel.Width = 150;
+            productNameLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            productNameLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorder = new Border();
+            labelBorder.Background = Brushes.LightGray;
+            labelBorder.BorderBrush = Brushes.Black;
+            labelBorder.BorderThickness = new Thickness(1);
+            labelBorder.Child = productNameLabel;
+            
+            Label emptyLabel = new Label();
+            emptyLabel.Content = " ";
+            emptyLabel.FontWeight = FontWeights.Bold;
+            emptyLabel.Height = 30;
+            emptyLabel.FontSize = 10;
+            emptyLabel.Background = Brushes.Gray;
+            
+            emptyLabel.HorizontalContentAlignment = HorizontalAlignment.Center;
+            emptyLabel.VerticalContentAlignment = VerticalAlignment.Center;
+            Border labelBorderEmpty = new Border();
+            labelBorderEmpty.Background = Brushes.White;
+            labelBorderEmpty.BorderBrush = Brushes.Black;
+            labelBorderEmpty.BorderThickness = new Thickness(0);
+            labelBorderEmpty.Child = emptyLabel;
+
+            sp.Children.Add(labelBorder);
+            sp.Children.Add(buttonBorder);
+            sp.Children.Add(labelBorderEmpty);
+            button.Click += new RoutedEventHandler(buttonCategory_Click);
+            
+            WrapPanelProductCategories.Children.Add(sp);
+        }
         private void FillWrapPanelProductCategories()
         {
             if (ParentCatId > 0)
@@ -45,37 +113,13 @@ namespace CamcoManufacturing.View
                 if (parentCat != null)
                 {
                     var name= parentCat.Name.Replace(" ", String.Empty);
-                    var test = Regex.Replace(name, "[^a-zA-Z0-9_.]+", "", RegexOptions.Compiled);
-                    this.Name= Regex.Replace(test, @"[\d-]", string.Empty);
+                    var abc = Regex.Replace(parentCat.Name, @"[^0-9a-zA-Z]+", "");
+                    this.Name = Regex.Replace(abc, @"[\d-]", string.Empty);
                 }
                 var ParentCategories = db.tCategories.Where(p => p.ParentId == ParentCatId).ToList();
                 foreach (var item in ParentCategories)
                 {
-                    Button button = new Button();
-                    button.Content = item.Name;
-                    button.Width = 140;
-                    button.Height = 80;
-                    if (item.CategoryImage != null)
-                    {
-                        ImageBrush brush;
-                        BitmapImage bi;
-                        using (var ms = new MemoryStream(item.CategoryImage))
-                        {
-                            brush = new ImageBrush();
-
-                            bi = new BitmapImage();
-                            bi.BeginInit();
-                            bi.CreateOptions = BitmapCreateOptions.None;
-                            bi.CacheOption = BitmapCacheOption.OnLoad;
-                            bi.StreamSource = ms;
-                            bi.EndInit();
-                        }
-
-                        brush.ImageSource = bi;
-                        button.Background = brush;
-                    }
-                    button.Click += new RoutedEventHandler(buttonCategory_Click);
-                    WrapPanelProductCategories.Children.Add(button);
+                    AddNeWrapPanel1(item);
                 }
             }
             else
@@ -83,31 +127,7 @@ namespace CamcoManufacturing.View
                 var ParentCategories = db.tCategories.Where(p => p.ParentId == null).ToList();
                 foreach (var item in ParentCategories)
                 {
-                    Button button = new Button();
-                    button.Content = item.Name;
-                    button.Width = 140;
-                    button.Height = 80;
-                    if (item.CategoryImage != null)
-                    {
-                        ImageBrush brush;
-                        BitmapImage bi;
-                        using (var ms = new MemoryStream(item.CategoryImage))
-                        {
-                            brush = new ImageBrush();
-
-                            bi = new BitmapImage();
-                            bi.BeginInit();
-                            bi.CreateOptions = BitmapCreateOptions.None;
-                            bi.CacheOption = BitmapCacheOption.OnLoad;
-                            bi.StreamSource = ms;
-                            bi.EndInit();
-                        }
-
-                        brush.ImageSource = bi;
-                        button.Background = brush;
-                    }
-                    button.Click += new RoutedEventHandler(buttonCategory_Click);
-                    WrapPanelProductCategories.Children.Add(button);
+                    AddNeWrapPanel1(item);
                 }
             }
         }
@@ -196,6 +216,11 @@ namespace CamcoManufacturing.View
                 View.View_AllCategories obj = new View.View_AllCategories();
                 obj.ShowDialog();
             }
+        }
+
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

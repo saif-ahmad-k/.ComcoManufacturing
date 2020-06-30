@@ -54,6 +54,10 @@ namespace CamcoManufacturing.View
                     product.ProductName = textBoxProductName.Text;
                     product.Cost = textBoxProductCost.Text.ToDecimal();
                     product.QRN = textBoxProductQRN.Text;
+                    product.Code = textBoxProductCode.Text;
+                    product.PartNumber = textBoxProductPartNumber.Text;
+                    product.Length = textBoxProductLength.Text;
+                    product.Diameter = textBoxProductDiameter.Text;
                     tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
                     if (selectedProductCategory != null)
                     {
@@ -92,6 +96,7 @@ namespace CamcoManufacturing.View
                     textBoxProductName.Text = "";
                     textBoxProductCost.Text = "0";
                     textBoxProductQRN.Text = "";
+                    this.Close();
                 }
                 //FillControls();
             }
@@ -281,6 +286,11 @@ namespace CamcoManufacturing.View
             {
                 CheckBoxColletBlade.IsChecked = true;
             }
+        }
+
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

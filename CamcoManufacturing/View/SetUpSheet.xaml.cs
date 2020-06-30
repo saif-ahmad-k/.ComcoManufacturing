@@ -274,7 +274,7 @@ namespace CamcoManufacturing.View
         {
             tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
             cmbProductCategory.ItemsSource = null;
-            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null).ToList();
+            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null && p.MachineId == selectedMachine.Machine_Id).ToList();
             fillCategoriesComboBoxes(selectedMachine.Machine_Id);
         }
 
@@ -282,7 +282,7 @@ namespace CamcoManufacturing.View
         {
             tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
             cmbProductCategory.ItemsSource = null;
-            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null).ToList();
+            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null && p.MachineId == selectedMachine.Machine_Id).ToList();
             fillCategoriesComboBoxes(selectedMachine.Machine_Id);
 
         }
@@ -402,8 +402,17 @@ namespace CamcoManufacturing.View
             tblCategory selectedTurret = (tblCategory)cmbProductCategory.SelectedItem;
             if (selectedTurret != null)
             {
-                View.View_SubCategory obj = new View.View_SubCategory(selectedTurret.Category_ID, 3);
-                obj.ShowDialog();
+                var cats = db.tCategories.Where(p => p.ParentId == selectedTurret.Category_ID).ToList();
+                if (cats.Count > 0)
+                {
+                    View.View_SubCategory obj = new View.View_SubCategory(selectedTurret.Category_ID, 3);
+                    obj.ShowDialog();
+                }
+                else
+                {
+                    View.View_Product obj = new View.View_Product(selectedTurret.Category_ID, 0, 3, 1, null);
+                    obj.ShowDialog();
+                }
             }
         }
 

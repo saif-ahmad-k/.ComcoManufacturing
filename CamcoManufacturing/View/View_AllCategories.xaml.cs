@@ -63,5 +63,10 @@ namespace CamcoManufacturing.View
                 FillControls();
             }
         }
+
+        private void ButtonReturn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
