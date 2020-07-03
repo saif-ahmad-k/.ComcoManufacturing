@@ -9,13 +9,13 @@
     <Grid>
         <Image Source="/CamcoManufacturing;component/Images/CamcoBannerBackround.jpg" Height="102" VerticalAlignment="Top" Margin="0,0,-409,0"/>
         <Image Source="/CamcoManufacturing;component/Images/Camco_Manufacturing_Unofficial_Logo_Large.png" Height="53" VerticalAlignment="Top" Margin="0,5,559,0"/>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Width="340" HorizontalAlignment="Left" Margin="12,172,0,12">
+        <ScrollViewer Name="ScrollViewerProductParentsCategories" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Width="340" HorizontalAlignment="Left" Margin="12,172,0,12">
             <WrapPanel Name="WrapPanelProductParentsCategories" Orientation="Horizontal" Width="330"  />
         </ScrollViewer>
         <Button Name="ButtonAddNewProduct" Click="ButtonAddNewProduct_Click"  Content="Create Product" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="420,19,0,0" VerticalAlignment="Top" Width="151" Height="39"/>
         <Button x:Name="ButtonAddNewCategory" Click="ButtonAddNewCategory_Click"  Content="Create Category" Style="{StaticResource normalButton}" HorizontalAlignment="Left" Margin="162,19,0,0" VerticalAlignment="Top" Width="142" Height="39"/>
         <Label Name="LabelHolderType" Content="" Style="{StaticResource headingLabel1}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="154" FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="10,127,0,0"/>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Width="340" HorizontalAlignment="Left" Margin="386,172,0,12">
+        <ScrollViewer Name="ScrollViewerProductParentsCategories_Copy" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Width="340" HorizontalAlignment="Left" Margin="386,172,0,12">
             <WrapPanel Name="WrapPanelProductParentsCategories_Copy" Orientation="Horizontal" Width="330"  />
         </ScrollViewer>
         <Label x:Name="LabelHolderType_Copy" Style="{StaticResource headingLabel1}" Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="174"  FontFamily="Calibri" FontWeight="Bold" FontStretch="Expanded" Margin="386,127,0,0"/>

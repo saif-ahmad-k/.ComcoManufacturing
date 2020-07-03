@@ -171,6 +171,13 @@ namespace CamcoManufacturing.View
                     buttonColletBlade.Visibility = Visibility.Visible;
                 }
             }
+            if (WrapPanelProductParentsCategories_Copy.Children.Count == 0)
+            {
+                WrapPanelProductParentsCategories.Width = 610;
+                ScrollViewerProductParentsCategories.Width = 640;
+                ScrollViewerProductParentsCategories_Copy.Visibility = Visibility.Collapsed;
+                WrapPanelProductParentsCategories_Copy.Visibility = Visibility.Collapsed;
+            }
         }
         private void AddNeWrapPanel1(tblProduct item)
         {
@@ -179,6 +186,7 @@ namespace CamcoManufacturing.View
             button.Width = 150;
             button.Height = 80;
             button.Content = item.ProductName;
+            button.DataContext = item;
             if (item.ProductImage != null)
             {
                 ImageBrush brush;
@@ -261,6 +269,7 @@ namespace CamcoManufacturing.View
             button.Width = 150;
             button.Height = 80;
             button.Content = item.ProductName;
+            button.DataContext = item;
             if (item.ProductImage != null)
             {
                 ImageBrush brush;
@@ -355,23 +364,24 @@ namespace CamcoManufacturing.View
             this.Close();
             if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
             {
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 0);
                 obj.ShowDialog();
             }
             else
             {
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
                 win.Close();
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 0);
                 obj.ShowDialog();
             }
         }
         void buttonParentCategory_Click(object sender, RoutedEventArgs e)
         {
             List<int> HolderList = new List<int>();
-            Button btn = (Button)sender;
-            string Name = btn.Content.ToString();
-            var resultDetail = db.tProducts.Where(p => p.ProductName == Name).FirstOrDefault();
+            tblProduct resultDetail = ((Button)sender).DataContext as tblProduct;
+            //tblProduct btn = (tblProduct)sender;
+            //string Name = btn.ProductName.ToString();
+            //var resultDetail = db.tProducts.Where(p => p.ProductName == Name).FirstOrDefault();
             if (SequanceNumber > 0)
             {
                 if (resultDetail != null)
@@ -382,26 +392,31 @@ namespace CamcoManufacturing.View
                         {
                             if (SequanceNumber == 1)
                             {
+                                ((SetUpSheet)item).textBoxDrillTap.DataContext = resultDetail;
                                 ((SetUpSheet)item).textBoxDrillTap.Text = resultDetail.ProductName;
                                 ((SetUpSheet)item).textBoxQRN1.Text = resultDetail.QRN;
                             }
                             else if (SequanceNumber == 4)
                             {
+                                ((SetUpSheet)item).textBoxColletBlade.DataContext = resultDetail;
                                 ((SetUpSheet)item).textBoxColletBlade.Text = resultDetail.ProductName;
                                 ((SetUpSheet)item).textBoxQRN4.Text = resultDetail.QRN;
                             }
                             else if (SequanceNumber == 2)
                             {
+                                ((SetUpSheet)item).textBoxStickBore.DataContext = resultDetail;
                                 ((SetUpSheet)item).textBoxStickBore.Text = resultDetail.ProductName;
                                 ((SetUpSheet)item).textBoxQRN2.Text = resultDetail.QRN;
                             }
                             else if (SequanceNumber == 3)
                             {
+                                ((SetUpSheet)item).textBoxTurrentHolder.DataContext = resultDetail;
                                 ((SetUpSheet)item).textBoxTurrentHolder.Text = resultDetail.ProductName;
                                 ((SetUpSheet)item).textBoxQRN3.Text = resultDetail.QRN;
                             }
                             else
                             {
+                                ((SetUpSheet)item).textBoxTurrentHolder.DataContext = resultDetail;
                                 ((SetUpSheet)item).textBoxTurrentHolder.Text = resultDetail.ProductName;
                                 ((SetUpSheet)item).textBoxQRN3.Text = resultDetail.QRN;
                             }
@@ -504,14 +519,14 @@ namespace CamcoManufacturing.View
         {
             if (!HelperClass.IsWindowOpen(typeof(View.View_AllProducts)))
             {
-                View.View_AllProducts obj = new View.View_AllProducts();
+                View.View_AllProducts obj = new View.View_AllProducts(CategoryId, ParentProductId);
                 obj.ShowDialog();
             }
             else
             {
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "AllProducts");
                 win.Close();
-                View.View_AllProducts obj = new View.View_AllProducts();
+                View.View_AllProducts obj = new View.View_AllProducts(CategoryId, ParentProductId);
                 obj.ShowDialog();
             }
         }
@@ -525,14 +540,14 @@ namespace CamcoManufacturing.View
         {
             if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
             {
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 0);
                 obj.ShowDialog();
             }
             else
             {
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
                 win.Close();
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 0);
                 obj.ShowDialog();
             }
         }
@@ -541,14 +556,14 @@ namespace CamcoManufacturing.View
         {
             if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
             {
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 4);
                 obj.ShowDialog();
             }
             else
             {
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
                 win.Close();
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 4);
                 obj.ShowDialog();
             }
         }
@@ -557,14 +572,14 @@ namespace CamcoManufacturing.View
         {
             if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
             {
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 3);
                 obj.ShowDialog();
             }
             else
             {
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "ViewProduct");
                 win.Close();
-                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId);
+                View.CreateNew_Product obj = new View.CreateNew_Product(CategoryId, ParentProductId, 3);
                 obj.ShowDialog();
             }
         }

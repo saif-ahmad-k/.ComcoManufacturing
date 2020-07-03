@@ -20,17 +20,26 @@ namespace CamcoManufacturing.View
     /// </summary>
     public partial class View_AllCategories : Window
     {
+        int CategoryId = 0;
         BaseDataContext db = new BaseDataContext();
-        public View_AllCategories()
+        public View_AllCategories(int parent)
         {
             InitializeComponent();
+            CategoryId = parent;
             HelperClass.ShowWindowPath(PathLabel);
             FillControls();
         }
         private void FillControls()
         {
             dataGridCategory.ItemsSource = null;
-            dataGridCategory.ItemsSource = db.tCategories.ToList();
+            if (CategoryId > 0)
+            {
+                dataGridCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == CategoryId).ToList();
+            }
+            else
+            {
+                dataGridCategory.ItemsSource = db.tCategories.ToList();
+            }
             
         }
         private void EditCategory_Click(object sender, RoutedEventArgs e)

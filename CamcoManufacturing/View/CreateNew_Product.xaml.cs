@@ -28,7 +28,8 @@ namespace CamcoManufacturing.View
         string imagePath;
         int ParentCategoryId = 0;
         int ParentProductId = 0;
-        public CreateNew_Product(int CategoryId, int ParentProduct)
+        int colletInsertVisibilty = 0;
+        public CreateNew_Product(int CategoryId, int ParentProduct, int ColletOrInsert)
         {
             InitializeComponent();
             if (CategoryId > 0)
@@ -39,6 +40,7 @@ namespace CamcoManufacturing.View
             {
                 ParentProductId = ParentProduct;
             }
+            colletInsertVisibilty = ColletOrInsert;
             HelperClass.ShowWindowPath(PathLabel);
             FillControls(ParentCategoryId, ParentProductId);
         }
@@ -117,12 +119,7 @@ namespace CamcoManufacturing.View
                 isProductValid = false;
                 MessageBox.Show("Product Name is mandatory!");
             }
-            else if (String.IsNullOrEmpty(textBoxProductCost.Text))
-            {
-                isProductValid = false;
-                MessageBox.Show("Cost is mandatory!");
-            }
-            else if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text).FirstOrDefault() != null)
+            else if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).FirstOrDefault() != null)
             {
                 isProductValid = false;
                 MessageBox.Show("Name already exist!");
@@ -210,6 +207,29 @@ namespace CamcoManufacturing.View
             {
                 cmbParentProduct.ItemsSource = null;
                 cmbParentProduct.ItemsSource = db.tProducts.ToList();
+            }
+            if (cmbParentProduct.SelectedIndex > -1)
+            {
+                labelParentProduct.Content = "Select Parent";
+                cmbParentProductCategory.Visibility = Visibility.Hidden;
+                labelCategory.Visibility = Visibility.Hidden;
+            }
+            else if(cmbParentProductCategory.SelectedIndex > -1)
+            {
+                labelCategory.Content = "Select Parent";
+                cmbParentProduct.Visibility = Visibility.Hidden;
+                labelParentProduct.Visibility = Visibility.Hidden;
+            }
+            if (colletInsertVisibilty == 3)
+            {
+                CheckBoxInsert.Visibility = Visibility.Visible;
+                CheckBoxColletBlade.Visibility = Visibility.Collapsed;
+                CheckBoxInsert.IsChecked = true;
+            }else if(colletInsertVisibilty == 4)
+            {
+                CheckBoxInsert.Visibility = Visibility.Collapsed;
+                CheckBoxColletBlade.Visibility = Visibility.Visible;
+                CheckBoxColletBlade.IsChecked = true;
             }
         }
 

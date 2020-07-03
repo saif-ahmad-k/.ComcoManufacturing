@@ -124,6 +124,7 @@
         <Button x:Name="buttonAddExistingColletBlade" Style="{StaticResource blackButtonStyle}" Content="Find Existing" HorizontalAlignment="Left" Margin="568,390,0,0" VerticalAlignment="Top" Width="76" Height="32" FontSize="10" Click="ButtonAddExistingColletBlade_Click"/>
         <Button x:Name="buttonAddColletBlade" Style="{StaticResource blackButtonStyle}" Content="Add New" HorizontalAlignment="Left" Margin="568,427,0,0" VerticalAlignment="Top" Width="76" Height="27" FontSize="10" Click="ButtonAddColletBlade_Click"/>
         <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="0,80,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
+        <Button x:Name="buttonClear" Style="{StaticResource blackButtonStyle}" Content="CLEAR ALL" HorizontalAlignment="Left" Margin="783,32,0,0" VerticalAlignment="Top" Width="164" Height="51" Click="ButtonClear_Click"/>
 
     </Grid>
 </Window>

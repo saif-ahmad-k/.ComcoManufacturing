@@ -43,6 +43,7 @@ namespace CamcoManufacturing.View
             button.Width = 150;
             button.Height = 80;
             button.Content = item.Name;
+            button.DataContext = item;
             if (item.CategoryImage != null)
             {
                 ImageBrush brush;
@@ -149,9 +150,8 @@ namespace CamcoManufacturing.View
         }
         void buttonCategory_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = (Button)sender;
-
-            var category = db.tCategories.Where(p => p.Name == btn.Content.ToString()).FirstOrDefault();
+            tblCategory category = ((Button)sender).DataContext as tblCategory;
+            //var category = db.tCategories.Where(p => p.Name == btn.Content.ToString()).FirstOrDefault();
             if (category != null)
             {
                 var subCats = db.tCategories.Where(p => p.ParentId == category.Category_ID).ToList();
@@ -206,14 +206,14 @@ namespace CamcoManufacturing.View
             //this.Close();
             if (!HelperClass.IsWindowOpen(typeof(View.View_AllCategories)))
             {
-                View.View_AllCategories obj = new View.View_AllCategories();
+                View.View_AllCategories obj = new View.View_AllCategories(ParentCatId);
                 obj.ShowDialog();
             }
             else
             {
                 Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "AllCategories");
                 win.Close();
-                View.View_AllCategories obj = new View.View_AllCategories();
+                View.View_AllCategories obj = new View.View_AllCategories(ParentCatId);
                 obj.ShowDialog();
             }
         }

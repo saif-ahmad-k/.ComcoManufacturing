@@ -203,25 +203,32 @@ namespace CamcoManufacturing.View
         private void CmbPart_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tblParts selectedPart = (tblParts)cmbPart.SelectedItem;
-            MaterialTxt.Text = selectedPart.Material;
-            if (selectedPart.CustomerId != null)
+            if (selectedPart != null)
             {
-                cmbCustomer.SelectedValue = selectedPart.CustomerId;
+                MaterialTxt.Text = selectedPart.Material;
+                if (selectedPart.CustomerId != null)
+                {
+                    cmbCustomer.SelectedValue = selectedPart.CustomerId;
+                }
+                cmbOperation.ItemsSource = null;
+                cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).ToList();
             }
-            cmbOperation.ItemsSource = null;
-            cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).ToList();
+            
         }
 
         private void CmbPart_SelectionChanged(object sender, KeyEventArgs e)
         {
             tblParts selectedPart = (tblParts)cmbPart.SelectedItem;
-            MaterialTxt.Text = selectedPart.Material;
-            if (selectedPart.CustomerId != null)
+            if (selectedPart != null)
             {
-                cmbCustomer.SelectedValue = selectedPart.CustomerId;
+                MaterialTxt.Text = selectedPart.Material;
+                if (selectedPart.CustomerId != null)
+                {
+                    cmbCustomer.SelectedValue = selectedPart.CustomerId;
+                }
+                cmbOperation.ItemsSource = null;
+                cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).ToList();
             }
-            cmbOperation.ItemsSource = null;
-            cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).ToList();
         }
 
         private void ButtonAddDetailsRow_Click(object sender, RoutedEventArgs e)
@@ -265,6 +272,8 @@ namespace CamcoManufacturing.View
             textBoxQRN1.Text = "";
             textBoxQRN2.Text = "";
             textBoxQRN3.Text = "";
+            textBoxColletBlade.Text = "";
+            textBoxQRN4.Text = "";
             //cmbCategory1.SelectedValue = 0;
             //cmbCategory2.SelectedValue = 0;
             //cmbCategory3.SelectedValue = 0;
@@ -273,17 +282,24 @@ namespace CamcoManufacturing.View
         private void CmbMachine_KeyDown(object sender, KeyEventArgs e)
         {
             tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
-            cmbProductCategory.ItemsSource = null;
-            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null && p.MachineId == selectedMachine.Machine_Id).ToList();
-            fillCategoriesComboBoxes(selectedMachine.Machine_Id);
+            if (selectedMachine != null)
+            {
+                cmbProductCategory.ItemsSource = null;
+                cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null && p.MachineId == selectedMachine.Machine_Id).ToList();
+                fillCategoriesComboBoxes(selectedMachine.Machine_Id);
+            }
+            
         }
 
         private void CmbMachine_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             tblMachineType selectedMachine = (tblMachineType)cmbMachine.SelectedItem;
-            cmbProductCategory.ItemsSource = null;
-            cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null && p.MachineId == selectedMachine.Machine_Id).ToList();
-            fillCategoriesComboBoxes(selectedMachine.Machine_Id);
+            if (selectedMachine != null)
+            {
+                cmbProductCategory.ItemsSource = null;
+                cmbProductCategory.ItemsSource = db.tCategories.Where(p => p.ParentId == null && p.MachineId == selectedMachine.Machine_Id).ToList();
+                fillCategoriesComboBoxes(selectedMachine.Machine_Id);
+            }
 
         }
         private void fillCategoriesComboBoxes(int MachineId)
@@ -418,7 +434,8 @@ namespace CamcoManufacturing.View
 
         private void ButtonAddExistingStickHolder_Click(object sender, RoutedEventArgs e)
         {
-            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxTurrentHolder.Text).FirstOrDefault();
+            tblProduct resultDetail = ((TextBox)textBoxTurrentHolder).DataContext as tblProduct;
+            //var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxTurrentHolder.Text).FirstOrDefault();
             if (resultDetail != null)
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.View_Product)))
@@ -441,7 +458,9 @@ namespace CamcoManufacturing.View
         {
             if(textBoxStickBore.Text!=null && textBoxStickBore.Text != "".Trim())
             {
-                var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+                tblProduct resultDetail = ((TextBox)textBoxStickBore).DataContext as tblProduct;
+
+                //var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
                 if (resultDetail != null)
                 {
                     if (!HelperClass.IsWindowOpen(typeof(View.View_Product)))
@@ -472,19 +491,19 @@ namespace CamcoManufacturing.View
 
         private void ButtonAddStickHolder_Click(object sender, RoutedEventArgs e)
         {
-            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxTurrentHolder.Text).FirstOrDefault();
+            tblProduct resultDetail = ((TextBox)textBoxTurrentHolder).DataContext as tblProduct;
             if (resultDetail != null)
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 0);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 0);
                     obj.ShowDialog();
                 }
             }
@@ -492,14 +511,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 0);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 0);
                     obj.ShowDialog();
                 }
             }
@@ -508,19 +527,19 @@ namespace CamcoManufacturing.View
 
         private void ButtonAddNewInsert_Click(object sender, RoutedEventArgs e)
         {
-            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+            tblProduct resultDetail = ((TextBox)textBoxStickBore).DataContext as tblProduct;
             if (resultDetail != null)
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 3);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 3);
                     obj.ShowDialog();
                 }
             }
@@ -528,14 +547,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 3);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 3);
                     obj.ShowDialog();
                 }
             }
@@ -543,7 +562,7 @@ namespace CamcoManufacturing.View
 
         private void ButtonAddExistingColletBlade_Click(object sender, RoutedEventArgs e)
         {
-            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+            tblProduct resultDetail = ((TextBox)textBoxStickBore).DataContext as tblProduct;
             if (resultDetail != null)
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.View_Product)))
@@ -563,19 +582,19 @@ namespace CamcoManufacturing.View
 
         private void ButtonAddColletBlade_Click(object sender, RoutedEventArgs e)
         {
-            var resultDetail = db.tProducts.Where(p => p.ProductName == textBoxStickBore.Text).FirstOrDefault();
+            tblProduct resultDetail = ((TextBox)textBoxStickBore).DataContext as tblProduct;
             if (resultDetail != null)
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 4);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 4);
                     obj.ShowDialog();
                 }
             }
@@ -583,17 +602,62 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 4);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 4);
                     obj.ShowDialog();
                 }
             }
+        }
+
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            ClearHeaderControls();
+            ClearRowControls();
+            dataGridCamcoRecordDetails.ItemsSource = null;
+            dataGridCamcoRecordDetails.Items.Clear();
+            FillControls();
+        }
+        private void ClearHeaderControls()
+        {
+            cmbPart.ItemsSource = null;
+            txtCNCProgram.Text = "";
+            cmbChuckCollet.ItemsSource = null;
+            textBoxColletJawsQRN.Text = "";
+            cmbMachine.ItemsSource = null;
+            cmbProductCategory.ItemsSource = null;
+            cmbEmployee.ItemsSource = null;
+            txtCycletime.Text = "";
+            textBoxChuckPressure.Text = "";
+            MaterialTxt.Text = "";
+            cmbCustomer.ItemsSource = null;
+            cmbOperation.ItemsSource = null;
+        }
+        private void ClearRowControls()
+        {
+            cmbPart.ItemsSource = null;
+            textBoxLineNumber.Text = "";
+            textBoxToolNumber.Text = "";
+            textBoxOffSetNumber.Text = "";
+            textBoxToolDescription.Text = "";
+            textBoxSFMRPM.Text = "";
+            textBoxFeed.Text = "";
+            textBoxProjection.Text = "";
+            textBoxFeed.Text = "";
+            textBoxDrillTap.Text = "";
+            textBoxQRN1.Text = "";
+            textBoxColletBlade.Text = "";
+            textBoxQRN4.Text = "";
+            textBoxStickBore.Text = "";
+            textBoxQRN2.Text = "";
+            textBoxQRN3.Text = "";
+            textBoxTurrentHolder.Text = "";
+            
         }
     }
 }

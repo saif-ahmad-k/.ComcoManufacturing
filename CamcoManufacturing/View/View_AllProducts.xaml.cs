@@ -21,16 +21,31 @@ namespace CamcoManufacturing.View
     public partial class View_AllProducts : Window
     {
         BaseDataContext db = new BaseDataContext();
-        public View_AllProducts()
+        int CategoryId = 0;
+        int ParentProductId = 0;
+        public View_AllProducts(int category,int parentProduct)
         {
             InitializeComponent();
+            CategoryId = category;
+            ParentProductId = parentProduct;
             HelperClass.ShowWindowPath(PathLabel);
             FillControls();
         }
         private void FillControls()
         {
             dataGridProducts.ItemsSource = null;
-            dataGridProducts.ItemsSource = db.tProducts.ToList();
+            if (ParentProductId > 0)
+            {
+                dataGridProducts.ItemsSource = db.tProducts.Where(p => p.ParentId == ParentProductId).ToList();
+            }else if (CategoryId > 0)
+            {
+                dataGridProducts.ItemsSource = db.tProducts.Where(p => p.CategoryId == CategoryId).ToList();
+            }
+            else
+            {
+                dataGridProducts.ItemsSource = db.tProducts.ToList();
+            }
+            
         }
         private void EditCategory_Click(object sender, RoutedEventArgs e)
         {

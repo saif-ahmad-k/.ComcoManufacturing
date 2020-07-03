@@ -51,11 +51,6 @@ namespace CamcoManufacturing.View
                 isProductValid = false;
                 MessageBox.Show("Product Name is mandatory!");
             }
-            else if (String.IsNullOrEmpty(textBoxProductCost.Text))
-            {
-                isProductValid = false;
-                MessageBox.Show("Cost is mandatory!");
-            }
         }
         private void FillControls(int ProdId)
         {
@@ -75,6 +70,16 @@ namespace CamcoManufacturing.View
             textBoxProductName.Text = ExistingProduct.ProductName;
             textBoxProductQRN.Text = ExistingProduct.QRN;
             textBoxProductCost.Text = ExistingProduct.Cost.ToString();
+            if(ExistingProduct.HolderTypeId == 3)
+            {
+                CheckBoxInsert.IsChecked = true;
+                CheckBoxColletBlade.IsChecked = false;
+            }
+            else if (ExistingProduct.HolderTypeId == 4)
+            {
+                CheckBoxColletBlade.IsChecked = true;
+                CheckBoxInsert.IsChecked = false;
+            }
         }
         private void ButtonSaveProduct_Click(object sender, RoutedEventArgs e)
         {
@@ -103,6 +108,10 @@ namespace CamcoManufacturing.View
                     textBoxProductCost.Text = "0";
                     textBoxProductQRN.Text = "";
                     this.Close();
+                }
+                else
+                {
+                    isProductValid = true;
                 }
                 //FillControls();
             }
@@ -155,6 +164,55 @@ namespace CamcoManufacturing.View
         private void ButtonReturn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ButtonAddNewProduct_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                CheckProductValidations();
+                if (isProductValid)
+                {
+                    if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).FirstOrDefault() != null)
+                    {
+                        MessageBox.Show("Name already exist!");
+                    }
+                    else
+                    {
+                        var newprod = new tblProduct();
+                        newprod.ProductName = textBoxProductName.Text;
+                        newprod.Cost = textBoxProductCost.Text.ToDecimal();
+                        newprod.QRN = textBoxProductQRN.Text;
+                        newprod.Code = textBoxProductCode.Text;
+                        newprod.PartNumber = textBoxProductPartNumber.Text;
+                        newprod.Length = textBoxProductLength.Text;
+                        newprod.Diameter = textBoxProductDiameter.Text;
+                        tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
+                        if (selectedProductCategory != null)
+                        {
+                            newprod.CategoryId = selectedProductCategory.Category_ID;
+                        }
+                        newprod.ProductImage = _imageBytes;
+                        db.tProducts.Add(newprod);
+                        db.SaveChanges();
+                        MessageBox.Show("Updated SuccessFully!");
+                        textBoxProductName.Text = "";
+                        textBoxProductCost.Text = "0";
+                        textBoxProductQRN.Text = "";
+                        this.Close();
+                    }
+
+                }
+                else
+                {
+                    isProductValid = true;
+                }
+                //FillControls();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
