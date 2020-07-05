@@ -49,5 +49,7 @@ namespace DataModel.Models
                 }
             }
         }
+        [NotMapped]
+        public bool isSelected { get; set; }
     }
 }

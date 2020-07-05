@@ -81,7 +81,7 @@
         <TextBox Name="textBoxTurrentHolder" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1022,390,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="64" Width="125" FontSize="13.5" Background="#FFCFE3EE" FontWeight="Bold" Text="" />
         <TextBox Name="textBoxQRN3" HorizontalAlignment="Left" Height="34" Margin="1022,454,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" RenderTransformOrigin="1.905,4.1" Background="#FFCFE3EE"/>
         <Button x:Name="buttonAddDetailsRow" Style="{StaticResource menuButton}" Content="Add Line" HorizontalAlignment="Left" Margin="1048,493,0,0" VerticalAlignment="Top" Width="134" Height="47" RenderTransformOrigin="2.159,-1.452" Click="ButtonAddDetailsRow_Click"/>
-        <DataGrid x:Name="dataGridCamcoRecordDetails" HorizontalAlignment="Left" Height="130" Margin="23,493,0,0" VerticalAlignment="Top" Width="1023" AutoGenerateColumns="False">
+        <DataGrid x:Name="dataGridCamcoRecordDetails" IsReadOnly="True" MouseDoubleClick="DataGridCamcoRecordDetails_MouseDoubleClick" HorizontalAlignment="Left" Height="130" Margin="23,493,0,0" VerticalAlignment="Top" Width="1023" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Line#" Width="7.5*" Binding="{Binding lineNumber}"/>
                 <DataGridTextColumn Header="Tool#" Width="7.5*" Binding="{Binding toolNumber}"/>

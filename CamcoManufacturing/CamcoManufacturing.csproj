@@ -122,6 +122,7 @@
       <DependentUpon>CamcoRecordReportView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\HelperClass.cs" />
+    <Compile Include="Models\SelectableObject.cs" />
     <Compile Include="Reports.cs">
       <DependentUpon>Reports.xsd</DependentUpon>
     </Compile>

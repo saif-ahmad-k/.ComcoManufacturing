@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -233,24 +234,49 @@ namespace CamcoManufacturing.View
 
         private void ButtonAddDetailsRow_Click(object sender, RoutedEventArgs e)
         {
-            dataGridCamcoRecordDetails.Items.Add(new
+            if(buttonAddDetailsRow.Content.Equals("Update Line"))
             {
-                lineNumber = textBoxLineNumber.Text,
-                toolNumber = textBoxToolNumber.Text,
-                OffSetNumber = textBoxOffSetNumber.Text,
-                ToolDescription = textBoxToolDescription.Text,
-                SFM_RPM = textBoxSFMRPM.Text,
-                FEEDiN_REV = textBoxFeed.Text,
-                Projection = textBoxProjection.Text,
-                InsertDrillTap = textBoxDrillTap.Text,
-                StickHolderBore = textBoxStickBore.Text,
-                HolderOnTurret = textBoxTurrentHolder.Text,
-                QRN1 = textBoxQRN1.Text,
-                QRN2 = textBoxQRN2.Text,
-                QRN3 = textBoxQRN3.Text,
-                ColletBlade = textBoxColletBlade.Text,
-                QRN4 = textBoxQRN4.Text,
-            });
+                var data = dataGridCamcoRecordDetails.SelectedItem;
+                (dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock).Text = textBoxLineNumber.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[1].Column.GetCellContent(data) as TextBlock).Text = textBoxToolNumber.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[2].Column.GetCellContent(data) as TextBlock).Text = textBoxOffSetNumber.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[3].Column.GetCellContent(data) as TextBlock).Text = textBoxToolDescription.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[4].Column.GetCellContent(data) as TextBlock).Text = textBoxSFMRPM.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[5].Column.GetCellContent(data) as TextBlock).Text = textBoxFeed.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[6].Column.GetCellContent(data) as TextBlock).Text = textBoxProjection.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[7].Column.GetCellContent(data) as TextBlock).Text = textBoxDrillTap.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[8].Column.GetCellContent(data) as TextBlock).Text = textBoxQRN1.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[9].Column.GetCellContent(data) as TextBlock).Text = textBoxStickBore.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[10].Column.GetCellContent(data) as TextBlock).Text = textBoxQRN2.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[11].Column.GetCellContent(data) as TextBlock).Text = textBoxTurrentHolder.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[12].Column.GetCellContent(data) as TextBlock).Text = textBoxQRN3.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[13].Column.GetCellContent(data) as TextBlock).Text = textBoxColletBlade.Text;
+                (dataGridCamcoRecordDetails.SelectedCells[14].Column.GetCellContent(data) as TextBlock).Text = textBoxQRN4.Text;
+                buttonAddDetailsRow.Content = "Add Line";
+                
+            }
+            else
+            {
+                dataGridCamcoRecordDetails.Items.Add(new
+                {
+                    lineNumber = textBoxLineNumber.Text,
+                    toolNumber = textBoxToolNumber.Text,
+                    OffSetNumber = textBoxOffSetNumber.Text,
+                    ToolDescription = textBoxToolDescription.Text,
+                    SFM_RPM = textBoxSFMRPM.Text,
+                    FEEDiN_REV = textBoxFeed.Text,
+                    Projection = textBoxProjection.Text,
+                    InsertDrillTap = textBoxDrillTap.Text,
+                    StickHolderBore = textBoxStickBore.Text,
+                    HolderOnTurret = textBoxTurrentHolder.Text,
+                    QRN1 = textBoxQRN1.Text,
+                    QRN2 = textBoxQRN2.Text,
+                    QRN3 = textBoxQRN3.Text,
+                    ColletBlade = textBoxColletBlade.Text,
+                    QRN4 = textBoxQRN4.Text,
+                });
+            }
+            
             if (dataGridCamcoRecordDetails.HasItems)
             {
                 ClearCamcoDetailControls();
@@ -429,6 +455,7 @@ namespace CamcoManufacturing.View
                     View.View_Product obj = new View.View_Product(selectedTurret.Category_ID, 0, 3, 1, null);
                     obj.ShowDialog();
                 }
+
             }
         }
 
@@ -496,14 +523,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 0, 2);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 0, 2);
                     obj.ShowDialog();
                 }
             }
@@ -511,14 +538,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 0, 2);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 0);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 0, 2);
                     obj.ShowDialog();
                 }
             }
@@ -532,14 +559,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 3);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 3, 1);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 3);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 3, 1);
                     obj.ShowDialog();
                 }
             }
@@ -547,14 +574,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 3);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 3, 1);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 3);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 3, 1);
                     obj.ShowDialog();
                 }
             }
@@ -587,14 +614,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 4);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 4, 4);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 4);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, resultDetail.Product_ID, 4, 4);
                     obj.ShowDialog();
                 }
             }
@@ -602,14 +629,14 @@ namespace CamcoManufacturing.View
             {
                 if (!HelperClass.IsWindowOpen(typeof(View.CreateNew_Product)))
                 {
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 4);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 4, 4);
                     obj.ShowDialog();
                 }
                 else
                 {
                     Window win = Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.Name == "CreateProduct");
                     win.Close();
-                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 4);
+                    View.CreateNew_Product obj = new View.CreateNew_Product(0, 0, 4, 4);
                     obj.ShowDialog();
                 }
             }
@@ -622,6 +649,7 @@ namespace CamcoManufacturing.View
             dataGridCamcoRecordDetails.ItemsSource = null;
             dataGridCamcoRecordDetails.Items.Clear();
             FillControls();
+            isValidte = true;
         }
         private void ClearHeaderControls()
         {
@@ -658,6 +686,30 @@ namespace CamcoManufacturing.View
             textBoxQRN3.Text = "";
             textBoxTurrentHolder.Text = "";
             
+        }
+
+        private void DataGridCamcoRecordDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            //DataGridRow row = sender as DataGridRow;
+            //if (dataGridCamcoRecordDetails.SelectedItem == null) return;
+            //var selectedPerson = dataGridCamcoRecordDetails.SelectedItem as ComcoRecordDetail;
+            var data = dataGridCamcoRecordDetails.SelectedItem;
+            textBoxLineNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxToolNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[1].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxOffSetNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[2].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxToolDescription.Text = (dataGridCamcoRecordDetails.SelectedCells[3].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxSFMRPM.Text = (dataGridCamcoRecordDetails.SelectedCells[4].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxFeed.Text = (dataGridCamcoRecordDetails.SelectedCells[5].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxProjection.Text = (dataGridCamcoRecordDetails.SelectedCells[6].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxDrillTap.Text = (dataGridCamcoRecordDetails.SelectedCells[7].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN1.Text = (dataGridCamcoRecordDetails.SelectedCells[8].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxStickBore.Text = (dataGridCamcoRecordDetails.SelectedCells[9].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN2.Text = (dataGridCamcoRecordDetails.SelectedCells[10].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxTurrentHolder.Text = (dataGridCamcoRecordDetails.SelectedCells[11].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN3.Text = (dataGridCamcoRecordDetails.SelectedCells[12].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxColletBlade.Text = (dataGridCamcoRecordDetails.SelectedCells[13].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN4.Text = (dataGridCamcoRecordDetails.SelectedCells[14].Column.GetCellContent(data) as TextBlock).Text;
+            buttonAddDetailsRow.Content = "Update Line";
         }
     }
 }

@@ -29,7 +29,8 @@ namespace CamcoManufacturing.View
         int ParentCategoryId = 0;
         int ParentProductId = 0;
         int colletInsertVisibilty = 0;
-        public CreateNew_Product(int CategoryId, int ParentProduct, int ColletOrInsert)
+        int SequanceNumber = 0;
+        public CreateNew_Product(int CategoryId, int ParentProduct, int ColletOrInsert, int Sequance)
         {
             InitializeComponent();
             if (CategoryId > 0)
@@ -40,6 +41,7 @@ namespace CamcoManufacturing.View
             {
                 ParentProductId = ParentProduct;
             }
+            SequanceNumber = Sequance;
             colletInsertVisibilty = ColletOrInsert;
             HelperClass.ShowWindowPath(PathLabel);
             FillControls(ParentCategoryId, ParentProductId);
@@ -99,6 +101,20 @@ namespace CamcoManufacturing.View
                     textBoxProductCost.Text = "0";
                     textBoxProductQRN.Text = "";
                     this.Close();
+                    //if(product.ParentId != null && product.CategoryId != null)
+                    //{
+                    //    View.View_Product obj = new View.View_Product(product.CategoryId.ToString().ToInteger(), product.ParentId.ToString().ToInteger(), SequanceNumber, product.HolderTypeId.ToString().ToInteger(), null);
+                    //    obj.ShowDialog();
+                    //}
+                    if (product.ParentId != null)
+                    {
+                        View.View_Product obj = new View.View_Product(0, product.ParentId.ToString().ToInteger(), SequanceNumber, product.HolderTypeId.ToString().ToInteger(), null);
+                        obj.ShowDialog();
+                    }else if(product.CategoryId != null)
+                    {
+                        View.View_Product obj = new View.View_Product(product.CategoryId.ToString().ToInteger(), 0, SequanceNumber, product.HolderTypeId.ToString().ToInteger(), null);
+                        obj.ShowDialog();
+                    }
                 }
                 //FillControls();
             }

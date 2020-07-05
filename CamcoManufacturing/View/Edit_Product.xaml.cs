@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,7 @@ namespace CamcoManufacturing.View
         }
         private void CheckProductValidations()
         {
-            if (cmbParentProductCategory.SelectedIndex == -1)
+            if (ComboBoxCategory.SelectedItems.Count == 0)
             {
                 isProductValid = false;
                 MessageBox.Show("Category is mandatory!");
@@ -54,19 +55,24 @@ namespace CamcoManufacturing.View
         }
         private void FillControls(int ProdId)
         {
+            var CategoryList = new List<tblCategory>();
             var Category = db.tCategories.Find(ExistingProduct.CategoryId);
-            cmbParentProductCategory.ItemsSource = null;
-            cmbParentProductCategory.ItemsSource = db.tCategories.ToList();
+            ComboBoxCategory.ItemsSource = null;
+            ComboBoxCategory.ItemsSource = db.tCategories.ToList();
             if (Category!=null)
             {
                 int index = -1;
-                foreach (tblCategory cmbItem in cmbParentProductCategory.Items)
+                foreach (tblCategory cmbItem in ComboBoxCategory.Items)
                 {
+                    cmbItem.isSelected = false;
                     index++; if (cmbItem.Category_ID == Category.Category_ID)
-                    { break; }
+                    {
+                        ComboBoxCategory.SelectedItems.Add(cmbItem);
+                        break; }
                 }
-                cmbParentProductCategory.SelectedIndex = index;
+                
             }
+            //ObservableCollection<SelectableObject<tblCategory>>();
             textBoxProductName.Text = ExistingProduct.ProductName;
             textBoxProductQRN.Text = ExistingProduct.QRN;
             textBoxProductCost.Text = ExistingProduct.Cost.ToString();
@@ -88,21 +94,31 @@ namespace CamcoManufacturing.View
                 CheckProductValidations();
                 if (isProductValid)
                 {
-                    ExistingProduct.ProductName = textBoxProductName.Text;
-                    ExistingProduct.Cost = textBoxProductCost.Text.ToDecimal();
-                    ExistingProduct.QRN = textBoxProductQRN.Text;
-                    ExistingProduct.Code = textBoxProductCode.Text;
-                    ExistingProduct.PartNumber = textBoxProductPartNumber.Text;
-                    ExistingProduct.Length = textBoxProductLength.Text;
-                    ExistingProduct.Diameter = textBoxProductDiameter.Text;
-                    tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
-                    if (selectedProductCategory != null)
+                    foreach (tblCategory parent in ComboBoxCategory.SelectedItems)
                     {
-                        ExistingProduct.CategoryId = selectedProductCategory.Category_ID;
+                        ExistingProduct.ProductName = textBoxProductName.Text;
+                        ExistingProduct.Cost = textBoxProductCost.Text.ToDecimal();
+                        ExistingProduct.QRN = textBoxProductQRN.Text;
+                        ExistingProduct.Code = textBoxProductCode.Text;
+                        ExistingProduct.PartNumber = textBoxProductPartNumber.Text;
+                        ExistingProduct.Length = textBoxProductLength.Text;
+                        ExistingProduct.Diameter = textBoxProductDiameter.Text;
+                        ExistingProduct.CategoryId = parent.Category_ID;
+                        ExistingProduct.ProductImage = _imageBytes;
                         db.SaveChanges();
+                        //if (ExistingProduct != null)
+                        //{
+                        //    foreach (tblProduct prod in db.tProducts.Where(p => p.ParentId == ExistingProduct.Product_ID))
+                        //    {
+                        //        var newChildProd = new tblProduct();
+                        //        newChildProd = prod;
+                        //        newChildProd.ParentId = newprod.Product_ID;
+                        //        db.tProducts.Add(newChildProd);
+                        //        db.SaveChanges();
+                        //    }
+                        //}
                     }
-                    ExistingProduct.ProductImage = _imageBytes;
-                    db.SaveChanges();
+                    
                     MessageBox.Show("Updated SuccessFully!");
                     textBoxProductName.Text = "";
                     textBoxProductCost.Text = "0";
@@ -173,34 +189,58 @@ namespace CamcoManufacturing.View
                 CheckProductValidations();
                 if (isProductValid)
                 {
-                    if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).FirstOrDefault() != null)
-                    {
-                        MessageBox.Show("Name already exist!");
-                    }
-                    else
-                    {
-                        var newprod = new tblProduct();
-                        newprod.ProductName = textBoxProductName.Text;
-                        newprod.Cost = textBoxProductCost.Text.ToDecimal();
-                        newprod.QRN = textBoxProductQRN.Text;
-                        newprod.Code = textBoxProductCode.Text;
-                        newprod.PartNumber = textBoxProductPartNumber.Text;
-                        newprod.Length = textBoxProductLength.Text;
-                        newprod.Diameter = textBoxProductDiameter.Text;
-                        tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
-                        if (selectedProductCategory != null)
+                    //if (db.tProducts.Where(p => p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).FirstOrDefault() != null)
+                    //{
+                    //    MessageBox.Show("already exist!");
+                    //}
+                    //else
+                    //{
+                        foreach(tblCategory parent in ComboBoxCategory.SelectedItems)
                         {
-                            newprod.CategoryId = selectedProductCategory.Category_ID;
+                            var newprod = new tblProduct();
+                            newprod.ProductName = textBoxProductName.Text;
+                            newprod.Cost = textBoxProductCost.Text.ToDecimal();
+                            newprod.QRN = textBoxProductQRN.Text;
+                            newprod.Code = textBoxProductCode.Text;
+                            newprod.PartNumber = textBoxProductPartNumber.Text;
+                            newprod.Length = textBoxProductLength.Text;
+                            newprod.Diameter = textBoxProductDiameter.Text;
+                            newprod.CategoryId = parent.Category_ID;
+                            newprod.ProductImage = _imageBytes;
+                            db.tProducts.Add(newprod);
+                            db.SaveChanges();
+                        if (ExistingProduct != null)
+                        {
+                            foreach(tblProduct prod in db.tProducts.Where(p => p.ParentId == ExistingProduct.Product_ID).ToList())
+                            {
+                                var newChildProd = new tblProduct();
+                                newChildProd.Code = prod.Code;
+                                newChildProd.Cost = prod.Cost;
+                                newChildProd.Diameter = prod.Diameter;
+                                newChildProd.HolderTypeId = prod.HolderTypeId;
+                                newChildProd.IsParent = prod.IsParent;
+                                newChildProd.IsParentInsert = prod.IsParentInsert;
+                                newChildProd.Length = prod.Length;
+                                newChildProd.PartNumber = prod.PartNumber;
+                                newChildProd.ProductImage = prod.ProductImage;
+                                newChildProd.ProductName = prod.ProductName;
+                                newChildProd.QRN = prod.QRN;
+                                newChildProd.CategoryId = newprod.CategoryId;
+                                newChildProd.ParentId = newprod.Product_ID;
+                                db.Entry(prod).State = EntityState.Detached;
+                                db.tProducts.Add(newChildProd);
+                                
+                                db.SaveChanges();
+                            }
                         }
-                        newprod.ProductImage = _imageBytes;
-                        db.tProducts.Add(newprod);
-                        db.SaveChanges();
+                        }
+                        
                         MessageBox.Show("Updated SuccessFully!");
                         textBoxProductName.Text = "";
                         textBoxProductCost.Text = "0";
                         textBoxProductQRN.Text = "";
                         this.Close();
-                    }
+                    //}
 
                 }
                 else
