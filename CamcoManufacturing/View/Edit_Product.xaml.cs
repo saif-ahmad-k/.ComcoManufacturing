@@ -56,22 +56,33 @@ namespace CamcoManufacturing.View
         private void FillControls(int ProdId)
         {
             var CategoryList = new List<tblCategory>();
-            var Category = db.tCategories.Find(ExistingProduct.CategoryId);
-            ComboBoxCategory.ItemsSource = null;
-            ComboBoxCategory.ItemsSource = db.tCategories.ToList();
-            if (Category!=null)
+            var prod = db.tProducts.Find(ProdId);
+            var prodList = db.tProducts.Where(p => p.ProductName == prod.ProductName).ToList();
+            foreach(var prodd in prodList)
             {
-                int index = -1;
-                foreach (tblCategory cmbItem in ComboBoxCategory.Items)
+                var cat = db.tCategories.Find(prodd.CategoryId);
+                if (cat != null)
                 {
-                    cmbItem.isSelected = false;
-                    index++; if (cmbItem.Category_ID == Category.Category_ID)
-                    {
-                        ComboBoxCategory.SelectedItems.Add(cmbItem);
-                        break; }
+                    ComboBoxCategory.SelectedItems.Add(cat);
                 }
                 
             }
+            var Category = db.tCategories.Find(ExistingProduct.CategoryId);
+            ComboBoxCategory.ItemsSource = null;
+            ComboBoxCategory.ItemsSource = db.tCategories.ToList();
+            //if (Category!=null)
+            //{
+            //    int index = -1;
+            //    foreach (tblCategory cmbItem in ComboBoxCategory.Items)
+            //    {
+            //        cmbItem.isSelected = false;
+            //        index++; if (cmbItem.Category_ID == Category.Category_ID)
+            //        {
+            //            ComboBoxCategory.SelectedItems.Add(cmbItem);
+            //            break; }
+            //    }
+                
+            //}
             //ObservableCollection<SelectableObject<tblCategory>>();
             textBoxProductName.Text = ExistingProduct.ProductName;
             textBoxProductQRN.Text = ExistingProduct.QRN;
