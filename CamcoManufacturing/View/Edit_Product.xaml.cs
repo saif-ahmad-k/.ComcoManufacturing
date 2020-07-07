@@ -185,7 +185,7 @@ namespace CamcoManufacturing.View
         private void ButtonAddNewProduct_Click(object sender, RoutedEventArgs e)
         {
             try
-            {
+                {
                 CheckProductValidations();
                 if (isProductValid)
                 {
