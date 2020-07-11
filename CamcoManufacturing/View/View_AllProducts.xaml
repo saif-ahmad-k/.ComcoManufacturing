@@ -12,7 +12,7 @@
         <DataGrid x:Name="dataGridProducts" AutoGenerateColumns="False" Margin="0,106,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Product Name" Width="40*" Binding="{Binding ProductName}"/>
-                <DataGridTextColumn Header="Category" Width="40*" Binding="{Binding Category}"/>
+                <DataGridTextColumn Header="Category" Width="40*" Binding="{Binding Parent}"/>
                 <DataGridTemplateColumn Width="10*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

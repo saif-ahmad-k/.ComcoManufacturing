@@ -23,7 +23,7 @@
         <TextBox Visibility="Hidden" Text="{Binding MaxTime, StringFormat={}{0:hh':'mm}}"    HorizontalAlignment="Left" Height="42" Margin="562,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="259"/>
         <Label x:Name="label_Copy3" Content="Cycletime(Min) :" HorizontalAlignment="Left" Margin="605,150,0,0" VerticalAlignment="Top" Width="133" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
         <Button x:Name="buttonSave" Style="{StaticResource saveButton}" Content="Save and Print" HorizontalAlignment="Left" Margin="952,32,0,0" VerticalAlignment="Top" Width="156" Click="buttonSave_Click" Height="51"/>
-        <Button x:Name="buttonList" Style="{StaticResource returnButton}" Content="SET-UP Sheet List" HorizontalAlignment="Left" Margin="1046,577,0,0" VerticalAlignment="Top" Width="184" Click="buttonList_Click" Height="51"/>
+        <Button x:Name="buttonList" Style="{StaticResource returnButton}" Content="SET-UP Sheet List" HorizontalAlignment="Left" Margin="1103,577,0,0" VerticalAlignment="Top" Width="166" Click="buttonList_Click" Height="51"/>
         <Label x:Name="label1_Copy3" Content="Material :" HorizontalAlignment="Left" Margin="607,214,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="132" FontWeight="Bold"/>
         <Button x:Name="buttonEditEmployee" Style="{StaticResource editButtonStyle}" Content="EDIT" HorizontalAlignment="Left" Margin="931,116,0,0" VerticalAlignment="Top" Width="45" Height="30"/>
 
@@ -80,24 +80,38 @@
         <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="939,454,0,0" TextAlignment="Right"  RenderTransformOrigin="-0.158,3.962" Height="34" Width="83" FontSize="13.5" Background="#FFF9F4F4" FontWeight="Bold" Text="QRN" />
         <TextBox Name="textBoxTurrentHolder" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="1022,390,0,0" TextAlignment="Right" RenderTransformOrigin="-0.158,3.962" Height="64" Width="125" FontSize="13.5" Background="#FFCFE3EE" FontWeight="Bold" Text="" />
         <TextBox Name="textBoxQRN3" HorizontalAlignment="Left" Height="34" Margin="1022,454,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="194" RenderTransformOrigin="1.905,4.1" Background="#FFCFE3EE"/>
-        <Button x:Name="buttonAddDetailsRow" Style="{StaticResource menuButton}" Content="Add Line" HorizontalAlignment="Left" Margin="1048,493,0,0" VerticalAlignment="Top" Width="134" Height="47" RenderTransformOrigin="2.159,-1.452" Click="ButtonAddDetailsRow_Click"/>
-        <DataGrid x:Name="dataGridCamcoRecordDetails" IsReadOnly="True" MouseDoubleClick="DataGridCamcoRecordDetails_MouseDoubleClick" HorizontalAlignment="Left" Height="130" Margin="23,493,0,0" VerticalAlignment="Top" Width="1023" AutoGenerateColumns="False">
+        <Button x:Name="buttonAddDetailsRow" Style="{StaticResource menuButton}" Content="Add Line" HorizontalAlignment="Left" Margin="1103,493,0,0" VerticalAlignment="Top" Width="134" Height="47" RenderTransformOrigin="2.159,-1.452" Click="ButtonAddDetailsRow_Click"/>
+        <DataGrid x:Name="dataGridCamcoRecordDetails" IsReadOnly="True" MouseDoubleClick="DataGridCamcoRecordDetails_MouseDoubleClick" HorizontalAlignment="Left" Height="148" Margin="23,493,0,0" VerticalAlignment="Top" Width="1080" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Line#" Width="7.5*" Binding="{Binding lineNumber}"/>
                 <DataGridTextColumn Header="Tool#" Width="7.5*" Binding="{Binding toolNumber}"/>
                 <DataGridTextColumn Header="OffSet#" Width="7.5*" Binding="{Binding OffSetNumber}"/>
-                <DataGridTextColumn Header="Tool Description" Width="10*" Binding="{Binding ToolDescription}"/>
-                <DataGridTextColumn Header="SFM/RPM" Width="7.5*" Binding="{Binding SFM_RPM}"/>
-                <DataGridTextColumn Header="Feed(In/Rev)" Width="7.5*" Binding="{Binding FEEDiN_REV}"/>
-                <DataGridTextColumn Header="Projection(in)" Width="7.5*" Binding="{Binding Projection}"/>
-                <DataGridTextColumn Header="Drill Tap" Width="7.5*" Binding="{Binding InsertDrillTap}"/>
-                <DataGridTextColumn Header="Drill QRN" Width="7.5*" Binding="{Binding QRN1}"/>
-                <DataGridTextColumn Header="Stick Bore" Width="7.5*" Binding="{Binding StickHolderBore}"/>
-                <DataGridTextColumn Header="Bore QRN" Width="7.5*" Binding="{Binding QRN2}"/>
-                <DataGridTextColumn Header="Turrent Header" Width="7.5*" Binding="{Binding HolderOnTurret}"/>
-                <DataGridTextColumn Header="Turrent QRN" Width="7.5*" Binding="{Binding QRN1}"/>
-                <DataGridTextColumn Header="Collet Blade" Width="7.5*" Binding="{Binding ColletBlade}"/>
-                <DataGridTextColumn Header="Collet QRN" Width="7.5*" Binding="{Binding QRN4}"/>
+                <DataGridTextColumn Header="Tool Description" Width="9.5*" Binding="{Binding ToolDescription}"/>
+                <DataGridTextColumn Header="SFM/RPM" Width="7*" Binding="{Binding SFM_RPM}"/>
+                <DataGridTextColumn Header="Feed(In/Rev)" Width="7*" Binding="{Binding FEEDiN_REV}"/>
+                <DataGridTextColumn Header="Projection(in)" Width="7*" Binding="{Binding Projection}"/>
+                <DataGridTextColumn Header="Drill Tap" Width="7*" Binding="{Binding InsertDrillTap}"/>
+                <DataGridTextColumn Header="Drill QRN" Width="7*" Binding="{Binding QRN1}"/>
+                <DataGridTextColumn Header="Stick Bore" Width="7*" Binding="{Binding StickHolderBore}"/>
+                <DataGridTextColumn Header="Bore QRN" Width="7*" Binding="{Binding QRN2}"/>
+                <DataGridTextColumn Header="Turrent Header" Width="6*" Binding="{Binding HolderOnTurret}"/>
+                <DataGridTextColumn Header="Turrent QRN" Width="6*" Binding="{Binding QRN1}"/>
+                <DataGridTextColumn Header="Collet Blade" Width="6*" Binding="{Binding ColletBlade}"/>
+                <DataGridTextColumn Header="Collet QRN" Width="6*" Binding="{Binding QRN4}"/>
+                <DataGridTemplateColumn Width="6*">
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                            <Button Name="EditDetailRow" Click="EditDetailRow_Click">Edit</Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Width="5*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="DeleteDetailRow" Click="DeleteDetailRow_Click">Delete</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="txtCNCProgram" Style="{StaticResource mandatoryTextBox}"  HorizontalAlignment="Left" Height="30" Margin="209,149,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236"/>

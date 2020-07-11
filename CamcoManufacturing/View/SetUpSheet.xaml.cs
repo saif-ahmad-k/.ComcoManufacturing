@@ -711,5 +711,55 @@ namespace CamcoManufacturing.View
             textBoxQRN4.Text = (dataGridCamcoRecordDetails.SelectedCells[14].Column.GetCellContent(data) as TextBlock).Text;
             buttonAddDetailsRow.Content = "Update Line";
         }
+
+        private void DeleteDetailRow_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var selectedItem = dataGridCamcoRecordDetails.SelectedItem;
+                if (selectedItem != null)
+                {
+                    dataGridCamcoRecordDetails.Items.Remove(selectedItem);
+                }
+                //tEmployeeJob dataRowView = (tEmployeeJob)((Button)e.Source).DataContext;
+                ////String employeeName = dataRowView[0].ToString();
+                ////var employee = db.tEmployees.Where(p => p.FullName == employeeName).FirstOrDefault();
+                ////String departmentName = dataRowView[1].ToString();
+                ////var department = db.tDepartments.Where(p => p.DepartmentName == departmentName).FirstOrDefault();
+                ////String StartDate = dataRowView[2].ToString();
+                ////String EndDate = dataRowView[3].ToString();
+                //cmbEmployee.SelectedValue = dataRowView.EmployeeId;
+                //cmbEmployeeDepartment.SelectedValue = dataRowView.DepartmentId;
+                //dateTimePickerStartDateTime.Value = dataRowView.StartDateTime;
+                //dateTimePickerEndDateTime.Value = dataRowView.EndDateTime;
+                //TextBoxJobId.Text = dataRowView.Job_Id.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void EditDetailRow_Click(object sender, RoutedEventArgs e)
+        {
+            var data = dataGridCamcoRecordDetails.SelectedItem;
+            textBoxLineNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxToolNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[1].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxOffSetNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[2].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxToolDescription.Text = (dataGridCamcoRecordDetails.SelectedCells[3].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxSFMRPM.Text = (dataGridCamcoRecordDetails.SelectedCells[4].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxFeed.Text = (dataGridCamcoRecordDetails.SelectedCells[5].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxProjection.Text = (dataGridCamcoRecordDetails.SelectedCells[6].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxDrillTap.Text = (dataGridCamcoRecordDetails.SelectedCells[7].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN1.Text = (dataGridCamcoRecordDetails.SelectedCells[8].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxStickBore.Text = (dataGridCamcoRecordDetails.SelectedCells[9].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN2.Text = (dataGridCamcoRecordDetails.SelectedCells[10].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxTurrentHolder.Text = (dataGridCamcoRecordDetails.SelectedCells[11].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN3.Text = (dataGridCamcoRecordDetails.SelectedCells[12].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxColletBlade.Text = (dataGridCamcoRecordDetails.SelectedCells[13].Column.GetCellContent(data) as TextBlock).Text;
+            textBoxQRN4.Text = (dataGridCamcoRecordDetails.SelectedCells[14].Column.GetCellContent(data) as TextBlock).Text;
+            buttonAddDetailsRow.Content = "Update Line";
+        }
     }
 }
