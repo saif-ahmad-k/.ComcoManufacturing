@@ -70,12 +70,16 @@ namespace CamcoManufacturing.View
                 var cat = db.tCategories.Find(prodd.CategoryId);
                 if (cat != null)
                 {
-                    ComboBoxCategory.SelectedItems.Add(cat);
+                    if (!ComboBoxCategory.SelectedItems.Contains(cat))
+                    {
+                        ComboBoxCategory.SelectedItems.Add(cat);
+                    }
+                    
                 }
                 if (prodd.ParentId != null)
                 {
                     var parentProd = db.tProducts.Find(prodd.ParentId);
-                    if (parentProd != null)
+                    if (parentProd != null && !ComboBoxParentProduct.SelectedItems.Contains(parentProd))
                     {
                         ComboBoxParentProduct.SelectedItems.Add(parentProd);
                     }
@@ -153,7 +157,6 @@ namespace CamcoManufacturing.View
                         ExistingProduct.PartNumber = textBoxProductPartNumber.Text;
                         ExistingProduct.Length = textBoxProductLength.Text;
                         ExistingProduct.Diameter = textBoxProductDiameter.Text;
-                        ExistingProduct.CategoryId = parent.Category_ID;
                         ExistingProduct.ProductImage = _imageBytes;
                         db.SaveChanges();
                         //if (ExistingProduct != null)
@@ -168,7 +171,19 @@ namespace CamcoManufacturing.View
                         //    }
                         //}
                     }
-                    
+                    var existingSameProductsList = db.tProducts.Where(p => p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).ToList();
+                    foreach(var prod in existingSameProductsList)
+                    {
+                        prod.ProductName = textBoxProductName.Text;
+                        prod.Cost = textBoxProductCost.Text.ToDecimal();
+                        prod.QRN = textBoxProductQRN.Text;
+                        prod.Code = textBoxProductCode.Text;
+                        prod.PartNumber = textBoxProductPartNumber.Text;
+                        prod.Length = textBoxProductLength.Text;
+                        prod.Diameter = textBoxProductDiameter.Text;
+                        prod.ProductImage = _imageBytes;
+                        db.SaveChanges();
+                    }
                     MessageBox.Show("Updated SuccessFully!");
                     textBoxProductName.Text = "";
                     textBoxProductCost.Text = "0";
@@ -311,43 +326,47 @@ namespace CamcoManufacturing.View
                     {
                         foreach (tblCategory parent in ComboBoxCategory.SelectedItems)
                         {
-                            var newprod = new tblProduct();
-                            newprod.ProductName = textBoxProductName.Text;
-                            newprod.Cost = textBoxProductCost.Text.ToDecimal();
-                            newprod.QRN = textBoxProductQRN.Text;
-                            newprod.Code = textBoxProductCode.Text;
-                            newprod.PartNumber = textBoxProductPartNumber.Text;
-                            newprod.Length = textBoxProductLength.Text;
-                            newprod.Diameter = textBoxProductDiameter.Text;
-                            newprod.CategoryId = parent.Category_ID;
-                            newprod.HolderTypeId = 1;
-                            newprod.ProductImage = _imageBytes;
-                            db.tProducts.Add(newprod);
-                            db.SaveChanges();
-                            if (ExistingProduct != null)
+                            if(db.tProducts.Where(p=>p.CategoryId == parent.Category_ID && p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).FirstOrDefault() == null)
                             {
-                                foreach (tblProduct prod in db.tProducts.Where(p => p.ParentId == ExistingProduct.Product_ID).ToList())
+                                var newprod = new tblProduct();
+                                newprod.ProductName = textBoxProductName.Text;
+                                newprod.Cost = textBoxProductCost.Text.ToDecimal();
+                                newprod.QRN = textBoxProductQRN.Text;
+                                newprod.Code = textBoxProductCode.Text;
+                                newprod.PartNumber = textBoxProductPartNumber.Text;
+                                newprod.Length = textBoxProductLength.Text;
+                                newprod.Diameter = textBoxProductDiameter.Text;
+                                newprod.CategoryId = parent.Category_ID;
+                                newprod.HolderTypeId = 1;
+                                newprod.ProductImage = _imageBytes;
+                                db.tProducts.Add(newprod);
+                                db.SaveChanges();
+                                if (ExistingProduct != null)
                                 {
-                                    var newChildProd = new tblProduct();
-                                    newChildProd.Code = prod.Code;
-                                    newChildProd.Cost = prod.Cost;
-                                    newChildProd.Diameter = prod.Diameter;
-                                    newChildProd.HolderTypeId = prod.HolderTypeId;
-                                    newChildProd.IsParent = prod.IsParent;
-                                    newChildProd.IsParentInsert = prod.IsParentInsert;
-                                    newChildProd.Length = prod.Length;
-                                    newChildProd.PartNumber = prod.PartNumber;
-                                    newChildProd.ProductImage = prod.ProductImage;
-                                    newChildProd.ProductName = prod.ProductName;
-                                    newChildProd.QRN = prod.QRN;
-                                    newChildProd.CategoryId = newprod.CategoryId;
-                                    newChildProd.ParentId = newprod.Product_ID;
-                                    db.Entry(prod).State = EntityState.Detached;
-                                    db.tProducts.Add(newChildProd);
+                                    foreach (tblProduct prod in db.tProducts.Where(p => p.ParentId == ExistingProduct.Product_ID).ToList())
+                                    {
+                                        var newChildProd = new tblProduct();
+                                        newChildProd.Code = prod.Code;
+                                        newChildProd.Cost = prod.Cost;
+                                        newChildProd.Diameter = prod.Diameter;
+                                        newChildProd.HolderTypeId = prod.HolderTypeId;
+                                        newChildProd.IsParent = prod.IsParent;
+                                        newChildProd.IsParentInsert = prod.IsParentInsert;
+                                        newChildProd.Length = prod.Length;
+                                        newChildProd.PartNumber = prod.PartNumber;
+                                        newChildProd.ProductImage = prod.ProductImage;
+                                        newChildProd.ProductName = prod.ProductName;
+                                        newChildProd.QRN = prod.QRN;
+                                        newChildProd.CategoryId = newprod.CategoryId;
+                                        newChildProd.ParentId = newprod.Product_ID;
+                                        db.Entry(prod).State = EntityState.Detached;
+                                        db.tProducts.Add(newChildProd);
 
-                                    db.SaveChanges();
+                                        db.SaveChanges();
+                                    }
                                 }
                             }
+                            
                         }
                     }
                     
