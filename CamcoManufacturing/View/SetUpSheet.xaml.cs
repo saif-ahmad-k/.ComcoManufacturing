@@ -136,7 +136,7 @@ namespace CamcoManufacturing.View
             cmbCustomer.ItemsSource = null;
             cmbCustomer.ItemsSource = db.tCustomers.ToList();
             cmbOperation.ItemsSource = null;
-            cmbOperation.ItemsSource = db.tOperations.ToList();
+            cmbOperation.ItemsSource = db.tOperations.OrderBy(p => p.RM_DESC + p.RM_OP).ToList();
             //cmbLathe.ItemsSource = null;
             //cmbLathe.ItemsSource = db.tLathes.ToList();
         }
@@ -212,7 +212,7 @@ namespace CamcoManufacturing.View
                     cmbCustomer.SelectedValue = selectedPart.CustomerId;
                 }
                 cmbOperation.ItemsSource = null;
-                cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).ToList();
+                cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).OrderBy(p => p.RM_DESC + p.RM_OP).ToList();
             }
             
         }
@@ -228,7 +228,7 @@ namespace CamcoManufacturing.View
                     cmbCustomer.SelectedValue = selectedPart.CustomerId;
                 }
                 cmbOperation.ItemsSource = null;
-                cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).ToList();
+                cmbOperation.ItemsSource = db.tOperations.Where(p => p.PartId == selectedPart.PartId).OrderBy(p => p.RM_DESC + p.RM_OP).ToList();
             }
         }
 

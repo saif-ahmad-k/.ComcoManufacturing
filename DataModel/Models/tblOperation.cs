@@ -39,5 +39,34 @@ namespace DataModel.Models
                 return Qnum;
             }
         }
+        [NotMapped]
+        [Display(Name = "Description")]
+        public string Description
+        {
+            get
+            {
+                string Qnum = "";
+                using (BaseDataContext db = new BaseDataContext())
+                {
+                    if (RM_DESC != null && RM_OP != null)
+                    {
+                        Qnum = RM_DESC + "_" + RM_OP;
+                    }
+                    else if(RM_DESC != null && RM_OP == null)
+                    {
+                        Qnum = RM_DESC + "";
+                    }
+                    else if (RM_DESC == null && RM_OP != null)
+                    {
+                        Qnum = "" + RM_OP;
+                    }
+                    else
+                    {
+                        Qnum = "";
+                    }
+                }
+                return Qnum;
+            }
+        }
     }
 }

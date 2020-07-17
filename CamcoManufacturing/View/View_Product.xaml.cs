@@ -548,6 +548,7 @@ namespace CamcoManufacturing.View
 
         private void ButtonShowAllProducts_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
             if (!HelperClass.IsWindowOpen(typeof(View.View_AllProducts)))
             {
                 View.View_AllProducts obj = new View.View_AllProducts(CategoryId, ParentProductId);
