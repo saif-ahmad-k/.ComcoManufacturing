@@ -29,7 +29,7 @@ namespace CamcoManufacturing
         private void FillControls()
         {
             dataGridCamcoRecord.ItemsSource = null;
-            dataGridCamcoRecord.ItemsSource = db.tCamcoRecords.ToList();
+            dataGridCamcoRecord.ItemsSource = db.tCamcoRecords.OrderByDescending(p => p.CreatedDate).ToList();
 
         }
 

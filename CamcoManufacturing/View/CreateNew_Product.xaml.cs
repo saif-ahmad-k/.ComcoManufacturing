@@ -54,67 +54,112 @@ namespace CamcoManufacturing.View
                 CheckProductValidations();
                 if (isProductValid)
                 {
-                    tblProduct product = new tblProduct();
-                    product.ProductName = textBoxProductName.Text;
-                    product.Cost = textBoxProductCost.Text.ToDecimal();
-                    product.QRN = textBoxProductQRN.Text;
-                    product.Code = textBoxProductCode.Text;
-                    product.PartNumber = textBoxProductPartNumber.Text;
-                    product.Length = textBoxProductLength.Text;
-                    product.Diameter = textBoxProductDiameter.Text;
-                    tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
-                    if (selectedProductCategory != null)
-                    {
-                        product.CategoryId = selectedProductCategory.Category_ID;
-                    }
                     tblProduct selectedProduct = (tblProduct)cmbParentProduct.SelectedItem;
                     if (selectedProduct != null)
                     {
-                        product.ParentId = selectedProduct.Product_ID;
-                        selectedProduct.IsParent = true;
-                        if (selectedProduct.ParentId != null)
+                        var AllParentsWithSameAttributes = db.tProducts.Where(p => p.ProductName == selectedProduct.ProductName && p.QRN == selectedProduct.QRN).ToList();
+                        foreach(var prod in AllParentsWithSameAttributes)
                         {
-                            if (selectedProduct.HolderTypeId != null && selectedProduct.HolderTypeId != 2)
+                            tblProduct product = new tblProduct();
+                            product.ProductName = textBoxProductName.Text;
+                            product.Cost = textBoxProductCost.Text.ToDecimal();
+                            product.QRN = textBoxProductQRN.Text;
+                            product.Code = textBoxProductCode.Text;
+                            product.PartNumber = textBoxProductPartNumber.Text;
+                            product.Length = textBoxProductLength.Text;
+                            product.Diameter = textBoxProductDiameter.Text;
+                            tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
+                            if (selectedProductCategory != null)
                             {
-                                product.HolderTypeId = selectedProduct.HolderTypeId + 1;
+                                product.CategoryId = selectedProductCategory.Category_ID;
                             }
+                                product.ParentId = prod.Product_ID;
+                            prod.IsParent = true;
+                                if (prod.ParentId != null)
+                                {
+                                    if (prod.HolderTypeId != null && prod.HolderTypeId != 2)
+                                    {
+                                        product.HolderTypeId = prod.HolderTypeId + 1;
+                                    }
+                                }
+                                else
+                                {
+                                    product.HolderTypeId = 2;
+                                prod.HolderTypeId = 1;
+                                }
+                                db.SaveChanges();
+                            if (CheckBoxInsert.IsChecked == true)
+                            {
+                                product.HolderTypeId = 3;
+                            }
+                            else if (CheckBoxColletBlade.IsChecked == true)
+                            {
+                                product.HolderTypeId = 4;
+                            }
+                            product.ProductImage = _imageBytes;
+                            db.tProducts.Add(product);
+                            db.SaveChanges();
                         }
-                        else
+                        MessageBox.Show("Added SuccessFully!");
+                        textBoxProductName.Text = "";
+                        textBoxProductCost.Text = "0";
+                        textBoxProductQRN.Text = "";
+                        this.Close();
+                    }
+                    else
+                    {
+                        tblCategory selectedProductCategory = (tblCategory)cmbParentProductCategory.SelectedItem;
+                        if (selectedProductCategory != null)
                         {
-                            product.HolderTypeId = 2;
-                            selectedProduct.HolderTypeId = 1;
+                            var AllParentsWithSameAttributes = db.tCategories.Where(p => p.Name == selectedProductCategory.Name).ToList();
+                            foreach(var cat in AllParentsWithSameAttributes)
+                            {
+                                tblProduct product = new tblProduct();
+                                product.ProductName = textBoxProductName.Text;
+                                product.Cost = textBoxProductCost.Text.ToDecimal();
+                                product.QRN = textBoxProductQRN.Text;
+                                product.Code = textBoxProductCode.Text;
+                                product.PartNumber = textBoxProductPartNumber.Text;
+                                product.Length = textBoxProductLength.Text;
+                                product.Diameter = textBoxProductDiameter.Text;
+                                product.CategoryId = cat.Category_ID;
+                                if (CheckBoxInsert.IsChecked == true)
+                                {
+                                    product.HolderTypeId = 3;
+                                }
+                                else if (CheckBoxColletBlade.IsChecked == true)
+                                {
+                                    product.HolderTypeId = 4;
+                                }
+                                else
+                                {
+                                    product.HolderTypeId = 1;
+                                }
+                                product.ProductImage = _imageBytes;
+                                db.tProducts.Add(product);
+                                db.SaveChanges();
+                            }
+                            MessageBox.Show("Added SuccessFully!");
+                            textBoxProductName.Text = "";
+                            textBoxProductCost.Text = "0";
+                            textBoxProductQRN.Text = "";
+                            this.Close();
                         }
-                        db.SaveChanges();
+                        if (selectedProductCategory.Category_ID != null)
+                        {
+                            View.View_Product obj = new View.View_Product(selectedProductCategory.Category_ID.ToString().ToInteger(), 0, SequanceNumber, 1, null);
+                            obj.ShowDialog();
+                        }
                     }
-                    if (CheckBoxInsert.IsChecked == true)
-                    {
-                        product.HolderTypeId = 3;
-                    }else if(CheckBoxColletBlade.IsChecked == true)
-                    {
-                        product.HolderTypeId = 4;
-                    }
-                    product.ProductImage = _imageBytes;
-                    db.tProducts.Add(product);
-                    db.SaveChanges();
-                    MessageBox.Show("Added SuccessFully!");
-                    textBoxProductName.Text = "";
-                    textBoxProductCost.Text = "0";
-                    textBoxProductQRN.Text = "";
-                    this.Close();
+
+
+                    
+                    
                     //if(product.ParentId != null && product.CategoryId != null)
                     //{
                     //    View.View_Product obj = new View.View_Product(product.CategoryId.ToString().ToInteger(), product.ParentId.ToString().ToInteger(), SequanceNumber, product.HolderTypeId.ToString().ToInteger(), null);
                     //    obj.ShowDialog();
                     //}
-                    if (product.ParentId != null)
-                    {
-                        View.View_Product obj = new View.View_Product(0, product.ParentId.ToString().ToInteger(), SequanceNumber, product.HolderTypeId.ToString().ToInteger(), null);
-                        obj.ShowDialog();
-                    }else if(product.CategoryId != null)
-                    {
-                        View.View_Product obj = new View.View_Product(product.CategoryId.ToString().ToInteger(), 0, SequanceNumber, product.HolderTypeId.ToString().ToInteger(), null);
-                        obj.ShowDialog();
-                    }
                 }
                 //FillControls();
             }

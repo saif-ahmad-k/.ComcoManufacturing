@@ -92,6 +92,8 @@ namespace CamcoManufacturing.View
                         camcorecordDetail.QRN2 = (dataGridCamcoRecordDetails.Columns[10].GetCellContent(row) as TextBlock).Text;
                         camcorecordDetail.HolderOnTurret = (dataGridCamcoRecordDetails.Columns[11].GetCellContent(row) as TextBlock).Text;
                         camcorecordDetail.QRN3 = (dataGridCamcoRecordDetails.Columns[12].GetCellContent(row) as TextBlock).Text;
+                        camcorecordDetail.ColletBlade = (dataGridCamcoRecordDetails.Columns[13].GetCellContent(row) as TextBlock).Text;
+                        camcorecordDetail.QRN4 = (dataGridCamcoRecordDetails.Columns[14].GetCellContent(row) as TextBlock).Text;
                         camcorecordDetail.CamcoRecordId = camcorecord.Id;
                         db.tComcoRecordDetails.Add(camcorecordDetail);
                         db.SaveChanges();

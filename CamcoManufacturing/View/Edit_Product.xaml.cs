@@ -39,6 +39,7 @@ namespace CamcoManufacturing.View
             }
             HelperClass.ShowWindowPath(PathLabel);
             FillControls(Product);
+            buttonSaveProduct.Visibility = Visibility.Collapsed;
         }
         private void CheckProductValidations()
         {
@@ -150,15 +151,19 @@ namespace CamcoManufacturing.View
 
                     foreach (tblCategory parent in ComboBoxCategory.SelectedItems)
                     {
-                        ExistingProduct.ProductName = textBoxProductName.Text;
-                        ExistingProduct.Cost = textBoxProductCost.Text.ToDecimal();
-                        ExistingProduct.QRN = textBoxProductQRN.Text;
-                        ExistingProduct.Code = textBoxProductCode.Text;
-                        ExistingProduct.PartNumber = textBoxProductPartNumber.Text;
-                        ExistingProduct.Length = textBoxProductLength.Text;
-                        ExistingProduct.Diameter = textBoxProductDiameter.Text;
-                        ExistingProduct.ProductImage = _imageBytes;
-                        db.SaveChanges();
+                        if (parent.Category_ID == ExistingProduct.CategoryId)
+                        {
+                            ExistingProduct.ProductName = textBoxProductName.Text;
+                            ExistingProduct.Cost = textBoxProductCost.Text.ToDecimal();
+                            ExistingProduct.QRN = textBoxProductQRN.Text;
+                            ExistingProduct.Code = textBoxProductCode.Text;
+                            ExistingProduct.PartNumber = textBoxProductPartNumber.Text;
+                            ExistingProduct.Length = textBoxProductLength.Text;
+                            ExistingProduct.Diameter = textBoxProductDiameter.Text;
+                            ExistingProduct.ProductImage = _imageBytes;
+                            db.SaveChanges();
+                        }
+                        
                         //if (ExistingProduct != null)
                         //{
                         //    foreach (tblProduct prod in db.tProducts.Where(p => p.ParentId == ExistingProduct.Product_ID))
@@ -260,6 +265,46 @@ namespace CamcoManufacturing.View
                     //}
                     //else
                     //{
+                    foreach (tblCategory parent in ComboBoxCategory.SelectedItems)
+                    {
+                        if (parent.Category_ID == ExistingProduct.CategoryId)
+                        {
+                            ExistingProduct.ProductName = textBoxProductName.Text;
+                            ExistingProduct.Cost = textBoxProductCost.Text.ToDecimal();
+                            ExistingProduct.QRN = textBoxProductQRN.Text;
+                            ExistingProduct.Code = textBoxProductCode.Text;
+                            ExistingProduct.PartNumber = textBoxProductPartNumber.Text;
+                            ExistingProduct.Length = textBoxProductLength.Text;
+                            ExistingProduct.Diameter = textBoxProductDiameter.Text;
+                            ExistingProduct.ProductImage = _imageBytes;
+                            db.SaveChanges();
+                        }
+
+                        //if (ExistingProduct != null)
+                        //{
+                        //    foreach (tblProduct prod in db.tProducts.Where(p => p.ParentId == ExistingProduct.Product_ID))
+                        //    {
+                        //        var newChildProd = new tblProduct();
+                        //        newChildProd = prod;
+                        //        newChildProd.ParentId = newprod.Product_ID;
+                        //        db.tProducts.Add(newChildProd);
+                        //        db.SaveChanges();
+                        //    }
+                        //}
+                    }
+                    var existingSameProductsList = db.tProducts.Where(p => p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).ToList();
+                    foreach (var prod in existingSameProductsList)
+                    {
+                        prod.ProductName = textBoxProductName.Text;
+                        prod.Cost = textBoxProductCost.Text.ToDecimal();
+                        prod.QRN = textBoxProductQRN.Text;
+                        prod.Code = textBoxProductCode.Text;
+                        prod.PartNumber = textBoxProductPartNumber.Text;
+                        prod.Length = textBoxProductLength.Text;
+                        prod.Diameter = textBoxProductDiameter.Text;
+                        prod.ProductImage = _imageBytes;
+                        db.SaveChanges();
+                    }
                     foreach (tblProduct parent in ComboBoxParentProduct.SelectedItems)
                     {
                         if(db.tProducts.Where(p=>p.ParentId == parent.Product_ID && p.ProductName == textBoxProductName.Text && p.QRN== textBoxProductQRN.Text).ToList().Count == 0)

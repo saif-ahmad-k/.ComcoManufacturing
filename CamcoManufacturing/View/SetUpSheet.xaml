@@ -11,7 +11,7 @@
         <Image Source="C:\Users\Hp\Downloads\CamcoManufacturing\CamcoManufacturing\CamcoManufacturing\Images\CamcoBannerBackround.jpg" Height="136" VerticalAlignment="Top" Margin="0,5,-83,0"/>
 
         <Label x:Name="label1" Content="Part Number" HorizontalAlignment="Left" Margin="24,114,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="132" FontWeight="Bold"/>
-        <ComboBox x:Name="cmbPart" Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="Part" SelectedValuePath="PartId" HorizontalAlignment="Left" Margin="209,117,0,0" VerticalAlignment="Top" Width="236" KeyDown="CmbPart_SelectionChanged" SelectionChanged="CmbPart_SelectionChanged"/>
+        <ComboBox x:Name="cmbPart" Style="{StaticResource mandatoryComboBox}" DisplayMemberPath="Part" SelectedValuePath="PartId" HorizontalAlignment="Left" Margin="209,117,0,0" VerticalAlignment="Top" Width="236" KeyDown="CmbPart_SelectionChanged" SelectionChanged="CmbPart_SelectionChanged" Height="24"/>
         <Label x:Name="label_Copy1" Content="Opertation#" HorizontalAlignment="Left" Margin="605,280,0,0" VerticalAlignment="Top" Width="115" FontFamily="Calibri" FontSize="16" FontWeight="Bold"/>
         <Label x:Name="label1_Copy1" Content="Customer" HorizontalAlignment="Left" Margin="605,248,0,0" VerticalAlignment="Top" FontFamily="Calibri" FontSize="16" Width="115" FontWeight="Bold"/>
         <ComboBox x:Name="cmbCustomer"  Style="{StaticResource normalComboBox}" HorizontalAlignment="Left" DisplayMemberPath="CustomerName" SelectedValuePath="CustomerID" Margin="739,248,0,0" VerticalAlignment="Top" Width="259"/>
@@ -99,11 +99,11 @@
                 <DataGridTextColumn Header="Collet Blade" Width="6*" Binding="{Binding ColletBlade}"/>
                 <DataGridTextColumn Header="Collet QRN" Width="6*" Binding="{Binding QRN4}"/>
                 <DataGridTemplateColumn Width="6*">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
                             <Button Name="EditDetailRow" Click="EditDetailRow_Click">Edit</Button>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn Width="5*">
                     <DataGridTemplateColumn.CellTemplate>
@@ -139,6 +139,7 @@
         <Button x:Name="buttonAddColletBlade" Style="{StaticResource blackButtonStyle}" Content="Add New" HorizontalAlignment="Left" Margin="568,427,0,0" VerticalAlignment="Top" Width="76" Height="27" FontSize="10" Click="ButtonAddColletBlade_Click"/>
         <Label x:Name="PathLabel" Content="" HorizontalContentAlignment="Left" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="0,80,0,0" VerticalAlignment="Top" Width="549" Foreground="#FFF1E8E8" FontWeight="Bold" FontStyle="Italic" FontFamily="Calibri" FontSize="10"/>
         <Button x:Name="buttonClear" Style="{StaticResource blackButtonStyle}" Content="CLEAR ALL" HorizontalAlignment="Left" Margin="783,32,0,0" VerticalAlignment="Top" Width="164" Height="51" Click="ButtonClear_Click"/>
+
 
     </Grid>
 </Window>

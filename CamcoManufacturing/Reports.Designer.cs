@@ -1009,6 +1009,10 @@ namespace CamcoManufacturing {
             
             private global::System.Data.DataColumn columnRM_OP;
             
+            private global::System.Data.DataColumn columnQRN4;
+            
+            private global::System.Data.DataColumn columnColletBlade;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public CamcoSetUpSheetTableDataTable() {
@@ -1540,6 +1544,22 @@ namespace CamcoManufacturing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn QRN4Column {
+                get {
+                    return this.columnQRN4;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ColletBladeColumn {
+                get {
+                    return this.columnColletBlade;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1628,7 +1648,9 @@ namespace CamcoManufacturing {
                         bool VERIFIED_CYCLETIME, 
                         string RM_CT, 
                         string CT_MINUTES, 
-                        string RM_OP) {
+                        string RM_OP, 
+                        string QRN4, 
+                        string ColletBlade) {
                 CamcoSetUpSheetTableRow rowCamcoSetUpSheetTableRow = ((CamcoSetUpSheetTableRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1692,7 +1714,9 @@ namespace CamcoManufacturing {
                         VERIFIED_CYCLETIME,
                         RM_CT,
                         CT_MINUTES,
-                        RM_OP};
+                        RM_OP,
+                        QRN4,
+                        ColletBlade};
                 rowCamcoSetUpSheetTableRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCamcoSetUpSheetTableRow);
                 return rowCamcoSetUpSheetTableRow;
@@ -1777,6 +1801,8 @@ namespace CamcoManufacturing {
                 this.columnRM_CT = base.Columns["RM_CT"];
                 this.columnCT_MINUTES = base.Columns["CT_MINUTES"];
                 this.columnRM_OP = base.Columns["RM_OP"];
+                this.columnQRN4 = base.Columns["QRN4"];
+                this.columnColletBlade = base.Columns["ColletBlade"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1906,6 +1932,10 @@ namespace CamcoManufacturing {
                 base.Columns.Add(this.columnCT_MINUTES);
                 this.columnRM_OP = new global::System.Data.DataColumn("RM_OP", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRM_OP);
+                this.columnQRN4 = new global::System.Data.DataColumn("QRN4", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQRN4);
+                this.columnColletBlade = new global::System.Data.DataColumn("ColletBlade", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnColletBlade);
                 this.columnId.AutoIncrement = true;
                 this.columnId.AutoIncrementSeed = -1;
                 this.columnId.AutoIncrementStep = -1;
@@ -1980,6 +2010,8 @@ namespace CamcoManufacturing {
                 this.columnRM_CT.MaxLength = 50;
                 this.columnCT_MINUTES.MaxLength = 50;
                 this.columnRM_OP.MaxLength = 50;
+                this.columnQRN4.MaxLength = 50;
+                this.columnColletBlade.MaxLength = 150;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3433,6 +3465,38 @@ namespace CamcoManufacturing {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string QRN4 {
+                get {
+                    try {
+                        return ((string)(this[this.tableCamcoSetUpSheetTable.QRN4Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QRN4\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.QRN4Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ColletBlade {
+                get {
+                    try {
+                        return ((string)(this[this.tableCamcoSetUpSheetTable.ColletBladeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ColletBlade\' in table \'CamcoSetUpSheetTable\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCamcoSetUpSheetTable.ColletBladeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCustomerIdNull() {
                 return this.IsNull(this.tableCamcoSetUpSheetTable.CustomerIdColumn);
             }
@@ -4138,6 +4202,30 @@ namespace CamcoManufacturing {
             public void SetRM_OPNull() {
                 this[this.tableCamcoSetUpSheetTable.RM_OPColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsQRN4Null() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.QRN4Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetQRN4Null() {
+                this[this.tableCamcoSetUpSheetTable.QRN4Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsColletBladeNull() {
+                return this.IsNull(this.tableCamcoSetUpSheetTable.ColletBladeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetColletBladeNull() {
+                this[this.tableCamcoSetUpSheetTable.ColletBladeColumn] = global::System.Convert.DBNull;
+            }
         }
         
         /// <summary>
@@ -4593,6 +4681,8 @@ WHERE        (tblManufacturingCheckSheet.MCS_id = @MCS_id)";
             tableMapping.ColumnMappings.Add("RM_CT", "RM_CT");
             tableMapping.ColumnMappings.Add("CT_MINUTES", "CT_MINUTES");
             tableMapping.ColumnMappings.Add("RM_OP", "RM_OP");
+            tableMapping.ColumnMappings.Add("QRN4", "QRN4");
+            tableMapping.ColumnMappings.Add("ColletBlade", "ColletBlade");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -4623,31 +4713,32 @@ WHERE        (tblManufacturingCheckSheet.MCS_id = @MCS_id)";
                 "rdDetail.SFM_RPM, ComcoRecordDetail.FEEDiN_REV, \r\n                         Comco" +
                 "RecordDetail.Projection, ComcoRecordDetail.InsertDrillTap, ComcoRecordDetail.Sti" +
                 "ckHolderBore, ComcoRecordDetail.HolderOnTurret, ComcoRecordDetail.QRN1, ComcoRec" +
-                "ordDetail.QRN2, ComcoRecordDetail.QRN3, \r\n                         ComcoRecordDe" +
-                "tail.Id AS Expr2, ComcoRecordDetail.CamcoRecordId, tblCustomer.CustomerID AS Exp" +
-                "r3, tblCustomer.CustomerName, tblCustomer.CustomerAbbreviation, tblEmployees.Emp" +
-                "loyeeId AS Expr4, \r\n                         tblEmployees.EmployeeName, tblLathe" +
-                ".LatheId AS Expr5, tblLathe.LatheName, tblParts.PartId AS Expr6, tblParts.Part, " +
-                "tblParts.Material, tblParts.CustomerId AS Expr7, tblMachineType.Machine_Id, \r\n  " +
-                "                       tblMachineType.MachineName, tblTurrentType.TurrentType_Id" +
-                ", tblTurrentType.TurrentTypeName, tblTurrentType.MachineTypeId, tblChuckCollet.I" +
-                "d AS Expr8, tblChuckCollet.Name, tblOperation.Operation_Id, \r\n                  " +
-                "       tblOperation.RM_DESC, tblOperation.PartId AS Expr9, tblOperation.RM_WKCTR" +
-                ", tblOperation.RM_SWITCH, tblOperation.VERIFIED_CYCLETIME, tblOperation.RM_CT, t" +
-                "blOperation.CT_MINUTES, tblOperation.RM_OP\r\nFROM            tblCamcoRecord INNER" +
-                " JOIN\r\n                         ComcoRecordDetail ON tblCamcoRecord.Id = ComcoRe" +
-                "cordDetail.CamcoRecordId LEFT OUTER JOIN\r\n                         tblCustomer O" +
-                "N tblCamcoRecord.CustomerId = tblCustomer.CustomerID LEFT OUTER JOIN\r\n          " +
-                "               tblEmployees ON tblCamcoRecord.EmployeeId = tblEmployees.Employee" +
-                "Id LEFT OUTER JOIN\r\n                         tblLathe ON tblCamcoRecord.LatheId " +
-                "= tblLathe.LatheId LEFT OUTER JOIN\r\n                         tblParts ON tblCamc" +
-                "oRecord.PartId = tblParts.PartId LEFT OUTER JOIN\r\n                         tblMa" +
-                "chineType ON tblCamcoRecord.MachineId = tblMachineType.Machine_Id LEFT OUTER JOI" +
-                "N\r\n                         tblTurrentType ON tblCamcoRecord.TurrentTypeId = tbl" +
-                "TurrentType.TurrentType_Id LEFT OUTER JOIN\r\n                         tblChuckCol" +
-                "let ON tblCamcoRecord.Chuck_Collet_Id = tblChuckCollet.Id LEFT OUTER JOIN\r\n     " +
-                "                    tblOperation ON tblCamcoRecord.OperationId = tblOperation.Op" +
-                "eration_Id\r\nWHERE        (tblCamcoRecord.Id = @CamcoId)";
+                "ordDetail.QRN2, ComcoRecordDetail.QRN3, ComcoRecordDetail.QRN4,ComcoRecordDetail" +
+                ".ColletBlade,\r\n                         ComcoRecordDetail.Id AS Expr2, ComcoReco" +
+                "rdDetail.CamcoRecordId, tblCustomer.CustomerID AS Expr3, tblCustomer.CustomerNam" +
+                "e, tblCustomer.CustomerAbbreviation, tblEmployees.EmployeeId AS Expr4, \r\n       " +
+                "                  tblEmployees.EmployeeName, tblLathe.LatheId AS Expr5, tblLathe" +
+                ".LatheName, tblParts.PartId AS Expr6, tblParts.Part, tblParts.Material, tblParts" +
+                ".CustomerId AS Expr7, tblMachineType.Machine_Id, \r\n                         tblM" +
+                "achineType.MachineName, tblTurrentType.TurrentType_Id, tblTurrentType.TurrentTyp" +
+                "eName, tblTurrentType.MachineTypeId, tblChuckCollet.Id AS Expr8, tblChuckCollet." +
+                "Name, tblOperation.Operation_Id, \r\n                         tblOperation.RM_DESC" +
+                ", tblOperation.PartId AS Expr9, tblOperation.RM_WKCTR, tblOperation.RM_SWITCH, t" +
+                "blOperation.VERIFIED_CYCLETIME, tblOperation.RM_CT, tblOperation.CT_MINUTES, tbl" +
+                "Operation.RM_OP\r\nFROM            tblCamcoRecord INNER JOIN\r\n                    " +
+                "     ComcoRecordDetail ON tblCamcoRecord.Id = ComcoRecordDetail.CamcoRecordId LE" +
+                "FT OUTER JOIN\r\n                         tblCustomer ON tblCamcoRecord.CustomerId" +
+                " = tblCustomer.CustomerID LEFT OUTER JOIN\r\n                         tblEmployees" +
+                " ON tblCamcoRecord.EmployeeId = tblEmployees.EmployeeId LEFT OUTER JOIN\r\n       " +
+                "                  tblLathe ON tblCamcoRecord.LatheId = tblLathe.LatheId LEFT OUT" +
+                "ER JOIN\r\n                         tblParts ON tblCamcoRecord.PartId = tblParts.P" +
+                "artId LEFT OUTER JOIN\r\n                         tblMachineType ON tblCamcoRecord" +
+                ".MachineId = tblMachineType.Machine_Id LEFT OUTER JOIN\r\n                        " +
+                " tblTurrentType ON tblCamcoRecord.TurrentTypeId = tblTurrentType.TurrentType_Id " +
+                "LEFT OUTER JOIN\r\n                         tblChuckCollet ON tblCamcoRecord.Chuck" +
+                "_Collet_Id = tblChuckCollet.Id LEFT OUTER JOIN\r\n                         tblOper" +
+                "ation ON tblCamcoRecord.OperationId = tblOperation.Operation_Id\r\nWHERE        (t" +
+                "blCamcoRecord.Id = @CamcoId)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CamcoId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

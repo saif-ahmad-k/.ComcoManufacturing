@@ -478,6 +478,7 @@
 
     <Style x:Key="mandatoryComboBox" BasedOn="{StaticResource normalComboBox}" TargetType="ComboBox">
         <Setter Property="Background" Value="{StaticResource mandatoryColor}" />
+        <Setter Property="BorderBrush" Value="{StaticResource mandatoryColor}" />
     </Style>
 
     
