@@ -29,13 +29,18 @@ namespace CamcoManufacturing.View
         string imagePath;
         int ProductId = 0;
         tblProduct ExistingProduct = new tblProduct();
+        string ExistingProductName = null;
+        string ExistingQRN = null;
         public Edit_Product(int Product)
         {
             InitializeComponent();
             if (Product > 0)
             {
+
                 ProductId = Product;
                 ExistingProduct = db.tProducts.Find(Product);
+                ExistingProductName = ExistingProduct.ProductName;
+                ExistingQRN = ExistingProduct.QRN;
             }
             HelperClass.ShowWindowPath(PathLabel);
             FillControls(Product);
@@ -292,7 +297,7 @@ namespace CamcoManufacturing.View
                         //    }
                         //}
                     }
-                    var existingSameProductsList = db.tProducts.Where(p => p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).ToList();
+                    var existingSameProductsList = db.tProducts.Where(p => p.ProductName == ExistingProductName && p.QRN == ExistingQRN).ToList();
                     foreach (var prod in existingSameProductsList)
                     {
                         prod.ProductName = textBoxProductName.Text;
@@ -307,9 +312,9 @@ namespace CamcoManufacturing.View
                     }
                     foreach (tblProduct parent in ComboBoxParentProduct.SelectedItems)
                     {
-                        if(db.tProducts.Where(p=>p.ParentId == parent.Product_ID && p.ProductName == textBoxProductName.Text && p.QRN== textBoxProductQRN.Text).ToList().Count == 0)
+                        if(db.tProducts.Where(p=>p.ParentId == parent.Product_ID && p.ProductName == ExistingProductName && p.QRN== ExistingQRN).ToList().Count == 0)
                         {
-                            var AllParentsWithSameAttributes = db.tProducts.Where(p => p.ProductName == parent.ProductName && p.QRN == parent.QRN).ToList();
+                            var AllParentsWithSameAttributes = db.tProducts.Where(p => p.ProductName == parent.ProductName && p.QRN == parent.QRN && p.ParentId != parent.Product_ID).ToList();
                             foreach(var item in AllParentsWithSameAttributes)
                             {
                                 var cat = db.tCategories.Find(item.CategoryId);
@@ -376,7 +381,7 @@ namespace CamcoManufacturing.View
                     {
                         foreach (tblCategory parent in ComboBoxCategory.SelectedItems)
                         {
-                            if(db.tProducts.Where(p=>p.CategoryId == parent.Category_ID && p.ProductName == textBoxProductName.Text && p.QRN == textBoxProductQRN.Text).FirstOrDefault() == null)
+                            if(db.tProducts.Where(p=>p.CategoryId == parent.Category_ID && p.ProductName == ExistingProductName && p.QRN == ExistingQRN).FirstOrDefault() == null)
                             {
                                 var AllParentsWithSameAttributes = db.tCategories.Where(p => p.Name == parent.Name).ToList();
                                 foreach (var item in AllParentsWithSameAttributes)
@@ -389,7 +394,7 @@ namespace CamcoManufacturing.View
                                     newprod.PartNumber = textBoxProductPartNumber.Text;
                                     newprod.Length = textBoxProductLength.Text;
                                     newprod.Diameter = textBoxProductDiameter.Text;
-                                    newprod.CategoryId = item.Category_ID;
+                                    newprod.CategoryId = parent.Category_ID;
                                     newprod.HolderTypeId = 1;
                                     newprod.ProductImage = _imageBytes;
                                     db.tProducts.Add(newprod);

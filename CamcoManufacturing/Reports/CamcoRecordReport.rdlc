@@ -592,25 +592,28 @@
               <Width>0.79514in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.69097in</Width>
+              <Width>0.98425in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.78472in</Width>
+              <Width>0.97222in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.12971in</Width>
+              <Width>0.94097in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.14013in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>0.94515in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.84722in</Width>
+              <Width>1.03472in</Width>
             </TablixColumn>
             <TablixColumn>
               <Width>1in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.86967in</Width>
+              <Width>1.00509in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -727,7 +730,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox29">
+                    <Textbox Name="Textbox37">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -747,7 +750,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox29</rd:DefaultName>
+                      <rd:DefaultName>Textbox37</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -759,8 +762,10 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="Textbox31">
@@ -1011,7 +1016,7 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="ToolDescription">
+                    <Textbox Name="Textbox39">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
@@ -1028,7 +1033,7 @@
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>ToolDescription</rd:DefaultName>
+                      <rd:DefaultName>Textbox39</rd:DefaultName>
                       <Style>
                         <Border>
                           <Style>Solid</Style>
@@ -1039,8 +1044,10 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <ColSpan>2</ColSpan>
                   </CellContents>
                 </TablixCell>
+                <TablixCell />
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="SFM_RPM">
@@ -1183,7 +1190,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>INSERT DRILL TAP</Value>
+                              <Value />
                               <Style>
                                 <FontFamily>Calibri</FontFamily>
                                 <FontSize>9pt</FontSize>
@@ -1205,6 +1212,39 @@
                         <BottomBorder>
                           <Style>None</Style>
                         </BottomBorder>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox28">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>INSERT DRILL TAP</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox28</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -1485,6 +1525,39 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox30">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>QRN</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox30</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox148">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -1726,6 +1799,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -1747,7 +1821,7 @@
         <Top>2.73001in</Top>
         <Left>0.1939in</Left>
         <Height>1.0403in</Height>
-        <Width>8.06258in</Width>
+        <Width>8.81766in</Width>
         <ZIndex>16</ZIndex>
         <Style>
           <Border>
@@ -2111,7 +2185,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>20.97146cm</Width>
+  <Width>23.52437cm</Width>
   <Page>
     <PageHeight>27.94cm</PageHeight>
     <PageWidth>21.59cm</PageWidth>
