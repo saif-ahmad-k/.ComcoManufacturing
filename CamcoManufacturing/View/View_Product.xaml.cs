@@ -291,7 +291,7 @@ namespace CamcoManufacturing.View
             }
             StackPanel sp = new StackPanel();
             Border buttonBorder = new Border();
-            buttonBorder.Background = Brushes.SkyBlue;
+            buttonBorder.Background = Brushes.Gray;
             buttonBorder.BorderBrush = Brushes.Black;
             buttonBorder.BorderThickness = new Thickness(1);
             buttonBorder.Child = button;

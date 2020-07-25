@@ -459,7 +459,12 @@
         <Setter Property="VerticalAlignment" Value="Top" />
     </Style>
 
-    <Style x:Key="normalComboBox" BasedOn="{StaticResource MaterialDesignComboBox}" TargetType="ComboBox">
+
+    <Style x:Key="MaterialDesignComboBox" TargetType="ComboBox">
+        <Setter Property="Background" Value="#FFE763"/>
+    </Style>
+    
+    <Style x:Key="normalComboBox"  TargetType="ComboBox">
         <Setter Property="HorizontalAlignment" Value="Left" />
         <Setter Property="VerticalAlignment" Value="Top" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
@@ -477,8 +482,8 @@
         <Setter Property="IsTabStop" Value="True" />
     </Style>
 
-    
-    <Style x:Key="mandatoryComboBox" BasedOn="{StaticResource normalComboBox}" TargetType="ComboBox">
+
+    <Style x:Key="mandatoryComboBox" BasedOn="{StaticResource MaterialDesignComboBox}" TargetType="ComboBox">
         <Setter Property="Background" Value="{StaticResource mandatoryColor}" />
     </Style>
 
