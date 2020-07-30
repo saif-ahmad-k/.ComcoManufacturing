@@ -239,7 +239,12 @@ namespace CamcoManufacturing.View
             if(buttonAddDetailsRow.Content.Equals("Update Line"))
             {
                 var data = dataGridCamcoRecordDetails.SelectedItem;
-                (dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock).Text = textBoxLineNumber.Text;
+                var abc = dataGridCamcoRecordDetails.Items.Contains(data);
+                if ((dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock) != null)
+                {
+                    (dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock).Text = textBoxLineNumber.Text;
+                }
+
                 (dataGridCamcoRecordDetails.SelectedCells[1].Column.GetCellContent(data) as TextBlock).Text = textBoxToolNumber.Text;
                 (dataGridCamcoRecordDetails.SelectedCells[2].Column.GetCellContent(data) as TextBlock).Text = textBoxOffSetNumber.Text;
                 (dataGridCamcoRecordDetails.SelectedCells[3].Column.GetCellContent(data) as TextBlock).Text = textBoxToolDescription.Text;
@@ -746,21 +751,66 @@ namespace CamcoManufacturing.View
         private void EditDetailRow_Click(object sender, RoutedEventArgs e)
         {
             var data = dataGridCamcoRecordDetails.SelectedItem;
-            textBoxLineNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxToolNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[1].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxOffSetNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[2].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxToolDescription.Text = (dataGridCamcoRecordDetails.SelectedCells[3].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxSFMRPM.Text = (dataGridCamcoRecordDetails.SelectedCells[4].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxFeed.Text = (dataGridCamcoRecordDetails.SelectedCells[5].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxProjection.Text = (dataGridCamcoRecordDetails.SelectedCells[6].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxDrillTap.Text = (dataGridCamcoRecordDetails.SelectedCells[7].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxQRN1.Text = (dataGridCamcoRecordDetails.SelectedCells[8].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxStickBore.Text = (dataGridCamcoRecordDetails.SelectedCells[9].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxQRN2.Text = (dataGridCamcoRecordDetails.SelectedCells[10].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxTurrentHolder.Text = (dataGridCamcoRecordDetails.SelectedCells[11].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxQRN3.Text = (dataGridCamcoRecordDetails.SelectedCells[12].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxColletBlade.Text = (dataGridCamcoRecordDetails.SelectedCells[13].Column.GetCellContent(data) as TextBlock).Text;
-            textBoxQRN4.Text = (dataGridCamcoRecordDetails.SelectedCells[14].Column.GetCellContent(data) as TextBlock).Text;
+            if ((dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxLineNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[0].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[1].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxToolNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[1].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[2].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxOffSetNumber.Text = (dataGridCamcoRecordDetails.SelectedCells[2].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[3].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxToolDescription.Text = (dataGridCamcoRecordDetails.SelectedCells[3].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[4].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxSFMRPM.Text = (dataGridCamcoRecordDetails.SelectedCells[4].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[5].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxFeed.Text = (dataGridCamcoRecordDetails.SelectedCells[5].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[6].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxProjection.Text = (dataGridCamcoRecordDetails.SelectedCells[6].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[7].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxDrillTap.Text = (dataGridCamcoRecordDetails.SelectedCells[7].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[8].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxQRN1.Text = (dataGridCamcoRecordDetails.SelectedCells[8].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[9].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxStickBore.Text = (dataGridCamcoRecordDetails.SelectedCells[9].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[10].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxQRN2.Text = (dataGridCamcoRecordDetails.SelectedCells[10].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[11].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxTurrentHolder.Text = (dataGridCamcoRecordDetails.SelectedCells[11].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[12].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxQRN3.Text = (dataGridCamcoRecordDetails.SelectedCells[12].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[13].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxColletBlade.Text = (dataGridCamcoRecordDetails.SelectedCells[13].Column.GetCellContent(data) as TextBlock).Text;
+            }
+            if ((dataGridCamcoRecordDetails.SelectedCells[14].Column.GetCellContent(data) as TextBlock) != null)
+            {
+                textBoxQRN4.Text = (dataGridCamcoRecordDetails.SelectedCells[14].Column.GetCellContent(data) as TextBlock).Text;
+            }
             buttonAddDetailsRow.Content = "Update Line";
         }
     }

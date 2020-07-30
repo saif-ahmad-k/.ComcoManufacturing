@@ -77,6 +77,7 @@ namespace CamcoManufacturing.View
             }
             else if(ProductId > 0)
             {
+                
                 var ParentCategories = db.tProducts.Where(p => p.ParentId == ProductId).ToList();
                 if (HolderTypeEnumId > 0)
                 {
@@ -169,6 +170,25 @@ namespace CamcoManufacturing.View
                     buttonStickHolder.Visibility = Visibility.Visible;
                     buttonInsert.Visibility = Visibility.Visible;
                     buttonColletBlade.Visibility = Visibility.Visible;
+                }
+                var parentprod = db.tProducts.Find(ProductId);
+                if (parentprod.HolderTypeId == 2)
+                {
+                    this.buttonInsert.Visibility = Visibility.Visible;
+                    this.buttonColletBlade.Visibility = Visibility.Visible;
+                    buttonStickHolder.Visibility = Visibility.Collapsed;
+                }
+                else if (parentprod.HolderTypeId == 3)
+                {
+                    this.buttonInsert.Visibility = Visibility.Collapsed;
+                    this.buttonColletBlade.Visibility = Visibility.Visible;
+                    this.buttonStickHolder.Visibility = Visibility.Collapsed;
+                }
+                else if (parentprod.HolderTypeId == 4)
+                {
+                    this.buttonInsert.Visibility = Visibility.Visible;
+                    this.buttonColletBlade.Visibility = Visibility.Collapsed;
+                    this.buttonStickHolder.Visibility = Visibility.Collapsed;
                 }
             }
             if (WrapPanelProductParentsCategories_Copy.Children.Count == 0)
